@@ -1,5 +1,10 @@
-.pug-cache
-Gemfile.lock
-dist
-node_modules
-.idea/workspace.xml
+_site/*
+_theme_packages/*
+
+Thumbs.db
+.DS_Store
+
+!.gitkeep
+
+.rbenv-version
+.rvmrc
