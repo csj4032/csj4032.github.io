@@ -1,5 +1,5 @@
 ---
-title: Quick Sort
+title: Bubble Sort
 description: Quick Sort Algorithm
 categories:
  - algorithm
