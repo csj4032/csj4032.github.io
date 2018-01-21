@@ -1,13 +1,11 @@
----
-title: Genius Blog
-timezone: UTC
-collections:
-  posts:
-    title: Posts
-    output: true
-  uploads:
-    title: Uploads
-    output: true
-source: src
-destination: dist
-permalink: "/:categories/:title"
+title: Starter Template
+author: Panoramedia
+email: panoramedia@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  A Site Starter Materialize Templates for Jekyll
+
+twitter_username: macrod68
+github_username:  macrod68
+
+sass:
+    style: compressed
