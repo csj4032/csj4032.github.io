@@ -56,6 +56,7 @@ public class Sample {
   * 생성자와는 달리 변환값 자료형의 하위 자료형 객체를 반환할 수 있다든 것이다.
     * 반환되는 객체의 클래스를 훨씬 유연하게 결정할 수 있다.
   * 형인자 자료형(parameterized type) 객체를 만들 때 편하다는 점이다.
+
 * 단점
   * public나 protected로 선언된 생성자가 없으므로 하위 클래스를 만들 수 없다는 것이다.
   * 정적 팩터리 메서드가 다른 정적 메서드와 확연히 구분되지 않는다는 것이다.
@@ -189,6 +190,7 @@ public enum Elvis {
 * 클래스를 싱글턴으로 만들면 클라이언트를 테스트하기가 어려워질 수가 있음
 * serialize된 객체가 역직렬화(desenalize)될 때마다 새로운 객체가 생기게 된다.
 * 원소가 하나뿐인 enum 자료형이야말로 싱글턴을 구현하는 가장 좋은 방법
+
 * [참고 싱글턴](https://blog.seotory.com/post/2016/03/java-singleton-pattern)
 
 ### 규칙 4 객체 생성을 막을 때는 private 생성자를 사용하라
@@ -670,9 +672,9 @@ public class Raw {
 ### 규칙 24 무점검 경고(unchecked warning)를 제거하라
 * 모든 무점검 경고는, 기능하다면 없애야 한다. 
 * 제거할 수 없는 경고 메시지는 형 안전성이 확실할 때만 @SuppressWarnings("unchecked") 어노테이션(annotation)을 사용해 억제하기 바란다.
-* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문**이 아니기 때문이다.[JLS 9.7]. 
+* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문**이 아니기 때문이다. 
 * @SuppressWarnings 어노테이션은 개별 지역 변수 선언부터 클래스 전체에까지, 어떤 크기의 단위에도 적용할 수 있다. 하지만 @SuppressWarnings 어노테이션은 가능한 한 작은 범위에 적용하라.
-* @SuppressWarnings(“unchecked”) 어노테이션을 사용할 때마다, 왜 형 안전성을 위반하지 않는지 밝히는 주석을 반드시 붙이라.
+* @SuppressWarnings("unchecked") 어노테이션을 사용할 때마다, 왜 형 안전성을 위반하지 않는지 밝히는 주석을 반드시 붙이라.
 
 ### 규칙 25 배열 대신 리스트를 써라
 * 배열은 제네릭 자료형과 두 가지 중요한 차이점
