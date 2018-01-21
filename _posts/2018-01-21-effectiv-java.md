@@ -4,7 +4,7 @@ description: Effective Java 정리
 categories:
  - book
 tags:
- - java
+ - JAVA
 ---
 
 # 이펙티브 자바
@@ -428,7 +428,6 @@ public class Member {
 }
 ```
 
-
 ### 규칙 14 public 클래스 안에는 public 필드를 두지 말고 접근자 메서드를 사용하라
 * 선언된 패키지 밖에서도 사용 가능한 클래스에는 접근자 메서드를 제공하라.
 
@@ -638,7 +637,7 @@ if (o instanceof Set) {   //무인자자료형
   Set<?> m = (Set<?>) o;  //와일드카드자료형
 }
 ```
-  
+
 ```java
 public class Raw {
 
