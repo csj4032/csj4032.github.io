@@ -4,7 +4,7 @@ description: Effective Java 책 정리
 categories:
  - book
 tags:
- - JAVA
+ - java
 ---
 
 # 이펙티브 자바
