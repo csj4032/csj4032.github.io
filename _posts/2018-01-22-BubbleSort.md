@@ -1,6 +1,6 @@
 ---
 title: Bubble Sort
-description: Quick Sort Algorithm
+description: Bubble Sort Algorithm
 categories:
  - algorithm
 tags:
