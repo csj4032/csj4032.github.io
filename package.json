@@ -1,30 +1,22 @@
 {
-  "name": "csj4032.github.io",
+  "name": "jekyll-pug-material",
   "version": "1.0.0",
-  "author": "csj4032",
-  "private": true,
-  "description": "子曰, 學而時習之, 不亦說呼. 有朋自遠方來, 不亦樂呼. 人不知而不慍, 不亦君子呼.",
+  "description": "Jekyll-Pug-Material ---",
+  "main": "index.js",
   "scripts": {
-    "dev": "NODE_ENV=development webpack-dev-server --hot",
-    "build": "NODE_ENV=production webpack --progress"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": "git+https://github.com/csj4032/csj4032.github.io.git",
-  "license": "ISC",
-  "homepage": "https://github.com/csj4032/csj4032.github.io#readme",
-  "devDependencies": {
-    "babel-core": "^6.23.1",
-    "babel-loader": "^6.4.0",
-    "babel-preset-env": "^1.2.1",
-    "css-loader": "^0.26.4",
-    "vue-loader": "^11.1.4",
-    "vue-template-compiler": "^2.2.2",
-    "webpack": "^2.7.0",
-    "webpack-dev-server": "^2.4.1"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DougBeney/jekyll-pug-material.git"
   },
+  "author": "Doug Beney",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DougBeney/jekyll-pug-material/issues"
+  },
+  "homepage": "https://github.com/DougBeney/jekyll-pug-material#readme",
   "dependencies": {
-    "bootstrap": "4.0.0-alpha.6",
-    "underscore": "^1.8.3",
-    "vue": "^2.2.2"
-  },
-  "main": "index.js"
+    "pug-cli": "^1.0.0-alpha6"
+  }
 }
