@@ -1,10 +1,10 @@
 ---
-title: Effective Java
+title: Effective Java 2판
 description: Effective Java 정리
 categories:
- - Enjoy-Book
+ - enjoy-book
 tags:
- - Java
+ - java
 ---
 
 # 이펙티브 자바
