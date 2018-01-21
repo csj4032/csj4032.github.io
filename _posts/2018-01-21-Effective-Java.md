@@ -621,13 +621,13 @@ class Host {
 * 선언부에 형인자(type parameter)가 포함된 클래스나 인터페이스는 제네릭(generic) 클래스나 인터페이스라고 부름
 * 무인자 자료형을 쓰면 형 안전성이 사라지고, 제네릭의 장점 중 하나인 표현력(expressiveness) 측면에서 손해를 보게 된다.
 * List와 같은 무인자 자료형을 사용하면 형 안전성을 잃게 되지만, List\<Object\> 와 같은 형인자 자료형을 쓰면 그렇지 않다.
-* List와 List\<Object\> 사이에는 무슨 차이가 있나? 간단히 말해서 List는 형 검사 절차를 완전히 생략한 것이고, List<Object>는 아무 객체나 넣을 수 있다는 것을 컴파일러에게 알리는 것
+* List와 List\<Object\> 사이에는 무슨 차이가 있나? 간단히 말해서 List는 형 검사 절차를 완전히 생략한 것이고, List\<Object\>는 아무 객체나 넣을 수 있다는 것을 컴파일러에게 알리는 것
 * 제네릭에 대한 하위 자료형 정의 규칙에 따르면 List\<String\>은 List의 하위 자료형(subtype)이지만 List\<Object\>의 하위 자료형은 아니기 때문
 * 비한정적 와일드카드 자료형과 무인자 자료형의 차이
   * 와일드카드 자료형은 안전하지만 무인자 자료형은 그렇지 않다.
   * 무인자 자료형 컬렉션에는 아무 객체나 넣을 수 있어서, 컬렉션의 자료형 불변식(type invariant)이 쉽게 깨진다.
-  * Collection<?>에는 null 이의의 어떤 원소도 넣을 수 없다.
-  * Collection<?>에는 어떤 자료형의 객체를 꺼낼 수 있는지도 알 수 없다.
+  * Collection\<?\>에는 null 이의의 어떤 원소도 넣을 수 없다.
+  * Collection\<?\>에는 어떤 자료형의 객체를 꺼낼 수 있는지도 알 수 없다.
 * 무인자 자료형을 사용하는 예외 두 가지
   * **제네릭 자료형 정보가 프로그램이 실행될 때 지워짐** [Erasure](https://docs.oracle.com/javase/tutorial/java/generics/erasure.html)
   * [클래스 리터럴(class literal)](https://docs.oracle.com/javase/tutorial/extra/generics/literals.html) 에는 반드시 무인자 자료형을 사용해야 한다.
