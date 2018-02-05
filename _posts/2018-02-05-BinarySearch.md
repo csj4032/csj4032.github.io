@@ -15,8 +15,6 @@ tags:
 
 public class BinarySearch {
 
-	public class BinarySearch {
-
 	public int binarySearch(int[] sortedArray, int key, int low, int high) {
 		int middle = (low + high) / 2;
 
