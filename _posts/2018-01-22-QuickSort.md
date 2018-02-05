@@ -30,7 +30,7 @@ public class QuickSort {
 		quickSort(a, v + 1, r);
 	}
 
-	public static void sor(int[] a) {
+	public static void sort(int[] a) {
 		quickSort(a, 0, a.length - 1);
 	}
 }
