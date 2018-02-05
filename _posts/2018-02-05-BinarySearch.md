@@ -4,7 +4,7 @@ description: Binary Search Algorithm
 categories:
  - algorithm
 tags:
- - sort
+ - search
 ---
 
 # Binary Search
