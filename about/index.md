@@ -14,5 +14,6 @@ layout: page
 #### 메일 : csj4032@gmail.com
 
 #### ONLINE JUDGE : 
-> [백준](https://www.acmicpc.net/user/genius_choi/)
-> [코딩도장](http://codingdojang.com/profile/answer/3309/)
+> [백준 https://www.acmicpc.net/user/genius_choi/](https://www.acmicpc.net/user/genius_choi/)
+
+> [코딩도장 http://codingdojang.com/profile/answer/3309/](http://codingdojang.com/profile/answer/3309/)
