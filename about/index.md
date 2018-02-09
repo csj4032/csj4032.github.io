@@ -13,4 +13,5 @@ layout: page
 
 #### 메일 : csj4032@gmail.com
 
-#### ONLINE JUDGE : https://www.acmicpc.net/user/genius_choi
+#### ONLINE JUDGE : 
+> https://www.acmicpc.net/user/genius_choi
