@@ -9,7 +9,7 @@ layout: page
 
 #### 자기소개 : 게으르고 명석하지 못한 개발자
 
-#### SKILLS : Java, ActionScript, SQL
+#### SKILLS : Java, ActionScript, JavaScript, SQL, PHP
 
 #### 메일 : csj4032@gmail.com
 
