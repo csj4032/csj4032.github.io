@@ -12,3 +12,5 @@ layout: page
 #### SKILLS : Java, ActionScript, SQL
 
 #### 메일 : csj4032@gmail.com
+
+#### ONLINE JUDGE : https://www.acmicpc.net/user/genius_choi
