@@ -26,6 +26,35 @@ tags:
   * float : 4byte
   * double : 8byte
 
+## 접근제어자
+
+* 종류
+  * default : 같은 패키지(폴더)에 있는 객체들만 허용
+  * public : 모든 접근을 허용
+  * private : 현재 객체 내에서만 허용
+  * protected : 같은 패키지(폴더)에 있는 객체와 상속관계의 객체들만 허용
+
+* 사용
+ * 클래스 : public, default
+ * 생성자 : public, protected, default, private
+ * 멤버변수 : public, protected, default, private
+ * 멤버메소드 : public, protected, default, private
+ * 지역변수 : 접근제한자 사용 불허
+
+## 컴파일 과정
+
+## JVM
+
+## Garbage Collector
+
+## String, StringBuilder, StringBuffer 차이
+
+## Tread
+
+## TreadLocal
+
+## 
+
 # 개발방법론
 
 ## 디자인페턴
@@ -37,6 +66,8 @@ tags:
 # Network
 
 ## REST API
+
+# 알고리즘, 자료구조
 
 # Reference
 
