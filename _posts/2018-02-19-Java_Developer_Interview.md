@@ -146,6 +146,21 @@ public class Dispatch{
 
 ## String, StringBuilder, StringBuffer 차이
 
+### String
+* String 클래스는 변경이 불가능한 immutable 클래스
+
+### StringBuilder
+* StringBuilder mutable 가변클래스 && 단일 스레드에서만 보장
+* StringBuilder는 JDK 1.5 에서 새롭게 추가된 클래스이며, StringBuffer와 기능은 모두 같으나, synchronization(동기화) 보장하지 않기 때문에 단일 스레드에서만 안전
+
+### StringBuffer
+* StringBuffer 클래스는 변경이 가능한 mutable 클래스
+
+### ETC
+* JDK 1.4 이하에서는 String 타입은 그대로 컴파일 되지만, JDK 1.5 이후부터 성능이슈로 인해 컴파일러가 자동으로 String 타입을 StringBuilder로 치환하여 컴파일
+* JDK 1.9 
+  * [Evolution of Strings in Java to Compact Strings and Indify String Concatenation](https://arnaudroger.github.io/blog/2017/06/14/CompactStrings.html)
+
 ## Tread
 
 ## TreadLocal
@@ -163,22 +178,6 @@ public class Dispatch{
 ### Single Responsibility Principle : 단일책임의 원칙
 * Single Responsibility Principle 란 클래스는 하나의 책임을 가져야하며 그 책임에 대한 이유로 변경되어야 한다.
 * 책임 : '변경을 위한 이유', 한 클래스를 변경하기 위한 한 가지 이상의 이유를 생각할 수 있다면, 그 클래스는 한 가지 이상의 책임을 맡고 있는 것
-* 예시
-
-```java
-
-class Student {
-  // 회사에서 일을 합니다.
-  public void work() {
-    ......
-  }
-  // 학교에서 공부를 합니다.
-  public void study() {
-    ......
-  }
-}
-
-```
 
 ### Open Close Principle : 개방폐쇄의 원칙
 * 소프트웨어 개체(클래스, 모듈, 함수 등)는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다.
