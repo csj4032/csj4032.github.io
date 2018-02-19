@@ -164,6 +164,81 @@ public class Dispatch{
 ## Tread
 
 ## TreadLocal
+* 스레드 내부의 값과 값을 갖고 있는 객체를 연결해 스레드 한정 기법을 적용할 수 있도록 도와주는 좀더 형식적인 방법
+* ThreadLocal 클래스에는 get과 set 메소드가 있는데 호출하는 스레드마다 다른 값을 사용할 수 있도록 관리해줌
+* 스레드 로컬 변수는 변경 가능한 싱글턴이나 전역 변수 등을 기반으로 설계되어 있는 구조에서 변수가 임의로 공유되는 상황을 막기 위해 사용하는 경우가 많음
+* ThreadLocal 클래스는 애플리케이션 프레임원을 구현할 때 상당히 많이 사용되는 편
+  * 예를 들어 J2EE 컨테이너는 EJB를 사용하는 동안 해당 스레드와 트랜잭션 컨텍스트를 연결해 관리
+
+## Collection
+
+### List
+
+#### ArrayList (List)
+* 내부 배열에 기반을 둔 리스트 구현
+* 리스트 요소에 대한 접근이 다른 리스트 기반 클래스보다 빠름
+* 요소가 삽입될 때 추가될 공간을 만들기 위해 객체를 이동시켜야 하고 삭제할 때는 삭제된 공간을 없애기 위해 요소들이 이동해야 하기 때문에 이동이 많아져 요소의 삽입과 삭제가 느림
+* 멀티쓰레드에 대한 동기화 안됨
+
+#### Vector (List)
+*  멀티쓰레드에 대한 동기화
+
+#### LinkedList (Queue, List)
+* 연결된 노드들을 기반으로 구현된 리스트
+* 리스트에 있는 요소를 접근하기 위해서는 링크를 통해 접근해야 하기 때문에 접근 속도가 느림
+* 노드에 대한 참조만을 변경하기 떄문에 삽입, 삭제 작업이 빠름
+
+### Set
+
+#### TreeSet (SortedSet, NavigableSet)
+* 트리 자료 구조를 기반으로 구현
+* 트리 자료 구조를 가지기 때문에 요소는 정렬된 저장
+* 요소에 접근하기 위해서는 반드시 링크를 통해야 하기 떄문에 접근 속도가 다른 Set 보다 느림
+
+#### HashSet (Set)
+* 해쉬 테이블 자료 구조를 기반
+* 요소에 대한 정렬을 보장하지 않음
+* HashSet 은 TreeSet 보다 빠른 속도의 제공하며 null 참조가 저장되는 것을 허용
+
+#### LinkedHasSet
+
+#### EnumSet
+* 비트셋을 기반으로 구현
+* 저장되는 요소들은 열거형 Set 이 생성될 때 지정한 열거형에 포함되어 있는 상수
+* null 요소가 허용 안됨, null 요소를 저장하려고 하면 NullPointException
+
+### Queue
+* 요소를 특정 순서로 지정하고 검색할 수 있는 컬렉션
+* AbstractQueue, ArrayBlockingQueue, ArrayDeque, ConcurrentLinkedDeque, ConcurrentLinkedQueue, DelayQueue, LinkedBlockingDeque, LinkedBlockingQueue,
+* LinkedList, LinkedTransferQueue, PriorityBlockingQueue, PriorityQueue, SynchronousQueue
+
+#### Deque
+* 큐의 머리와 꼬리 부분 모두에서 삽입과 제거를 할 수 있는 더블 앤드 큐
+* ArrayDeque, ConcurrentLinkedDeque, LinkedBlockingDeque, LinkedList
+
+### Map
+
+#### HashMap
+* 해쉬 테이블 자료 구조를 기반으로 하는 맵 구현
+* null 키와 값을 가진 항목을 허용하는데 항목이 저장되는 순서는 보장 하지 않음
+
+#### HashTable
+* 키와 값으로 null이 허용되지 않음
+* Thread safe
+
+#### LinkedHashMap
+* 기본적으로 HashMap을 상속받아 HashMap과 매우 흡사
+* Map에 있는 엔트리들의 연결 리스트를 유지되므로 입력한 순서대로 반복 가능
+
+#### TreeMap (SortedMap)
+* 이진검색트리의 형태로 키와 값의 쌍으로 이루어진 데이터를 저장
+* 검색과 정렬에 적합한 컬렉션
+
+#### Properties (HashTable)
+* (String, String) 형태로 저장하는 보다 단순화된 컬렉션
+
+#### Java HashMap은 어떻게 동작하는가?
+* HashMap과 HashTable을 정의한다면, '키에 대한 해시 값을 사용하여 값을 저장하고 조회하며, 키-값 쌍의 개수에 따라 동적으로 크기가 증가하는 associate array'
 
 # 개발방법론
 
@@ -171,7 +246,7 @@ public class Dispatch{
 
 ## AOP
 
-## 디자인페턴
+## 디자인패턴
 
 ## SOLID
 
