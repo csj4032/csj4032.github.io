@@ -68,17 +68,28 @@ tags:
 
 ## TreadLocal
 
-## 
-
 # 개발방법론
+
+## OOP
+
+## AOP
 
 ## 디자인페턴
 
 ## SOLID
 
+## 추상화
+
+## 정보은닉과 캡슐화 차이
+
 # Database
 
 # Network
+
+## HTTP와 HTTPS 차이 및 S가 보호하는 OSI7계층 위치
+* HTTP : 인터넷에서 하이퍼텍스트(hypertext) 문서를 교환하기 위하여 사용되는 통신규약이다. 하이퍼텍스트는 문서 중간중간에 특정 키워드를 두고 문자나 그림을 상호 유기적으로 결합하여 연결시킴으로써, 서로 다른 문서라 할지라도 하나의 문서인 것처럼 보이면서 참조하기 쉽도록 하는 방식을 의미
+* HTTPS : 인터넷 상에서 정보를 암호화하는 SSL(Secure Socket Layer) 프로토콜을 이용하여 데이터를 전송하고 있다는 것을 의미
+* HTTPS OSI7 계층 위치 : 5계층 (Session) FIFO(파이프), 넷바이오스, SAP, SDP, SSL, TLS
 
 ## REST API
 
