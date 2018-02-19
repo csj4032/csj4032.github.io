@@ -157,7 +157,8 @@ public class Dispatch{
 * StringBuffer 클래스는 변경이 가능한 mutable 클래스
 
 ### ETC
-* JDK 1.4 이하에서는 String 타입은 그대로 컴파일 되지만, JDK 1.5 이후부터 성능이슈로 인해 컴파일러가 자동으로 String 타입을 StringBuilder로 치환하여 컴파일
+* JDK 1.4 이하에서는 String 타입은 그대로 컴파일
+* JDK 1.5 이후부터 성능이슈로 인해 컴파일러가 자동으로 String 타입을 StringBuilder로 치환하여 컴파일
 * JDK 1.9 
   * [Evolution of Strings in Java to Compact Strings and Indify String Concatenation](https://arnaudroger.github.io/blog/2017/06/14/CompactStrings.html)
 
@@ -292,6 +293,50 @@ public class Dispatch{
   * 파라미터로 받은 객체의 메서드만 호출
   * 필드로 참조하는 객체의 메서드만 호출
 
+## Domain Driven Design
+* 대다수 소프트웨어 프로젝트에서는 초점을 도메인과 도메인 로직에 맞춰야 한다.
+* 복잡한 도메인 설계는 모델을 기반으로 삼아야 한다.
+* DDD는 기술이나 원칙이 아님 이것은 사고하는 방법이며, 복잡한 도메인을 다뤄야 하는 소프트웨어 프로젝트의 진행 속도를 높이는 데 중요시해야 할 것들의 모음
+
+### Entity
+* 속성이 아닌 식별성을 기준으로 정의되는 도메인 객체
+* 예) DB : ERD (Entity-Relationship Model), J2EE : Entity Bean
+
+### Value Object
+* 식별성이 아닌 속성을 이용해 정의되는 불변 객체
+* 모든 것에 식별성을 부여하고 Entity로 관리한다면 복잡성 증가
+* 과거 Java의 DTO(Data Transfer Object) 패턴의 Value Object와 관계없음
+* Entity와 Value Object을 구별하는 첫 번째 조건은 식별성
+* 식별셩을 가지면 Entity 그렇지 않으면 Value Object
+
+### Service
+* Domain Object에서 위치시키기 어려운 operation을 가지는 객체
+* 여러 Domain Object 다루는 연산 Service의 오퍼레이션을 일반적으로 Stateless
+* Domain Object에 해당하는 역할을 Service Operation으로 만드는 경우 도메인 역할을 침범하여 강 결합이 일어남
+
+### Module
+* 유사 작업 및 개념을 그룹화 하여 복작도를 감소시키는 기법
+* 응집도가 높은 모듈은간의 관계는 약 결합
+* Java로 구현하는 경우 Package로 구성될 수 있다.
+
+### Aggregate
+* 연관된 Entity와 Value Object의 묶음. 일관성과 트랜잭션, 분산의 단위, 캡슐화를 통한 복잡성 관리
+* 예를 들어 쇼핑몰 사이트에서 주문 Entity 내에 배송주소 정보를 우편번호, 주소1, 주소2, 상세주소, 이런식으로 각 칼럼으로 정의하는 것이 아니라,
+주소라는 Value Object를 별도로 작성하고 주문 Entity는 주소 Value Object을 포함하는 방식으로 관계 일관성 및 단순성화를 유지한다.
+
+### Factory
+* 복잡한 Entity의 생성 절차에 캡슐화 할 수 있는 개념
+* 생성하기 복잡한 Aggregate내의 여러 객체를 동시에 생성
+* 생성시 Aggregate의 일관성 유지
+
+### Repository
+* 도메인 영역과 데이터 인프라스트럭쳐 계층의 분리하여 데이터 계층에 대한 결합도를 낮추기 위한 방안
+* 생성된 Aggregate에 대한 영속성 관리, 조회, 등록, 수정, 삭제시 Aggregate의 일관성 유지
+* DB및 데이터 저장소의 데이터를 조회하고 저장하는 경우 Repository를 활용한다.
+
+### Bounded Context
+* 각각의 업무는 분할된 컨텍스트로 나눌 수 있으며 각 Context에 사용되는 모델은 서로 분리되어야 하며, 각 하나의 Context는 하나의 팀에 할당되어 관리되는 것이 좋다. 또한 이러한 방향은 Micro Service Architecture에서 추구하는 방향이기도 하다.
+
 # Database
 
 # Network
@@ -325,7 +370,7 @@ public class Dispatch{
 * 클라이언트에게 자신의 요청이 서버에 도달했을 때 어떻게 보이게 되는지 알려줌
 
 #### OPTION
-# 웹 서버에게 여려 가지 종류의 지원 범위에 대해서 물어봄
+* 웹 서버에게 여려 가지 종류의 지원 범위에 대해서 물어봄
 
 #### DELETE
 * 서버에게 요청 URL로 지정한 리소스를 삭제할 것을 요청
