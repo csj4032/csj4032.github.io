@@ -4,12 +4,15 @@ description: 자바 개발자 기술 면접 정리
 categories:
  - Interviwe
 tags:
- - java
+ - java, os, network, database
 ---
+
+# OS
 
 # Java
 
 ## 자료형
+
 * 논리형 : true, false 중 하나를 값으로 갖으며, 조건식과 논리적 계산에 사용
   * boolean : 1byte (false, true)
 * 문자형 : 문자를 저장하는데 사용되며, 변수 당 하나의 문자만을 저장할 수 있음
@@ -23,9 +26,17 @@ tags:
   * float : 4byte
   * double : 8byte
 
-# DB
+# 개발방법론
+
+## 디자인페턴
+
+## SOLID
+
+# Database
 
 # Network
+
+## REST API
 
 # Reference
 
