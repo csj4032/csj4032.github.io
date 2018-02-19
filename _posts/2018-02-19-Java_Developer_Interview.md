@@ -66,7 +66,7 @@ tags:
   * 오버라이딩 되면 **동적 디스패치**가 가능해짐
   * 오버라이딩은 객체 지향 프로그램밍의 가장 핵심이 되는 기능
 
-## Dynamic dispatch VS 
+## Dynamic dispatch VS Static dispatch
 * Dynamic dispatch
   * 컴퓨터 과학에서 동적 디스패치는 런타임에 호출 할 다형성 작업 (메서드 또는 함수)의 구현을 선택하는 프로세스입니다. 이것은 일반적으로 OOP (Object-Oriented Programming) 언어 및 시스템에 사용되며 그 주요한 특성으로 간주됩니다.
 
@@ -106,7 +106,6 @@ public class Dispatch{
 }
 
 ```
-
 
 * Static dispatch
   * 컴퓨팅에서 정적 디스패치는 컴파일 시간 동안 완전히 해결 된 다형성의 한 형태입니다.
@@ -160,6 +159,39 @@ public class Dispatch{
 ## 디자인페턴
 
 ## SOLID
+
+### Single Responsibility Principle : 단일책임의 원칙
+* Single Responsibility Principle 란 클래스는 하나의 책임을 가져야하며 그 책임에 대한 이유로 변경되어야 한다.
+* 책임 : '변경을 위한 이유', 한 클래스를 변경하기 위한 한 가지 이상의 이유를 생각할 수 있다면, 그 클래스는 한 가지 이상의 책임을 맡고 있는 것
+* 예시
+
+```java
+
+class Student {
+  // 회사에서 일을 합니다.
+  public void work() {
+    ......
+  }
+  // 학교에서 공부를 합니다.
+  public void study() {
+    ......
+  }
+}
+
+```
+
+### Open Close Principle : 개방폐쇄의 원칙
+* 소프트웨어 개체(클래스, 모듈, 함수 등)는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다.
+
+### The Liskov Substitution Principle : 리스코브 치환의 원칙
+* 서브 타입은 그것의 기반 타입으로 치환 가능해야 한다.
+
+### Interface Segregation Principle : 인터페이스 분리의 원칙
+* 클라이언트가 자신이 사용하지 않는 메소드에 의존하도록 강제되어서는 안 된다.
+
+### Dependency Inversion Principle : 의존성역전의 원칙
+* 상위 수준의 모듈은 하위 수준의 모둘에 의존해서는 안된다. 둘 모두 추상화에 의존해야 한다.
+* 추상화는 구체적으로 사항에 의존해서는 안 된다. 구체적인 사항은 추상화에 의존해야 한다.
 
 ## 추상화
 * 사람이 객체를 인식할 때 객체의 중요 특징을 추출해 내는데, 이 과정을 "추상화"
