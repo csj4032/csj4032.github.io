@@ -63,8 +63,76 @@ tags:
   * 메서드를 호출할 때 어떤 메서드를 사용하지는 컴파일 할 때 결정
 * Overriding
   * 자식 클래스에 있는 인스턴스 메서드가 부모 클래스의 접근 가능한 메서드와 동일한 이름과 매개변수를 가지면 오버라이딩 함
-  * 오버라이딩 되면 동적 디스패치가 가능해짐
+  * 오버라이딩 되면 **동적 디스패치**가 가능해짐
   * 오버라이딩은 객체 지향 프로그램밍의 가장 핵심이 되는 기능
+
+## Dynamic dispatch VS 
+* Dynamic dispatch
+  * 컴퓨터 과학에서 동적 디스패치는 런타임에 호출 할 다형성 작업 (메서드 또는 함수)의 구현을 선택하는 프로세스입니다. 이것은 일반적으로 OOP (Object-Oriented Programming) 언어 및 시스템에 사용되며 그 주요한 특성으로 간주됩니다.
+
+```java
+
+public class Dispatch{
+  static abstract class Service{
+    abstract void run();
+  }
+  static class MyService1 extends Service{
+     @Override
+     void run(){
+       System.out.println("run1");
+     }
+  }
+  static class MyService1 extends Service{
+     @Override
+     void run(){
+       System.out.println("run2");
+     }
+  }
+ 
+  public static void main(String[] args){
+    MyService1 svc = new MyService1();
+    svc.run(); //run1 - 정적 디스패치
+    MyService2 svc2 = new MyService2();
+    svc2.run(); //run2 - 정적 디스패치
+    //동적디스패치
+    Service svc3 = new MyService1();
+    svc.run(); //run1 - 리시버파라메터(this)를 활용하면 메소드를 찾아냄
+    //--------------------------------------
+    List<Service> svc = Array.asList(new MyService1(), new MyService2());
+    svc.forEach((Service s) -> s.run());
+    svc.forEach(s -> s.run()); //인자의 타입추론메소드타입추론
+    svc.forEach(Service::run); //Service::run으로 추론처리
+  }
+}
+
+```
+
+
+* Static dispatch
+  * 컴퓨팅에서 정적 디스패치는 컴파일 시간 동안 완전히 해결 된 다형성의 한 형태입니다.
+
+```java
+
+public class Dispatch{
+  static class Service{
+    void run(){
+      System.out.println("run()");
+    }
+    void run(int number){
+      System.out.println("run(" + number + ")");
+    }
+    void run(String msg){
+      System.out.println("run(" + msg + ")");
+    }
+  }
+  public static void main(String[] args){
+    new Service().run();
+    new Service().run(1);
+    new Service().run("Dispatch");
+  }
+}
+
+```
 
 ## 컴파일 과정 및 실행
 * 소스코드를 작성
@@ -125,7 +193,7 @@ tags:
 ## HTTP와 HTTPS 차이 및 S가 보호하는 OSI7계층 위치
 * HTTP : 인터넷에서 하이퍼텍스트(hypertext) 문서를 교환하기 위하여 사용되는 통신규약이다. 하이퍼텍스트는 문서 중간중간에 특정 키워드를 두고 문자나 그림을 상호 유기적으로 결합하여 연결시킴으로써, 서로 다른 문서라 할지라도 하나의 문서인 것처럼 보이면서 참조하기 쉽도록 하는 방식을 의미
 * HTTPS : 인터넷 상에서 정보를 암호화하는 SSL(Secure Socket Layer) 프로토콜을 이용하여 데이터를 전송하고 있다는 것을 의미
-* HTTPS OSI7 계층 위치 : 5계층 (Session) FIFO(파이프), 넷바이오스, SAP, SDP, SSL, TLS드
+* HTTPS OSI7 계층 위치 : 5계층 (Session) FIFO(파이프), 넷바이오스, SAP, SDP, SSL, TLS
 
 ## TCP UDP 차이
 
