@@ -145,3 +145,5 @@ tags:
 * [Java Reference와 GC](http://d2.naver.com/helloworld/329631)
 * [하나의 메모리 누수를 잡기까지](http://d2.naver.com/helloworld/1326256)
 * [Spring - IoC & DI](http://isstory83.tistory.com/m/91)
+* [캡슐화 (Encapsulation)](http://javacan.tistory.com/entry/EncapsulationExcerprtFromJavaBook)
+* [객체지향의 올바른 이해 : 5. 정보 은닉(information hiding)](http://effectiveprogramming.tistory.com/entry/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%A0%95%EB%B3%B4-%EC%9D%80%EB%8B%89information-hiding%EC%97%90-%EB%8C%80%ED%95%9C-%EC%98%AC%EB%B0%94%EB%A5%B8-%EC%9D%B4%ED%95%B4?category=660012)
