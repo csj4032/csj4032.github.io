@@ -343,7 +343,8 @@ public class Dispatch{
 * 멀티쓰레드에 대한 동기화 안됨
 
 #### Vector (List)
-*  멀티쓰레드에 대한 동기화
+* ArrayList와 비슷하지만 동기화 되어 있다는 차이가 있음
+* ArrayList 문법은 거의 비슷합
 
 #### LinkedList (Queue, List)
 * 연결된 노드들을 기반으로 구현된 리스트
