@@ -27,13 +27,6 @@ public class SelectSort {
             array[i] = temp;
         }
     }
-
-    public static void main(String[] args) {
-        int[] array = new int[]{32, 3, 45, 5};
-        SelectSort selectSort = new SelectSort();
-        selectSort.sort(array);
-        System.out.println(Arrays.toString(array));
-    }
 }
 
 ```
