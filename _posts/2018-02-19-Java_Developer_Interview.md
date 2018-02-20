@@ -287,6 +287,15 @@ public class Dispatch{
 * Assertion -ea 필요
 
 ## Garbage Collector
+* Java에서는 개발자가 프로그램 코드로 메모리를 명시적으로 해제하지 않기 때문에 가비지 컬렉터(Garbage Collector)가 더 이상 필요 없는 객체를 찾아 지우는 작업을 함
+
+### 가비지 컬렉션 과정 - Generational Garbage Collection
+* 가비지 컬렉터는 두 가지 가설 하에 만듬
+** 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 됨
+** 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재
+* HotSpot VM에서는 크게 2개로 물리적 공간을 나눔
+
+![영역 및 데이터 흐름도](http://d2.naver.com/content/images/2015/06/helloworld-1329-1.png)
 
 ## String, StringBuilder, StringBuffer 차이
 
