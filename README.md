@@ -22,6 +22,6 @@
 
 ##### 서버 구동
 
-```bash
+```sh
 bundle exec jekyll server
 ```
