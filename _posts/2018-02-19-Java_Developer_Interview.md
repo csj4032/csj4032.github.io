@@ -406,6 +406,7 @@ public class Dispatch{
 # 개발방법론
 
 ## OOP
+* IoC를 통해 HIGH Level Policy(클라이언트, 비즈니스로직)를 Low Level Detail로 부터 보호하는 것
 
 ### 객체(Object)
 * 객체는 데이터와 그 데이터를 조작하는 프로시저(오퍼레이션, 메서드, 함수)로 구성
