@@ -5,6 +5,7 @@ categories:
  - algorithm
 tags:
  - Backtracking
+comments: true
 ---
 
 # N-Queen Problem

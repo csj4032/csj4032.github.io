@@ -1,11 +1,11 @@
 ---
-comments: true
 title: Effective Java 2판
 description: Effective Java 책 정리
 categories:
  - book
 tags:
  - java
+ comments: true
 ---
 
 # 이펙티브 자바
