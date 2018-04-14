@@ -1,5 +1,4 @@
 ---
-layout: default
 comments: true
 title: Effective Java 2판
 description: Effective Java 책 정리
