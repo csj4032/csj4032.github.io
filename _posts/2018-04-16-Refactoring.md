@@ -15,6 +15,8 @@ comments: true
 ### 원래의 프로그램
 * 비디오 대여점에서 고객의 대여료 내역을 계산하고 출력하는 간단한 프로그램
 
+![리팩토링 전 클래스 관계를 나타낸 다이어그램](/assets/images/books/컴퓨터공학/개발방법론/Refactoring/figure_1-1.png)
+
 ### 리팩토링 첫 단계
 
 ### statement 메서드 분해와 기능 재분배
