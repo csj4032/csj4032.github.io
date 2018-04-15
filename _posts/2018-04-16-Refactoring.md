@@ -17,6 +17,13 @@ comments: true
 
 ![리팩토링 전 클래스 관계를 나타낸 다이어그램](/assets/images/books/컴퓨터공학/개발방법론/Refactoring/figure_1-1.png)
 
+#### Movie 클래스
+* 간단한 비디오 데이터 클래스
+
+#### Rental 클래스
+
+#### Customer 클래스
+
 ### 리팩토링 첫 단계
 
 ### statement 메서드 분해와 기능 재분배
