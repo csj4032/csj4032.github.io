@@ -5,6 +5,7 @@ categories:
  - book
 tags:
  - Refactoring
+comments: true
 ---
 
 # Refactoring
@@ -12,6 +13,7 @@ tags:
 ## CHAPTER 01 맛보기 예제
 
 ### 원래의 프로그램
+* 비디오 대여점에서 고객의 대여료 내역을 계산하고 출력하는 간단한 프로그램
 
 ### 리팩토링 첫 단계
 
