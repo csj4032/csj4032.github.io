@@ -21,6 +21,7 @@ comments: true
 * 간단한 비디오 데이터 클래스
 
 #### Rental 클래스
+* 대여 정보 클래스
 
 #### Customer 클래스
 
