@@ -26,9 +26,11 @@ public class EditDistance {
 
     for (int i = 0; i < n ; i++ ) {
       for (int j = 0; j < m; j++ ) {
-        if(i == 0) distance[i][j] = j;
-        if(j == 0) distance[i][j] = i;
-        if(str1.chatAt(i-1) == str2.chatAt(j-1)) {
+        if(i == 0) {
+          distance[i][j] = j;
+        } else if(j == 0) {
+          distance[i][j] = i;
+        } else if(str1.chatAt(i-1) == str2.chatAt(j-1)) {
           distance[i][j] = distance[i-1][j-1];
         } else {
           distance[i][j] = 1 + Math.min(distance[i-1][j], Math.min(distance[i][j-1], distance[i-1][j-1]));
