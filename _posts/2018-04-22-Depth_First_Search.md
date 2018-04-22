@@ -4,8 +4,8 @@ description: Depth First Search
 categories:
  - algorithm
 tags:
- - Stack 
- - Recursive 
+ - Stack
+ - Recursive
  - Graph
 comments: true
 ---
