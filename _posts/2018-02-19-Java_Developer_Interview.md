@@ -270,7 +270,7 @@ public class Dispatch{
 * IBM JVM은 JIT 컴파일러뿐만 아니라 IBM JDK 6부터 AOT(Ahead-Of-Time) 컴파일러라는 기능을 도입
   * 한번 컴파일된 네이티브 코드를 여러 JVM이 공유 캐시를 통해 공유해서 사용하는 것을 의미
   * AOT 컴파일러를 통해 이미 컴파일된 코드는 다른 JVM에서도 컴파일하지 않고 사용할 수 있게 하는 것
-  * 아예 AOT 컴파일러를 이용하여 JXE(Java EXecutable)라는 파일 포맷으로 프리컴파일(pre-compile)된 코드를 작성하여 빠르게 실행하는 방법도 제공
+  * 아예 AOT 컴파일러를 이용하여 JXE(Java Executable)라는 파일 포맷으로 프리컴파일(pre-compile)된 코드를 작성하여 빠르게 실행하는 방법도 제공
 * 오라클 핫스팟 VM은 1.3부터 핫스팟 컴파일러를 내장하기 시작하였고, 안드로이드 Dalvik VM은 안드로이드 2.2부터 JIT 컴파일러를 도입
 
 #### The Java Virtual Machine Specification, Java SE 7 Edition
