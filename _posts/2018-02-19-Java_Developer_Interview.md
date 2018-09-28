@@ -456,6 +456,7 @@ public class Dispatch{
 
 ### Decorator
 * 장식과 내용물을 동일시하기
+![Decorator](/assets/images/etc/javadevlopinterview/decoratorpattern.png)
 
 ### Visitor
 * 데이터 구조를 돌아다니면서 처리하기
