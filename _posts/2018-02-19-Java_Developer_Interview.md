@@ -459,6 +459,7 @@ public class Dispatch{
 
 ### Visitor
 * 데이터 구조를 돌아다니면서 처리하기
+![Visitor](/assets/images/etc/javadevlopinterview/visitorpattern.png)
 
 ### Chain of Responsibility
 * 복수의 오브젝트가 연결되어 있는 내부의 어딘가에서 일을 수행
