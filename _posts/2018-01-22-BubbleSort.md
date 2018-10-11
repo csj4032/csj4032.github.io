@@ -9,6 +9,8 @@ tags:
 
 # Bubble Sort
 
+* 버블 정렬은 이웃한 두 요소의 대소 관계를 비교하여 교환을 반복
+
 ```java
 
 public class BubbleSort {
