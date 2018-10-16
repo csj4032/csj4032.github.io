@@ -27,12 +27,21 @@ tags:
 * 스프링 프레임워크의 가장 중요한 의의가 이 POJO로 자바 애플리케이션을 개발하는 것이므로 스프링의 주요 기능은 대부분 IoC 컨테이너 안에서 POJO를 구성 및 관리하는 일과 연관
 * https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#beans
 
+## 레시피 2-1 자바로 POJO 구성하기
+
 ### 레시피 2-3 POJO 레퍼런스와 자동 연결을 이용해 다른 POJO와 상호 작용하기
 * https://spring.io/blog/2013/12/03/spring-framework-4-0-and-java-generics
 * http://blog.woniper.net/322
 * http://gafter.blogspot.com/2006/12/super-type-tokens.html
 
-## 레시피 2-1 자바로 POJO 구성하기
+### 레시피 2-5 @Scope를 붙여 POJO 스코프 지정하기
+| 스코프 | 설명 |
+| --- | --- |
+| singleton | IoC 컨테이너당 빈 인스턴스 하나를 생성합니다. |
+| prototype | 요청할 때마다 빈 인스턴스를 새로 만듭니다. |
+| request | HTTP 요청당 하나의 빈 인스턴스를 생성합니다. 웹 애플리케이션 컨텍스트에만 해당됩니다. |
+| session | HTTP 세션당 빈 인스턴스 하나를 생성합니다. 웹 애플리케이션 컨텍스트에만 해당됩니다. |
+| globalSession | 전역 HTTP 세션당 빈 인스턴스 하나를 생성합니다. 포털 애플리케이션 컨텍스트에만 해당됩니다. |
 
 ## 3장. 스프링 MVC
 
