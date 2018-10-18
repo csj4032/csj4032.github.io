@@ -46,7 +46,19 @@ tags:
 
 * 📜 [5.1.0 REALEASE Bean Scopes](https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#beans-factory-scopes)
 
+### 레시피 2-13 애너테이션을 활용해 애스펙트 지향 프로그래밍하기
+* IoC 컨테이너에서 애스팩트 애너테이션 기능을 활성화하려면 구성 클래스 중 하나에 @EnableAspectJAutoProxy 붙임
+* 기본적으로 스프링은 인터페이스 기반의 JDK 동적 프록시를 생성하여 AOP를 적용
+* 인터페이스를 사용할 수 없거나 애플리케이션 설계상 사용하지 않을 경우엔 CGLIB 으로 프록시를 만들 수 있음
+* @EnableAspectJAutoProxy 에서 proxyTargetClass 속성을 true 로 설정하면 동적 프록시 대신 CGLIB 을 사용
+
+### 레시피 2-18 인트로덕션을 이용해 POJO에 기능 더하기
+
 ## 3장. 스프링 MVC
+
+### 3-1 간단한 스프링 MVC 웹 애플리케이션 개발하기
+
+![스프링 MVC의 요청 처리 흐름](/assets/images/books//네트워크일반/HTTP완벽가이드/figure_3-1.png)
 
 ## 4장. 스프링 REST
 
