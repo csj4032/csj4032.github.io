@@ -35,6 +35,7 @@ tags:
 * http://gafter.blogspot.com/2006/12/super-type-tokens.html
 
 ### 레시피 2-5 @Scope를 붙여 POJO 스코프 지정하기
+
 | 스코프 | 설명 |
 | --- | --- |
 | singleton | IoC 컨테이너당 빈 인스턴스 하나를 생성합니다. |
