@@ -11,7 +11,7 @@ tags:
 # 스프링5 레시피
 
 ## 1장. 스프링 개발 툴
-* [Maven, Gradle](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#_working_with_spring_boot)
+* 📜 [Maven, Gradle](https://docs.spring.io/spring-boot/docs/2.0.5.RELEASE/reference/htmlsingle/#_working_with_spring_boot)
 
 ### 레시피 1-1 STS로 스프링 애플리케이션 빌드하기
 * Maven, Gradle
@@ -25,7 +25,7 @@ tags:
 
 ## 2장. 스프링 코어
 * 스프링 프레임워크의 가장 중요한 의의가 이 POJO로 자바 애플리케이션을 개발하는 것이므로 스프링의 주요 기능은 대부분 IoC 컨테이너 안에서 POJO를 구성 및 관리하는 일과 연관
-* https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#beans
+* 📜 https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#beans
 
 ## 레시피 2-1 자바로 POJO 구성하기
 
@@ -43,7 +43,7 @@ tags:
 | session | HTTP 세션당 빈 인스턴스 하나를 생성합니다. 웹 애플리케이션 컨텍스트에만 해당됩니다. |
 | globalSession | 전역 HTTP 세션당 빈 인스턴스 하나를 생성합니다. 포털 애플리케이션 컨텍스트에만 해당됩니다. |
 
-[5.1.0 REALEASE Bean Scopes](https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#beans-factory-scopes)
+* 📜 [5.1.0 REALEASE Bean Scopes](https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#beans-factory-scopes)
 
 ## 3장. 스프링 MVC
 
@@ -66,7 +66,7 @@ tags:
 * 일관성 (Consistency) : 트랜잭션의 액션이 모두 완료되면 커밋되고 데이터 및 리소스는 비즈니스 규칙에 맞에 일관된 상태를 유지합니다.
 * 격리성 (Isolation) : 동일한 데이터를 여러 트랜잭션이 동시에 처리할 경우 데이터가 변질되지 않게 하려면 각각의 트랜잭션을 격리해야 합니다.
 * 지속성 (Durability) : 트랜잭션 완료 후 그 결과는 설령 시스템이 실패 하더라도 살아남아야 합니다. 보통 트랜잭션 결과물은 퍼시스턴스 저장소에 씌어집니다.
-* [Spring AOP Capabilities and Goals](https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#aop-introduction-spring-defn)
+* 📜 [Spring AOP Capabilities and Goals](https://docs.spring.io/spring/docs/5.1.0.RELEASE/spring-framework-reference/core.html#aop-introduction-spring-defn)
 
 ## 11장. 스프링 배치
 
