@@ -57,8 +57,10 @@ tags:
 ## 3장. 스프링 MVC
 
 ### 3-1 간단한 스프링 MVC 웹 애플리케이션 개발하기
+* 스프링 MVC 컨트롤러는 코어 자바 EE 디자인 패컨 중 하나인 프론트 컨트롤러 패턴을 구현한 것
+* MVC 프레임워크에서 모든 웹 요청은 반드시 디스패처 서블릿을 거쳐 처리됨
 
-![스프링 MVC의 요청 처리 흐름](/assets/images/books//네트워크일반/HTTP완벽가이드/figure_3-1.png)
+![스프링 MVC의 요청 처리 흐름](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-1.png)
 
 ## 4장. 스프링 REST
 
