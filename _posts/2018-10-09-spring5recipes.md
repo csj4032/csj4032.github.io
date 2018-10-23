@@ -62,6 +62,8 @@ tags:
 
 ![스프링 MVC의 요청 처리 흐름](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-1.png)
 
+![스프링 MVC의 요청 처리 흐름 로그](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-1-1.png)
+
 ## 4장. 스프링 REST
 
 ## 5장. 스프링 MVC : 비동기 처리
