@@ -64,12 +64,16 @@ tags:
 
 ![스프링 MVC의 요청 처리 흐름 로그](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-1-1.png)
 
+* EnableWebMvc
+https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html
+
 ## 4장. 스프링 REST
 
 ## 5장. 스프링 MVC : 비동기 처리
 * 리액티브 프로그래밍은 한 마디로 넌블로킹 함수형 프로그래밍을 실천하는 방법
 
 ## 6장. 스프링 소셜
+* https://www.baeldung.com/facebook-authentication-with-spring-security-and-social
 
 ## 7장. 스프링 시큐리티
 
