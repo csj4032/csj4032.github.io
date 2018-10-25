@@ -67,6 +67,9 @@ tags:
 * EnableWebMvc
 https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html
 
+* spring-custom-validation-message-source
+https://www.baeldung.com/spring-custom-validation-message-source
+
 ## 4장. 스프링 REST
 
 ## 5장. 스프링 MVC : 비동기 처리
