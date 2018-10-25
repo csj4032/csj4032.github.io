@@ -56,7 +56,7 @@ tags:
 
 ## 3장. 스프링 MVC
 
-### 3-1 간단한 스프링 MVC 웹 애플리케이션 개발하기
+### 레시피 3-1 간단한 스프링 MVC 웹 애플리케이션 개발하기
 * 스프링 MVC 컨트롤러는 코어 자바 EE 디자인 패컨 중 하나인 프론트 컨트롤러 패턴을 구현한 것
 * MVC 프레임워크에서 모든 웹 요청은 반드시 디스패처 서블릿을 거쳐 처리됨
 
@@ -64,8 +64,14 @@ tags:
 
 ![스프링 MVC의 요청 처리 흐름 로그](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-1-1.png)
 
-* EnableWebMvc
-https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html
+* EnableWebMvc https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html
+
+### 레시피 3-2 @RequestMapping에서 요청 매핑하기
+* HTTP Method https://tools.ietf.org/html/rfc7231#section-4
+
+### 레시피 3-3 핸들러 인터셉터로 요청 가로채기
+
+### 레시피 3-4 유저 로케일 해석하기
 
 * spring-custom-validation-message-source
 https://www.baeldung.com/spring-custom-validation-message-source
