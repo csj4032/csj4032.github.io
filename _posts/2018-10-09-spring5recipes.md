@@ -72,9 +72,8 @@ tags:
 ### 레시피 3-3 핸들러 인터셉터로 요청 가로채기
 
 ### 레시피 3-4 유저 로케일 해석하기
-
-* spring-custom-validation-message-source
-https://www.baeldung.com/spring-custom-validation-message-source
+![브라우저와 서버로 부터 온 전형적인 요청과 응답](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-4-1.png)
+* spring-custom-validation-message-source https://www.baeldung.com/spring-custom-validation-message-source
 
 ## 4장. 스프링 REST
 
