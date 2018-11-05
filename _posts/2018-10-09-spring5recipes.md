@@ -65,6 +65,10 @@ tags:
 ![스프링 MVC의 요청 처리 흐름 로그](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-1-1.png)
 
 * EnableWebMvc https://docs.spring.io/spring-framework/docs/current/javadoc-api/org/springframework/web/servlet/config/annotation/EnableWebMvc.html
+* [ServletContainerInitializer](https://docs.oracle.com/javaee/6/api/javax/servlet/ServletContainerInitializer.html)
+* META-INF/services 폴더에 ServletContainerInitializer 구현체를 명시
+* SpringServletContainerInitializer를 빌려쓰면 간편, ServletContainerInitializer 인터페이스를 구현한 SpringServletContainerInitializer는 클래스패스에서 WebApplicationInitializer 인터페이스 구현체를 찾음
+* META-INF/services/javax.servlet.ServletContainerInitializer 는 Spring 5.0.5.REALEASE 기준 org.springframework.security:spring-security-web 존재 
 
 ### 레시피 3-2 @RequestMapping에서 요청 매핑하기
 * HTTP Method https://tools.ietf.org/html/rfc7231#section-4
@@ -75,15 +79,33 @@ tags:
 ![브라우저와 서버로 부터 온 전형적인 요청과 응답](/assets/images/books/프로그래밍_언어/자바/spring5recipes/figure_3-4-1.png)
 * spring-custom-validation-message-source https://www.baeldung.com/spring-custom-validation-message-source
 
+### 레세피 3-5 로케일별 텍스트 메시지 외부화하기
+
 ## 4장. 스프링 REST
 
 ## 5장. 스프링 MVC : 비동기 처리
 * 리액티브 프로그래밍은 한 마디로 넌블로킹 함수형 프로그래밍을 실천하는 방법
+* 서블릿 3.1 호환 컨테이너에서는 제데로 사용한다면 사실상 모든 작업을 넌블로킹(nonblocking) 방식으로 작동시킬 수 있음 (사용할 리소스가 역시 모두 넌블로킹 형태로 작동)
+
+### 레시피 5-1 트롤러에서 TaskExecutor로 요청을 비동기 처리하기
+
+### 레시피 5-2 응답 출력기
+
+### 레시피 5-3 비동기 인터셉터
+
+### 레시피 5-4 웹소켓
 
 ## 6장. 스프링 소셜
 * https://www.baeldung.com/facebook-authentication-with-spring-security-and-social
 
 ## 7장. 스프링 시큐리티
+* 인증(Authentication) :  주체의 신원을 증명하는 과정
+* 주체(Principal): 유저, 기기, 시스템 등이 될 수 있지만 보통 유저, 주체는 자신을 인증해달라고 신원 증명 정보, 즉 크리덴셜을 제시
+* 인가(Authorization) : 인증을 마친 유저에게 권한을 부여하여 대상 애플리케이션의 특정 리소스에 접근할 수 있게 허가하는 과정
+* 접근 통제(Access control) : 애플리케이션 리소스에 접근하는 행위를 제어하는 일
+* 접근 통제 결정 (Access control decision) : 어떤 유저가 어떤 리소스에 접근하도록 허락할지 를결정하는 행위
+
+### 7-1 URL 접근 보안하기
 
 ## 8장. 스프링 모바일
 
