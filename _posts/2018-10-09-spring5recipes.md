@@ -68,7 +68,7 @@ tags:
 * [ServletContainerInitializer](https://docs.oracle.com/javaee/6/api/javax/servlet/ServletContainerInitializer.html)
 * META-INF/services 폴더에 ServletContainerInitializer 구현체를 명시
 * SpringServletContainerInitializer를 빌려쓰면 간편, ServletContainerInitializer 인터페이스를 구현한 SpringServletContainerInitializer는 클래스패스에서 WebApplicationInitializer 인터페이스 구현체를 찾음
-* META-INF/services/javax.servlet.ServletContainerInitializer 는 Spring 5.0.5.REALEASE 기준 org.springframework.security:spring-security-web 존재 
+* META-INF/services/javax.servlet.ServletContainerInitializer 는 Spring 5.0.5.REALEASE 기준 org.springframework.security:spring-security-web 존재
 
 ### 레시피 3-2 @RequestMapping에서 요청 매핑하기
 * HTTP Method https://tools.ietf.org/html/rfc7231#section-4
@@ -106,6 +106,25 @@ tags:
 * 접근 통제 결정 (Access control decision) : 어떤 유저가 어떤 리소스에 접근하도록 허락할지 를결정하는 행위
 
 ### 7-1 URL 접근 보안하기
+* CSFR(Cross-site request forgery) : 사이트 간 요청 위조(또는 크로스 사이트 요청 위조, 영어: Cross-site request forgery, CSRF, XSRF)는 웹사이트 취약점 공격의 하나로, 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 하는 공격을 말한다.
+* CsrfTokenRepository 인터페이스의 구현체를 이용해 토큰 값을 생성/보관하는 CsrfFilter를 보안 필터 목록에 추가
+* https://spring.io/blog/2017/11/01/spring-security-5-0-0-rc1-released#password-storage-updated
+* https://docs.spring.io/spring-security/site/docs/current/reference/htmlsingle/#ns-custom-filters (DefaultSecurityFilterChain 디버깅)
+* UsernamePasswordAuthenticationFilter > ProviderManager
+
+### 7-4 접근 통제 결정하기
+* https://docs.spring.io/spring-security/site/docs/5.2.0.BUILD-SNAPSHOT/reference/htmlsingle/#el-access
+
+### 7-5 메서드 호출 보안하기
+* https://docs.spring.io/spring-security/site/docs/5.2.0.BUILD-SNAPSHOT/reference/htmlsingle/#jc-method
+* https://www.baeldung.com/spring-security-method-security
+
+| 어노테이션 | 설명 |
+| --- | --- |
+| @PreAuthorize | 메서드 호출 직전, 보안 규칙에 맞지 않을 경우 예외 |
+| @PostAuthorize | 메서드 호출 직후, 보안 규칙에 맞지 않을 경우 예외 |
+| @PreFilter | 접근 권한이 없는 요소의 입출력 변수만 필터 |
+| @PostFilter | 접근 권한이 없는 요소의 입출력 변수만 필터링 |
 
 ## 8장. 스프링 모바일
 
