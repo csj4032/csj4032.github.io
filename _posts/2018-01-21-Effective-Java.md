@@ -9,6 +9,7 @@ comments: true
 ---
 
 # 이펙티브 자바
+---
 
 ## 1장 서론
 * 클래스의 멤버로는 필드, 메서드, 멤버 클래스 그리고 멤버 인터페이스 등
@@ -38,7 +39,7 @@ public class Sample {
     public static BigInteger probablePrime(int bitLength, Random rnd) {
       if (bitLength < 2)
           throw new ArithmeticException("bitLength < 2");
-    
+
       return (bitLength < SMALL_PRIME_THRESHOLD ? smallPrime(bitLength, DEFAULT_PRIME_CERTAINTY, rnd) : largePrime(bitLength, DEFAULT_PRIME_CERTAINTY, rnd));
     }
 }
@@ -46,7 +47,7 @@ public class Sample {
 
 * 장점
   * 생성자와는 달리 정적 팩터리 메서드에는 이름이 있다는 것이다.
-    * 정적 팩터리 메서드는 이름을 잘 짓기만 한다면 시용하기도 쉽움 
+    * 정적 팩터리 메서드는 이름을 잘 짓기만 한다면 시용하기도 쉽움
     * 클라이언트 코드의 가독성(readability)도 높아짐
   * 생성자와는 달리 호출할 때마다 새로운 객체를 생성할 필요는 없다는 것이다.
   * 개체 통제 클래스를 작성하는 이유
@@ -148,7 +149,7 @@ public class NutritionFacts {
 * 빌더 패턴은 하나의 빌더 객체로 여러 객체를 만들 수 있음
 * 빌더 객체는 어떤 필드의 값은 자동으로 채울 수도 있음
 * 단점
-  * 객체를 생성하려면 우선 빌더 객체를 생성 
+  * 객체를 생성하려면 우선 빌더 객체를 생성
   * 실무에서 빌더 객체를 만드는 오버헤드가 문제가 될 소지는 없어 보이지만, 성능이 중요한 상황에선 그렇지 않을 수도 있음
 * 빌더 패턴은 인자가 많은 생성자나 정적 팩터리가 필요한 클래스를 설계할 때, 특히 대부분의 인자가 선택적 인자인 상황에 유용
 
@@ -253,13 +254,13 @@ Q : '더 이상 사용되지 않는 원소 안에 있는 객체 참조는 반드
 // 대칭성 위반!
 public final class CaseInsensitiveString {
     private final String s;
-    
+
     public CaseInsensitiveString(String s) {
         if (S==nuU)
             throw new NullPointerException();
         this.s=s;
     }
-    
+
     // 대칭성 위반!
     @Override public boolean equals(Object o) {
         if (o instanceof CaselnsensitiveString)
@@ -349,9 +350,9 @@ public class PhoneNumber {
 
 * 객체 필드(instance field)는 절대로 public으로 선언하면 안 된다.
 * 변경 가능 public 필드를 가진 클래스는 다중 스레드에 안전하지않다.
-* 요약 
+* 요약
   * public static final 배열 필드를 두거나, 배열 필드를 반환하는 접근지(accessor)를 정의하면 안 된다.
-  * 접근 권한은 가능한 낮추라. 최소한의 pubic API를 설계한 다음, 다른 모든 클래스, 인터페이스, 멤버는 API에서 제외하라. 
+  * 접근 권한은 가능한 낮추라. 최소한의 pubic API를 설계한 다음, 다른 모든 클래스, 인터페이스, 멤버는 API에서 제외하라.
   * public static final 필드를 제외한 어떤 필드도 public 필드로 선언하지 마라.
   * public static final 필드가 참조하는 객체는 변경 불가능 객체로 만들라.
 
@@ -366,7 +367,7 @@ public class ThreadNonSafe implements Runnable {
 
 	private int index;
 	private Member member;
-	
+
 	public static final Number[] numbers = {1, 2, 3, 4, 5};
     public static final List<String> numberList;
     public static final List<String> unmodifiableListNumberList;
@@ -534,7 +535,7 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 ```
 
 * Q : 기술적으로 보자면, 포장 객체가 자기 자신을 포장된(wrapped) 객체에 전달하지 않으면 위임이라고 부를 수 없다.
-* A : To achieve the same effect with delegation, the receiver passes itself to the delegate to let the delegated operation refer to the receiver. [참고](https://en.wikipedia.org/wiki/Delegation_pattern) 
+* A : To achieve the same effect with delegation, the receiver passes itself to the delegate to let the delegated operation refer to the receiver. [참고](https://en.wikipedia.org/wiki/Delegation_pattern)
 
 * Q : 역호출(callback) 프레임워크와 함께 사용하기에는 적합하지 않다.
 * A : [참고](https://github.com/csj4032/enjoy-java-books/blob/master/effective-java/src/main/java/chapter04/item18/callback/TheSelfProblem.java)
@@ -562,15 +563,15 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 * 태그 기반 클래스는 클래스 계충을 얼기설기 흉내 낸 것일 뿐이다.
 
 ### 규칙 21 전략을 표현하고 싶을 때는 함수 객체를 사용하라
-* 함수 객체의 주된 용도는 전략 패턴(Strategy pattern)을 구현 
+* 함수 객체의 주된 용도는 전략 패턴(Strategy pattern)을 구현
 * 패턴을 구현하기 위해서는 전략을 표현하는 인터페이스를 선언하고, 실행 기능 전략 클래스가 전부 해당 인터페이스를 구현하도록야 함
-* 실행 가능 전략이 한 번만 시용되는 경우에는 보통 그 전략을 익명 클래스 객체로 구현 
+* 실행 가능 전략이 한 번만 시용되는 경우에는 보통 그 전략을 익명 클래스 객체로 구현
 * 반복적으로 시용된다면 private static 멤버 클래스로 전략을 표현한 다음, 전략 인터페이스가 자료형인 public static final 필드를 통해 외부에 공개하는 것이 바람
 
 ```java
 // 실행 가능 전략들을 외부에 공개하는 클래스
 class Host {
-  
+
 	private static class StrLenCmp implements Comparator<String>, Serializable {
 
         public int compare(String s1, String s2) {
@@ -580,7 +581,7 @@ class Host {
 
   // 이 비교자는 직렬화가 가능
   public static final Comparator<String> STRING_LENGTH_COMPARATOR = new StrLenCmp();
-  
+
   // 나머지 생략
 }
 ```
@@ -616,7 +617,7 @@ class Host {
   * 지역 변수가 선언될 수 있는 곳이라면 어디서든 선언 할 수 있음
   * 지역 변수와 동일한 유효범위(scoping rule) 규칙을 따름
 
-## 5장 제네릭 
+## 5장 제네릭
 
 ### 규칙 23 새 코드에는 무인자 제네릭 자료형을 사용하지 마라
 * 선언부에 형인자(type parameter)가 포함된 클래스나 인터페이스는 제네릭(generic) 클래스나 인터페이스라고 부름
@@ -649,7 +650,7 @@ public class Raw {
         unsafeAdd(strings, new Integer(42));
         String s = strings.get(0);
     }
-    
+
     private static void unsafeAdd(List list, Object o) {
         list.add(o);
     }
@@ -671,9 +672,9 @@ public class Raw {
 | 자료형 토큰(type token) | String.class | 29 |
 
 ### 규칙 24 무점검 경고(unchecked warning)를 제거하라
-* 모든 무점검 경고는, 기능하다면 없애야 한다. 
+* 모든 무점검 경고는, 기능하다면 없애야 한다.
 * 제거할 수 없는 경고 메시지는 형 안전성이 확실할 때만 @SuppressWarnings("unchecked") 어노테이션(annotation)을 사용해 억제하기 바란다.
-* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문**이 아니기 때문이다. 
+* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문**이 아니기 때문이다.
 * @SuppressWarnings 어노테이션은 개별 지역 변수 선언부터 클래스 전체에까지, 어떤 크기의 단위에도 적용할 수 있다. 하지만 @SuppressWarnings 어노테이션은 가능한 한 작은 범위에 적용하라.
 * @SuppressWarnings("unchecked") 어노테이션을 사용할 때마다, 왜 형 안전성을 위반하지 않는지 밝히는 주석을 반드시 붙이라.
 
@@ -687,7 +688,7 @@ public class Raw {
     * 제네릭은 삭제(erasure) 과정을 통해 구현된다.
     * 자료형에 관계된 조건들은 컴파일 시점에만 적용되고, 그 각 원소의 자료형 정보는 프로그램이 실행될 때는 삭제된다는 것이다.
     * 자료형 삭제(erasure) 덕에, 제네릭 자료형은 제네릭을 사용하지 않고 작성된 오래된 코드와도 문제 없이 연동한다.
-    * new List\<E\>[], new List\<String\>[], new E[]는 전부 컴파일되지 않는 코드다. 컴파일하려고 하면 제네릭 배열 생성(generic array creation)이라는 오류가 발생할 것이다. 
+    * new List\<E\>[], new List\<String\>[], new E[]는 전부 컴파일되지 않는 코드다. 컴파일하려고 하면 제네릭 배열 생성(generic array creation)이라는 오류가 발생할 것이다.
     * E, List\<E\>, List\<String\>와 같은 자료형은 실체화 불기능(non-refiable) 자료형으로 알려져 있다.
     * 프로그램이 실행될 때 해당 자료형을 표현하는 정보의 양이 컴파일 시점에 필요한 정보의 양보다 적은 자료형이 실체화 불기능 자료형이다.
     * 제네릭 자료형에 담긴 원소들의 자료형으로 만든 배열을 반환하는 것은 일반적으로 불가능하다.
@@ -706,9 +707,9 @@ public class Raw {
 
 ### 규칙 27 가능하면 제네릭 메서드로 만들 것
 * 형인자를 선언하는 형인자 목록(type parameter list)은 메서드의 수정자(modifier)와 반환값 자료형 사이에 둔다.
-* 제네릭 싱글턴 패턴(generic singleton pattern)이 있다. 때로는 변경이 불가능하지만 많은 자료형에 적용 기능한 객체를 만들어야 할 때 가 있다. 
+* 제네릭 싱글턴 패턴(generic singleton pattern)이 있다. 때로는 변경이 불가능하지만 많은 자료형에 적용 기능한 객체를 만들어야 할 때 가 있다.
 * 형인자가 포함된 표현식으로 형인자를 한정하는 것도 가능하다. 이런 용법을 재귀적 자료형 한정(recursive type bound)이라 한다.
-* 컴파일러가 자료형을 정확히 유추하지 못할 경우에는 명시적 형인자(explicit type parameter)를 통해 어떤 자료형을 쓸지 알려줄 수 있다. 
+* 컴파일러가 자료형을 정확히 유추하지 못할 경우에는 명시적 형인자(explicit type parameter)를 통해 어떤 자료형을 쓸지 알려줄 수 있다.
 
 ```java
 import com.google.common.collect.ImmutableMap;
@@ -905,7 +906,7 @@ public class SetList {
         // List
         // boolean remove(Object o);
         // E remove(int index);
-        
+
         // Set
         // boolean remove(Object o);
 		for (int i = -3; i < 3; i++) {
@@ -960,7 +961,7 @@ public Cheese[] getCheeses()
 * 제네릭 자료형이나 메서드에 주석을 달 때는 모든 자료형 인자들을 설명해야 한다.
 * enum 자료형에 주석을 달 때는 자료형이나 public 메서드뿐 아니라 상수 각각에도 주석을 달아 주어야 한다.
 * 어노테이션 자료형에 주석을 달 때는 자료형뿐 아니라 모든 멤버에도 주석을 달아야 한다.
-* 문서화 주석을 제대로 만들려면 오라클의 How to write Doc Commen데avadoc-gUide]를 꼭 읽어야 한다. 
+* 문서화 주석을 제대로 만들려면 오라클의 How to write Doc Commen데avadoc-gUide]를 꼭 읽어야 한다.
 
 ## 8장 일반적인 프로그래밍 원칙들
 
@@ -995,7 +996,7 @@ public Cheese[] getCheeses()
 * 돈 계산을 할 때는 BigDecimal, int 또는 long을 사용한다는 원칙을 지켜야 한다.
 * 성능이 중요하고 소수점 아래 수를 직접 관리해도 상관없으며 계산할 수가 심하게 크지 않을 때는 int나 long을 쓰라
 * 관계된 수치
-  * 십진수 아홉 개 이하로 표현이 기능할 때는 int를 쓰라. 
+  * 십진수 아홉 개 이하로 표현이 기능할 때는 int를 쓰라.
   * 18개 이하로 표현 가능할 때는 long을 쓰라.
   * 그 이상일 때는 BigDecimal을 써야 한다.
 
@@ -1018,7 +1019,7 @@ public Cheese[] getCheeses()
 * 문자열은 값 자료형(value type)을 대신하기에는 부족하다.
 * 적절한 값 자료형이 있다면 그것이 기본 자료형이건 아니면 객체 자료형이건 상관없이 해당 자료형을 사용
 * 문자열은 enum 자료형을 대신하기에는 부족하다.
-* 문자열은 혼합 자료형(aggregate type)을 대신하기엔 부족하다. 
+* 문자열은 혼합 자료형(aggregate type)을 대신하기엔 부족하다.
 * 문자열은 권한(capability)을 표현하기엔 부족하다.
 
 ```java
@@ -1027,7 +1028,7 @@ public class ThreadLocal {
 
   // 주어진 이름이 가리키는 스레드 지역 변수의 값 설정.
   public static void set(String key, Object value);
-  
+
   // 주어진 이름이 가리키는 스레드 지역 변수의 값 반환.
   publicc static Object get(String key);
 }
@@ -1101,14 +1102,14 @@ public class Sample {
 * 만일 적당한 인터페이스 자료형이 있다면 인자나 반환값, 변수, 그리고 필드의 자료형은 클래스 대신 인터페이스로 선언하자.
 * 인터페이스를 자료형으로 쓰는 습관을 들이면 프로그램은 더욱 유연해진다.
 * 적당한 인터페이스가 없는 경우에는 객체를 클래스로 참조하는 것이 당연하다.
-* 객체를 참조할 때 인터페이스를 사용하면 훨씬 유연한 프로그램을 만들 수 있다. 
+* 객체를 참조할 때 인터페이스를 사용하면 훨씬 유연한 프로그램을 만들 수 있다.
 * 인터페이스가 없는 경우에는 필요한 기능을 제공하는 클래스 7陷데 가장 일반적인 클래스를 클래스 계층 안에서 찾아서 이용해야 한다.
 
 ### 규칙 53 리플렉션 대신 인터페이스를 이용하라
 * java.lang.reflect의 핵심 리플렉션 기능(core reflection facility)을 이용하면 메모리에 적재된(load) 클래스의 정보를 가져오는 프로그램을 작성할 수 있다.
 * 명심할 것은, 일반적인 프로그램은 프로그램 실행 중에 리플렉션을 통해 객체를 이용하려 하면 안 된다는 것이다.
 * 리플렉션을 아주 제한적으로만 사용하면 오버헤드는 피하면서도 리플렉션의 다양한 장점을 누릴 수 있다.
-* 객체 생성은 리플렉션으로 하고 객체 참조는 인터페이스나 상위 클래스를 통하면 된다. 
+* 객체 생성은 리플렉션으로 하고 객체 참조는 인터페이스나 상위 클래스를 통하면 된다.
 
 ### 규칙 54 네이티브 메서드는 신중하게 사용하라
 * 네이티브 메서드를 통해 성능을 개선하는 것은 추천하고 싶지 않다.
@@ -1120,7 +1121,7 @@ public class Sample {
 * 네이티브 코드에 있는 아주 작은 버그라도 시스템 전체를 훼손시킬 수 있다.
 
 ### 규칙 55 신중하게 최적화하라
-* 성능 때문에 구조적인 원칙(architectural principle)을 희생하지 마라. 
+* 성능 때문에 구조적인 원칙(architectural principle)을 희생하지 마라.
 * **빠른 프로그램이 아닌, 좋은 프로그램을 만들려 노력하라.**
 * 설계를 할 때는 성능을 제약할 가능성이 있는 결정들은 피하라.
 * API를 설계할 때 내리는 결정들이 성능에 어떤 영향을 끼칠지를 생각하라.
@@ -1132,22 +1133,22 @@ public class Sample {
   * 철자 관련
   * 문법 관려
 * 철자 관련
-  * 패키지 
+  * 패키지
     * 이름은 마침표를 구분점으로 사용하는 계층적 이름이어야 한다.
     * 이름을 구성하는 각각의 컴포넌트는 알파벳 소문자로 구성하고, 숫자는 거의 사용하지 않는다.
-    * 조직 바깥에서 이용될 패키지 이름은 해당 조직의 인터넷 도메인 이름으로 시작 (최상위 도메인 이름이 먼저 온다.) 
+    * 조직 바깥에서 이용될 패키지 이름은 해당 조직의 인터넷 도메인 이름으로 시작 (최상위 도메인 이름이 먼저 온다.)
     * 예의적으로, 표준 라이브러리와 그 옵션 패키지 명은 java와 javax로 시작한다. (java나 javax로 시작하는 패키지 이름을 만들면 안 된다.)
     * 이름의 나머지 부분은 어떤 패키지인지 설명하는 하나 이상의 컴포넌트로 구성된다.
     * 패키지명 컴포넌트는 짧아야 하며, 보통 여덟 문자 이하로 만들어진다.
     * 의미가 확실한 약어를 활용하면 좋다.(utilities 대신 util, awt 같은 두문자도 사용)BotDetect CAPTCHA
   * 두문자의 경우 전부 대문자로 써야 하는지, 아니면 그 첫 글자만 대문자로 써야 하는지에 대해서는 합의된 것이 별로 없다. (예 : HTTPURL, HttpUrl)
-  * 메서드와 필드 이름은 클래스나 인터페이스 이름과 동일한 철자 규칙을 따른다. 
+  * 메서드와 필드 이름은 클래스나 인터페이스 이름과 동일한 철자 규칙을 따른다.
     * 다만 첫 글자는 소문자로 한다.
     * 메서드나 필드 이름 맨 앞에 두문자를 두어야 하는 경우, 소문자로 해야 한다.
   * 상수 필드의 이름은 하나 이상의 대문자 단어로 구성되며, 단어 사이에는 밑줄 기호를 둔다. (예 : VALUES, NEGATIVE_INFINITY)
   * 지역 변수 이름은 멤버 이름과 같은 철자 규칙을 따르는데, 약어가 허용된다는 것만 다르다.
   * 자료형 인자의 이름은 보통 하나의 대문자다.
-* 문법적(grammatical) 
+* 문법적(grammatical)
   * 작명 관습은 더 가변적일 뿐만 아니라, 철자 관습에 비해 논쟁의 여지가 많다.
   * 패키지의 경우에는 문법적 작명 관습이라 할 만한 것이 없다.
   * enum 자료형을 비롯한 클래스에는 단수형의 명사나 명사구(noun phrase)가 이름으로 붙는다. (예 :  Timer, BufferedWinter, ChessPiece)
@@ -1188,11 +1189,11 @@ public class Sample {
 * 점검지정 예외는 메서드를 호출하면 해당 예외와 관계된 상황이 발생할 수 있음을 API 사용자에게 알리는 구실을 한다.
 * 프로그래밍 오류를 표현할 때는 실행시점 예의를 사용하라.
 * 사용자 정의 무점검 throwable은 RuntimeException의 하위 클래스로 만들어야 한다.
-* 복구가 기능할 것 같으면 점검지정 예의를 사용하라. 아니라면 실행시점 예의를 이용하라. 
+* 복구가 기능할 것 같으면 점검지정 예의를 사용하라. 아니라면 실행시점 예의를 이용하라.
 
 ### 규칙 59 불필요한 점검지정 예외 사용은 피하라
 * 코드(code)를 반환하는 것과는 달리, 프로그래머로 하여금 예외적인 상황을 처리하도록 강제함으로써 안정성(reliability)을 높인다.
-* 너무 남발하면 사용하기 불편한 API가 될수도 있다는 뜻이기도 하다. 
+* 너무 남발하면 사용하기 불편한 API가 될수도 있다는 뜻이기도 하다.
 
 ### 규칙 60 표준 예외를 사용하라
 * 자바 플랫폼 라이브러리에는 대부분의 API가 필요로 하는 기본적인 무점검 예외들이 갖추어져 있다.
@@ -1211,10 +1212,10 @@ public class Sample {
 ### 규칙 62 메서드에서 던져지는 모든 예외에 대해 문서를 남겨라
 * 점검지정 예의는 독립적으로 선언하고, 해당 예의가 발생하는 상황은 Javadoc @throws 태그를 사용해서 정확하게 밝혀라.
 * Javadoc @throws 태그를 사용해서 메서드에서 발생 가능한 모든 무점검 예외에 대한 문서를 남겨라. 하지만 메서드 선언부의 throws 뒤에 무점검 예의를 나열하진 마라.
-* 같은 이유로 동일한 예의를 던지는 메서드가 많다면, 메서드마다 문서를 만드는 대신, 해당 예외에 대한 문서는 클래스의 문서화 주석(documentation comment)에 남겨도 된다. 
+* 같은 이유로 동일한 예의를 던지는 메서드가 많다면, 메서드마다 문서를 만드는 대신, 해당 예외에 대한 문서는 클래스의 문서화 주석(documentation comment)에 남겨도 된다.
 
 ### 규칙 63 어떤 오류인지를 드러내는 정보를 상세한 메시지에 담으라
-* 오류 정보를 포착해 내기 위해서는, 오류의 상세 메시지에 "예외에 관계된" 모든 인자와 필드의 값을 포함시켜야 한다. 
+* 오류 정보를 포착해 내기 위해서는, 오류의 상세 메시지에 "예외에 관계된" 모든 인자와 필드의 값을 포함시켜야 한다.
 
 ### 규칙 64 실패 원자성 달성을 위해 노력하라
 * 실패 원자성(failure atomicity) : 메서드 호출이 정상적으로 처리되지 못한 객체의 상태는, 메서드 호출 전 상태와 동일해야 한다.
@@ -1232,8 +1233,8 @@ public Object pop()
 ```
 
   * 연산 수행 도중에 발생하는 오류를 가로채는 복구 코드(recovery code)를 작성
-  * 객체의 임시 복사본상에서 필요한 연산을 
-* 실패 원자성은 일반적으로 권장되는 덕목이지만 언제나 달성할 수 있는 것은 아니다. 
+  * 객체의 임시 복사본상에서 필요한 연산을
+* 실패 원자성은 일반적으로 권장되는 덕목이지만 언제나 달성할 수 있는 것은 아니다.
 
 ### 규칙 65 예외를 무시하지 마라
 * 빈 catch 블록은 예의를 선언한 목적, 그러니까 예외적 상황을 반드시 처리하도록 강제한다는 목적에 배치된다.
@@ -1245,7 +1246,7 @@ public Object pop()
 * synchronized 키워드는 특정 메서드나 코드 블록을 한 번에 한 스레드만 시용하도록 보장한다.
 * 동기화 없이는 한 스레드가 만든 변화를 다른 스레드가 확인할 수 없다.
 * 동기화는 스레드가 일관성이 깨진 객체를 관측할 수 없도록 할 뿐 아니라, 동기화 메서드나 동기화 블록에 진입한 스레드가 동일한 락의 보호 아래 이루어진 모든 변경(modification)의 영향을 관측할 수 있도록 보장한다.
-* 언어 명세상으로는 필드에서 읽어낸 값은 임의의 값이 될 수 없다고 되어 있으나, 그렇다고 어떤 스레드가 기록한 값을 반드시 다른 스레드가 보게 되리라는 보장은 없다. 
+* 언어 명세상으로는 필드에서 읽어낸 값은 임의의 값이 될 수 없다고 되어 있으나, 그렇다고 어떤 스레드가 기록한 값을 반드시 다른 스레드가 보게 되리라는 보장은 없다.
 * synchronized 키워드는 특정 메서드나 코드 블록을 한 번에 한 스레드만 사용 하도록 보장한다.
 * 상호배제성뿐 아니라 스레드 간의 안정적 통신을 위해서도 동기화는 반드시 필요하다.
 * 메모리 모델은 한 스레드가 만든 변화를 다른 스레드가 볼 수 있게 되는 시점과, 그 절차를 규정한다.
@@ -1257,7 +1258,7 @@ public Object pop()
 * 생존 오류나 안전 오류를 피하고 싶으면, 동기화 메서드나 블록 안에서 클라이언트에게 프로그램 제어 흐름(control)을 넘기지 마라.
 * 동기화가 적용된 영역 안에서는 재정의(override) 가능 메서드나 클라이언트가 제공한 함수 객체(function object) 메서드를 호출하지 말라
 * 불가해(alien) 메서드 ?
-* 명심해야 할 것은, 동기화 영역 안에서 수행되는 작업의 양을 기능한 한 줄여야 한다는 것이다. 
+* 명심해야 할 것은, 동기화 영역 안에서 수행되는 작업의 양을 기능한 한 줄여야 한다는 것이다.
 * 락 분할(lock splitting), 락 스트라이핑(striping), 비봉쇄형 병행성 제어(nonblocking concurrency control)
 
 ### 규칙 68 스레드보다는 실행자와 태스크를 이용하라
@@ -1287,17 +1288,17 @@ public Object pop()
 * synchronized 키워드는 메서드의 구현 상세(implementation detail)에 해당하는 정보이며, 공개 API의 일부가 아니다.
 * 병렬적으로 사용해도 안전한 클래스가 되려면, 어떤 수준의 스레드 안전성을 제공하는 클래스인지 문서에 명확하게 남겨야 한다.
 * 스레드 안전성을 그 수준별로 요약
-  * 변경 불가능(immutable) 
+  * 변경 불가능(immutable)
   * 무조건적 스레드 안전성(unconditionally thread-safe)
   * 조건부 스레드 안전성(Conditionally thread-safe)
   * 스레드 안전성 없음
   * 다중 스레드에 적대적(thread-hostile)
 
 ### 규칙 71 초기화 지연은 신중하게 하라
-* 대부분의 경우, 지연된 초기회를 하느니 일반 초기회를 하는 편이 낫다. 
+* 대부분의 경우, 지연된 초기회를 하느니 일반 초기회를 하는 편이 낫다.
 * 초기화 순환성(initialization circularity) 문제를 해소하기 위해서 초기화를 지연시키는 경우에는 동기화된 접근자(synchronized accessor)를 사용하라.
 * 성능 문제 때문에 정적필드 초기화를 지연시키고 싶올 때는 초기화 지연 담당 클래스(lazy initialization holder class) 숙어를 적용하라
-* 성능 문제 때문에 객체 필드 초기화를 지연시키고 싶다면 이중 검사(double-check) 숙어를 사용하라. 
+* 성능 문제 때문에 객체 필드 초기화를 지연시키고 싶다면 이중 검사(double-check) 숙어를 사용하라.
 
 ### 규칙 72 스레드 스케줄러에 의존하지 마라
 * 정확성을 보장하거나 성능을 높이기 위해 스레드 스케줄러에 의존하는 프로그램은 이식성이 떨어진다(non-portable).
@@ -1334,7 +1335,7 @@ public Object pop()
 
 ### 규칙 76 readObject 메서드는 방어적으로 구현하라
 * 객체를 역으로 직렬화할 때는 클라이언트가 가질 수 없어야 하는 객체 참조를 담은 모든 필드를 방어적으로 복사하도록 해야 한다.
-* writeUnshared와 readUnshared 메서드는 사용하지 마라. 
+* writeUnshared와 readUnshared 메서드는 사용하지 마라.
 
 ### 규칙 77 개체 통제가 필요하다면 readResolve 대신 enum 자료형을 이용하라
 * 사실, 개체 통제를 위해 readResolve를 활용할 때는, 객체 참조 자료형으로 선언된 모든 객체 필드를 반드시 transient로 선언해야 한다.
@@ -1346,7 +1347,7 @@ public Object pop()
   * 중첩 클래스를 직렬화 프락시(serialization proxy)라고 부름
   * 바깥 클래스를 인자 자료형으로 사용하는 생성자를 하나만 가짐
   * 생성자는 인자에서 데이터를 복사
- 
+
  ```java
 public final class Period implements Serializable {
 	private final Date start;
