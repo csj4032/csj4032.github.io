@@ -1014,9 +1014,9 @@ public Cheese[] getCheeses()
  * 여러분이 별다른 노력을 하지 않아도 그 성능이 점차로 개선된다는 것이다.
 * 중요한 새 릴리스(major new release)가 나올 때마다 많은 기능이 새로 추가되는데, 그때마다 어떤 것들이 추가되었는지를 알이두는 것이 좋다.
 * **자바 프로그래머라면 java.lang, java.util 안에 있는 내용은 잘 알고 있어야 하며, java.io의 내용도 어느 정도 알고 있어야 한다.**
-* 릴리스 1.2에는 java.utl 패키지에 컬렉션 프레임워크(Collections Framework)가 추가되었다.
+* 릴리스 1.2에는 java.util 패키지에 컬렉션 프레임워크(Collections Framework)가 추가되었다.
 * 릴리스 1.5부터는 병행성(concurrency) 관련 유틸리티들이 java.util.concurrent 패키지에 추가되었다.
-* 바퀴를 다시 발명하지 말라(don,t reinvent the wheel)
+* 바퀴를 다시 발명하지 말라(don't reinvent the wheel)
 
 ### 규칙 48 정확한 답이 필요하다면 float와 double은 피하라
 * float와 double은 특히 돈과 관계된 계산에는 적합하지 않다.
@@ -1104,7 +1104,7 @@ public class Sample {
     public String statement() {
       String result= "";
       for (int i = 0; i < numItems(); i++)
-        result += lineForItem(i); //String concatenatlon
+        result += lineForItem(i); //String concatenation
       return result;
     }
 }
@@ -1114,7 +1114,6 @@ public class Sample {
   * 릴리즈 1.5에 추가된 것으로, StringBuffer에서 동기화 synchronization 기능을 뺀 것이다.
 
 ```java
-// 문자열을 연결하는 잘못된 방법 - 성능이 엉망이다.
 public class Sample {
 	public String statement() {
       StringBuilder b = new StringBuilder(numItems() * LINE_WIDTH);
