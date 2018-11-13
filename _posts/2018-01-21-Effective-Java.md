@@ -699,10 +699,24 @@ public class Raw {
 | 자료형 토큰(type token) | String.class | 29 |
 
 ### 규칙 24 무점검 경고(unchecked warning)를 제거하라
-* 모든 무점검 경고는, 기능하다면 없애야 한다.
+* 모든 무점검 경고는, 가능하다면 없애야 한다.
 * 제거할 수 없는 경고 메시지는 형 안전성이 확실할 때만 @SuppressWarnings("unchecked") 어노테이션(annotation)을 사용해 억제하기 바란다.
-* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문** 이 아니기 때문이다.
-* @SuppressWarnings 어노테이션은 개별 지역 변수 선언부터 클래스 전체에까지, 어떤 크기의 단위에도 적용할 수 있다. 하지만 @SuppressWarnings 어노테이션은 가능한 한 작은 범위에 적용하라.
+* SuppressWarnings 어노테이션은 개별 지역 변수 선언부터 클래스 전체에까지, 어떤 크기의 단위에도 적용할 수 있다. **하지만 @SuppressWarnings 어노테이션은 가능한 한 작은 범위에 적용하라.**
+* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문** 이 아니기 때문이다.[JLS, 9.7](https://docs.oracle.com/javase/specs/jls/se11/html/jls-9.html#jls-9.7)
+
+```java
+public <T> T[] toArray(T[] a) {
+  if(a.length < size) {
+    @SuppressWarnings("unchecked") T[] result = (T[]) Arrays.copyOf(elements, size, a.getClass());
+    return result;
+  }
+  System.arraycopy(element, 0, a, 0, size);
+  if (a.length > size)
+    a[size] = null;
+  return a;
+}
+```
+
 * @SuppressWarnings("unchecked") 어노테이션을 사용할 때마다, 왜 형 안전성을 위반하지 않는지 밝히는 주석을 반드시 붙이라.
 
 ### 규칙 25 배열 대신 리스트를 써라
