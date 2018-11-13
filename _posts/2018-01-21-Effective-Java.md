@@ -58,9 +58,36 @@ public class Sample {
   * 생성자와는 달리 변환값 자료형의 하위 자료형 객체를 반환할 수 있다든 것이다.
     * 반환되는 객체의 클래스를 훨씬 유연하게 결정할 수 있다.
   * 형인자 자료형(parameterized type) 객체를 만들 때 편하다는 점이다.
+  ```java
+    public static <K, V> HashMap<K, V> new newInstance() {
+      return new HashMap<K, V>();
+    }
+  ```
 
 * 단점
   * public나 protected로 선언된 생성자가 없으므로 하위 클래스를 만들 수 없다는 것이다.
+
+```java
+public class Foo {
+
+  public static Foo newInstance() {
+    return new Weakness();
+  }
+
+  private Foo() {
+
+  }
+}
+
+public class FooSub extends Foo {
+
+  private WeaknessSub() {
+    // 상위클래스 생성자 호출을 할 수 없음
+    super();
+	}
+}
+
+```  
   * 정적 팩터리 메서드가 다른 정적 메서드와 확연히 구분되지 않는다는 것이다.
 
 | 메서드명 | 설명 |
@@ -68,9 +95,9 @@ public class Sample {
 | valueOf | 인자로 주어진 값과 같은 값을 갖는 객체를 반환한다는 뜻이다.|
 | of | valueOf를 더 간단하게 쓴 것이다.|
 | getInstance | 인자에 기술된 객체를 반환하지만, 인자와 같은 값을 갖지 않을 수도 있다.|
-| newInstance | getlnstance와 같지만 호출할 때마다 다른 객체를 반환한다.|
-| getType | getlnstance와 같지만, 반환될 객체의 클래스와 다른 클래스에 팩터리 메서드가 있을 때 사용한다.|
-| newType | newlnstance와 같지만, 반환될 객체의 클래스와 다른 클래스에 팩터리 메서드가 있을 때 시용한다.|
+| newInstance | getInstance와 같지만 호출할 때마다 다른 객체를 반환한다.|
+| getType | getInstance와 같지만, 반환될 객체의 클래스와 다른 클래스에 팩터리 메서드가 있을 때 사용한다.|
+| newType | newInstance와 같지만, 반환될 객체의 클래스와 다른 클래스에 팩터리 메서드가 있을 때 시용한다.|
 
 * [표 getType, newType 질문](https://stackoverflow.com/questions/39217359/static-factory-methods-gettype-newtype-examples)
 
