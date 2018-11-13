@@ -217,7 +217,7 @@ public enum Elvis {
 ```
 
 * 클래스를 싱글턴으로 만들면 클라이언트를 테스트하기가 어려워질 수가 있음
-* serialize된 객체가 역직렬화(desenalize)될 때마다 새로운 객체가 생기게 된다.
+* serialize된 객체가 역직렬화(deserialize)될 때마다 새로운 객체가 생기게 된다.
 * 원소가 하나뿐인 enum 자료형이야말로 싱글턴을 구현하는 가장 좋은 방법
 
 * [참고 싱글턴](https://blog.seotory.com/post/2016/03/java-singleton-pattern)
@@ -264,7 +264,7 @@ Q : '더 이상 사용되지 않는 원소 안에 있는 객체 참조는 반드
 * 종료자(finalizer)는 예측 불가능하며, 대체로 위험하고, 일반적으로 불필요
 * 긴급한(time-critical) 작업을 종료자 안에서 처리하면 안됨
 * 중요 상태 정보(critical persistent state)는 종료자로 갱신하면 안됨
-* 종료자는 그런 자원을 발견하게 될 경우 반드시 경고 메시지를 로그(1og)
+* 종료자는 그런 자원을 발견하게 될 경우 반드시 경고 메시지를 로그(log)
 
 ## 3장 모든 객체의 공통 메서드
 
@@ -583,7 +583,7 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 
 ### 규칙 19 인터페이스는 자료형을 정의할 때만 사용하라
 * 상수 인터페이스 패턴은 인터페이스를 잘못 사용한 것이다.
-* 자바 플랫폼 라이브러리에도 상수 인터페이스가 몇 개 있음 (java.io.object StreamConstants 이런 인터페이스는 실수로 포함된 것이라 생각해야 하며, 절대로 따라해서는 안 됨)
+* 자바 플랫폼 라이브러리에도 상수 인터페이스가 몇 개 있음 (java.io.ObjectStreamConstants 이런 인터페이스는 실수로 포함된 것이라 생각해야 하며, 절대로 따라해서는 안 됨)
 
 ### 규칙 20 태그 달린 클래스 대신 클래스 계층을 활용하라
 * 태그 기반 클래스(tagged class)는 너저분한데다 오류 발생 가능성이 높고, 효율적이지도 않다.
@@ -701,7 +701,7 @@ public class Raw {
 ### 규칙 24 무점검 경고(unchecked warning)를 제거하라
 * 모든 무점검 경고는, 기능하다면 없애야 한다.
 * 제거할 수 없는 경고 메시지는 형 안전성이 확실할 때만 @SuppressWarnings("unchecked") 어노테이션(annotation)을 사용해 억제하기 바란다.
-* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문**이 아니기 때문이다.
+* SuppressWarnings 어노테이션은 return 문에 붙일 수 없는데, **선언문** 이 아니기 때문이다.
 * @SuppressWarnings 어노테이션은 개별 지역 변수 선언부터 클래스 전체에까지, 어떤 크기의 단위에도 적용할 수 있다. 하지만 @SuppressWarnings 어노테이션은 가능한 한 작은 범위에 적용하라.
 * @SuppressWarnings("unchecked") 어노테이션을 사용할 때마다, 왜 형 안전성을 위반하지 않는지 밝히는 주석을 반드시 붙이라.
 
@@ -874,7 +874,7 @@ public @interface Test {
 * 인자 유효성을 검사하지 않으면 생기는 문제
   * 처리 도중에 이상한 예외를 내면서 죽어버리는 것
   * 실행이 제대로 되는 것 같기는 한데 잘못된 결과가 나오는 것
-* **클래스 불변식(invariant)을 위반하는 객체**가 만들어지는 것을 막으려면, 생성자에 전달되는 인자의 유효성을 반드시 검사해야 한다.
+* **클래스 불변식(invariant)을 위반하는 객체** 가 만들어지는 것을 막으려면, 생성자에 전달되는 인자의 유효성을 반드시 검사해야 한다.
 * 확증문을 클라이언트가 패키지를 어떻게 이용하건 확증 조건(asserted condition)은 항상 참이 되어야 한다고 주장하는 것이다.
 * 유효성 검사 예외
   * 오버헤드가 너무 크거나 비현실적이고, 계산과정에서 유효성 검사가 자연스럽게 이루어지는 경우
@@ -1057,7 +1057,7 @@ public class ThreadLocal {
   public static void set(String key, Object value);
 
   // 주어진 이름이 가리키는 스레드 지역 변수의 값 반환.
-  publicc static Object get(String key);
+  public static Object get(String key);
 }
 ```
 
@@ -1102,15 +1102,15 @@ public class ThreadLocal<T> {
 // 문자열을 연결하는 잘못된 방법 - 성능이 엉망이다.
 public class Sample {
     public String statement() {
-      Strinq result= '';
-      for (int i=0; i < numltems(); i++)
+      String result= "";
+      for (int i = 0; i < numItems(); i++)
         result += lineForItem(i); //String concatenatlon
       return result;
     }
 }
 ```
 
-* 만족스런 성능을 얻으려면 String 대신 StringBulder를 써서 청구서를 저장해야 한다.
+* 만족스런 성능을 얻으려면 String 대신 StringBuilder를 써서 청구서를 저장해야 한다.
   * 릴리즈 1.5에 추가된 것으로, StringBuffer에서 동기화 synchronization 기능을 뺀 것이다.
 
 ```java
@@ -1141,7 +1141,7 @@ public class Sample {
 ### 규칙 54 네이티브 메서드는 신중하게 사용하라
 * 네이티브 메서드를 통해 성능을 개선하는 것은 추천하고 싶지 않다.
 * 네이티브 언어는 안전하지 않으므로 (규칙 39), 네이티브 메서드를 이용하는 프로그램은 메모리 훼손 문제(memory corruption error)로부터 자유로울 수 없다.
-* 네이티브 언어는 플랫폼 종속적(platfbrm dependent)이므로, 이식성이 낮다.
+* 네이티브 언어는 플랫폼 종속적(platform dependent)이므로, 이식성이 낮다.
 * 네이티브 코드를 사용하는 프로그램은 디버깅하기도 훨씬 어렵다.
 * 네이티브 코드를 넘나드는 데 필요한 기본적인 비용 때문에, 네이티브 메서드가 하는 일이 별로 없다면 오히려 성능을 떨어뜨릴 수도 있다.
 * 네이티브 메서드를 시용하려면 이해하기도 어렵고 작성하기도 난감한 “접착 코드(glue Code)”를 작성해야 한다.
@@ -1180,16 +1180,16 @@ public class Sample {
   * 패키지의 경우에는 문법적 작명 관습이라 할 만한 것이 없다.
   * enum 자료형을 비롯한 클래스에는 단수형의 명사나 명사구(noun phrase)가 이름으로 붙는다. (예 :  Timer, BufferedWinter, ChessPiece)
   * 인터페이스도 클래스와 비슷한 작명 규칙을 따른다.
-   * able이나 ible 같은 형용사격 어미가 붙기도 한다. (예 : Runnable,Iterable, Accessible)
+   * able이나 ible 같은 형용사격 어미가 붙기도 한다. (예 : Runnable, Iterable, Accessible)
   * 어노테이션 자료형은 쓰임새가 너무 다양해서 딱히 지배적이라 할 만한 규칙이 없다.
-    * 명사, 동사, 전치사, 형용사 기운데 어느 것이나 널리 쓰인다. (예 : BindingAnnotaUon, Inject, ImplementedBy, Singleton)
+    * 명사, 동사, 전치사, 형용사 기운데 어느 것이나 널리 쓰인다. (예 : BindingAnnotations, Inject, ImplementedBy, Singleton)
   * 어떤 동작을 수행하는 메서드는 일반적으로 동사나 동사구(목적어 포함)를 이름으로 갖는다. (예 :  append, drawImage)
   * boolean 값을 반환하는 메서드의 이름은 보통 is, 드물게는 has로 시작하고, 그 뒤에는 명사나 명사구, 또는 형용시나 형용시구가 붙는다. (isDigit, isProbablePrime, isEmpty, isEnabled, hashSiblings)
   * boolean 이의의 기능이나 객체 속성을 반환하는 메서드에는 보통 명사나 명사구, 또는 get으로 시작하는 동시구를 이름으로 붙언다. (size, hashCode, getTime)
   * 객체의 자료형을 변환하는 메서드, 다른 자료형의 독립적 객체를 반환하는 메서드에는 보통 toType 형태의 이름을 붙인다. (예 : toString, toArray)
   * 인자로 전달받은 객체와 다른 자료형의 뷰(view) 객체를 반환하는 메서드에는(규칙 5) asType 형태의 이름을 붙인다.
   * 호출 대상 객체와 동일한 기본 자료형 값을 반환하는 메서드에는 typeValue와 같은 형태의 이름을 붙인다.
-  * 정적 팩터리 메서드에는 valueOf, of, getInstane, newInstance, getType, newType 같은 이름을 붙인다.
+  * 정적 팩터리 메서드에는 valueOf, of, getInstance, newInstance, getType, newType 같은 이름을 붙인다.
   * 필드 이름에는 특별한 문법적 관습이 없을 뿐더러, 클래스나 인터페이스, 메서드 이름 규칙에 비하면 별로 중요하지도 않다.
     * 잘 설계된 API에는 외부로 공개된 필드가 별로 없기 때문이다.
   * boolean 형의 필드에는 보통 boolean 메서드와 같은 이름을 붙이나, 접두어 is는 생략한다. (예 : initialized, Composite)
@@ -1212,7 +1212,7 @@ public class Sample {
 * 자바는 세 가지 종류의 'throwable'을 제공한다. 점검지정 예외(checked exception), 실행시점 예외(runtime exception), 그리고 오류(error)다.
 * 무점검(unchecked) 'throwable'에는 실행시점 예외와 오류 두 가지가 있으며, 동작 방식은 같다.
   * 둘 다 catch로 처리할 필요가 없으며, 일반적으로는 처리해서도 안 된다.
-* 오류(error)는 JVM이 자원 부족(resource deficiency)이나 불변식 위반(invanant failure) 등, 더 이상 프로그램을 실행할 수 없는 상태에 도달했음을 알리기 위해 시용한다.
+* 오류(error)는 JVM이 자원 부족(resource deficiency)이나 불변식 위반(invariant failure) 등, 더 이상 프로그램을 실행할 수 없는 상태에 도달했음을 알리기 위해 시용한다.
 * 점검지정 예외는 메서드를 호출하면 해당 예외와 관계된 상황이 발생할 수 있음을 API 사용자에게 알리는 구실을 한다.
 * 프로그래밍 오류를 표현할 때는 실행시점 예의를 사용하라.
 * 사용자 정의 무점검 throwable은 RuntimeException의 하위 클래스로 만들어야 한다.
@@ -1225,7 +1225,7 @@ public class Sample {
 ### 규칙 60 표준 예외를 사용하라
 * 자바 플랫폼 라이브러리에는 대부분의 API가 필요로 하는 기본적인 무점검 예외들이 갖추어져 있다.
 * IllegalArgumentException : 잘못된 값을 인자로 전달했을 때 일반적으로 발생하는 예외다.
-* IllegalStateExecption : 현재 객체 상태로는 호출할 수 없는 메서드를 호출했을 때 일반적으로 발생하는 예외다.
+* IllegalStateException : 현재 객체 상태로는 호출할 수 없는 메서드를 호출했을 때 일반적으로 발생하는 예외다.
 * NullPointException : null 인자를 받으면 되는 메서드에 nuU을 전달한 경우
 * IndexOutOfBoundsException : 어떤 순서열(sequence)의 첨자를 나타내는 인자에 참조 기능 범위를 벗어난 값이 전달되었을 때
 * UnsupportedOperationException : 어떤 객체가 호출된 메서드를 지원하지 않을 때 발생
