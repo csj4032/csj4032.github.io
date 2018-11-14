@@ -581,7 +581,7 @@ public class InstrumentedHashSet<E> extends HashSet<E> {
 
 	public static void main(String[] args) {
 		InstrumentedHashSet<String> s = new InstrumentedHashSet<>();
-		s.addAll(Arrays.asList("Snap", "Crackle", "Por"));
+		s.addAll(Arrays.asList("Snap", "Crackle", "Pop"));
 		System.out.println(s.getAddCount());
 	}
 }
@@ -811,7 +811,7 @@ public class ExplicitType {
 
 ### 규칙 29 형 안전 다형성 컨테이너를 쓰면 어떨지 따져보라
 * 컨테이너 대신 키(key)에 형인자를 지정하는 것이 기본적 아이디어다.
-* 자바 15부터 Class가 제네릭 클래스가 되었으므로 가능하다.
+* 자바 1.5부터 Class가 제네릭 클래스가 되었으므로 가능하다.
 * class 리터털의 자료형은 더 이상 Class가 아니며, Class\<T\>다. 예를 들어 String.class의 자료형은 Class\<String\>이고 Integer.class의 자료형은 Class\<Integer\>다.
 * 컴파일 시간 자료형이나 실행시간 자료형 정보를 메서드들에 전달할 목적으로 Class 리터럴을 이용하는 경우, 그런 Class 리터럴을 자료형 토큰(type token)이라 부른다.
 
