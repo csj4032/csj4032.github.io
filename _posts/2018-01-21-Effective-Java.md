@@ -57,12 +57,38 @@ public class Sample {
   * 정적 팩터리 메서드를 사용하면 같은 객체를 반복해서 반환할 수 있으므로 어떤 시점에 어떤 객체가 얼마나 존재할지를 정밀하게 제어할 수 있다.
   * 생성자와는 달리 변환값 자료형의 하위 자료형 객체를 반환할 수 있다든 것이다.
     * 반환되는 객체의 클래스를 훨씬 유연하게 결정할 수 있다.
+    * 서비스 제공자 프레임워크 : 다영한 서비스 제공자들이 하나의 서비스를 구성하는 시스템 (JDBC)
+      * 서비스 인터페이스(service interface)
+      * 제공자 등록 API (provider registration API)
+      * 서비스 접근 API (service access API) : 클라이언트에게 실제 서비스 구현체를 제공한다.
   * 형인자 자료형(parameterized type) 객체를 만들 때 편하다는 점이다.
-  ```java
-    public static <K, V> HashMap<K, V> new newInstance() {
-      return new HashMap<K, V>();
-    }
-  ```
+
+```java
+  public static <K, V> HashMap<K, V> new newInstance() {
+    return new HashMap<K, V>();
+  }
+```
+
+```java
+import java.sql.*;
+
+  public class JavaDatabaseConnectivity {
+
+    public static void main(String[] args) throws SQLException {
+      // 서비스 제공자 프레임워크는 다양한 서비스 제공자들이 하나의 서비스를 구성하는 시스템
+      // 1. 서비스 인터페이스 (java.sql.Connection)
+      // 4. 서비스 제공자 인터페이스 (Driver)
+      Driver driver = new com.mysql.cj.jdbc.Driver();
+      // 2. 제공자 등록 API (구현체를 시스템에 등록하여 클라이언트가 쓸 수 있도록 함)
+      DriverManager.registerDriver(driver);
+      // 3. 서비스 접근 API (구현체에 대한 접근이 가능하도록 한다)
+      // getConnection() '유연한 정적 팩터라'
+      Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", null);
+      Statement statement = connection.createStatement();
+      statement.execute("");
+  }
+}
+```
 
 * 단점
   * public나 protected로 선언된 생성자가 없으므로 하위 클래스를 만들 수 없다는 것이다.
