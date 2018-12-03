@@ -136,6 +136,9 @@ tags:
 
 ## 9장. 데이터 엑세스
 
+### 레시피 9-5 스프링 JDBC 프레임워크에 예외 처리하기
+* https://docs.oracle.com/javase/tutorial/essential/exceptions/runtime.html
+
 ## 10장. 스프링 트랜잭션 관리
 * 트랜잭션의 속성 ACID
 * 원자성 (Atomicity) : 트랜잭션은 연속적인 액션들로 이루어진 원자성 작업입니다. 트랜잭션의 액션은 전부다 수행되거나 아무것도 수행되지 안도록 보장합니다.
@@ -155,5 +158,31 @@ tags:
 ## 15장. 스프링 인티그레이션
 
 ## 16장. 스프링 테스트
+
+### 16-1 JUnit과 TestNG로 단위 테스트 작성하기
+#### JUnit 테스트 작성하기
+#### TestNG 테스트 작성하기
+
+### 16-2 단위/통합 테스트 작성하기
+* 객체 지향 언어에서 단위란 보통 클래스나 메서드를 가르킴
+#### 단일 클래스에 대한 단위 테스트 작성하기
+#### 스텁, 목 객체를 써서 의존 관계가 있는 클래스에 대한 단위 테스트 작성하기
+#### 통합 테스트 작성하기
+
+### 16-3 스프링 MVC 컨트롤러에 대한 단위 테스트 작성하기
+
+### 16-4 통합 테스트 시 애플리케이션 컨텍스트 관리하기
+#### JUnit에서 테스트 컨텍스트 프레임워크의 컨텍스트 가져오기
+* ApplicationContextAware 인터페이스를 구현
+* ApplicationContext형 필드에 @Autowired >> @RunWith 애너테이션 사용
+* AbstractJUnit4SpringContextTests 상속
+#### TestNG에서 테스트 컨텍스트 프레임워크의 컨텍스트 가져오기
+* ApplicationContextAware 인터페이스를 구현
+* AbstractTestNGSpringContextTests 상속
+
+### 16-5 통합 테스트에 테스트 픽스처 주입하기
+#### JUnit에서 테스트 컨텍스트 프레임워크의 테스트 픽스처 주입하기
+* @Autowired, @Resources 를 붙이면 애플리케이션 컨텍스트에서 테스트 픽스처를 가져올 수 있음
+* @Autowired를 붙이면 타입을 기준으로 해당 빈을 자동연결, @Qualifier에 이름을 적어 자동연결 후보 빈을 구체적으로 명시해도 되고 @Resource를 붙여 이름으로 빈을 찾아 자동 연결할 수 있음
 
 ## 17장. 그레일즈
