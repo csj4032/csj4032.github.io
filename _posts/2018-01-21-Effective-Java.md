@@ -213,7 +213,7 @@ public class NutritionFacts {
 ### 규칙 3 private 생성자나 enum 자료형은 싱글턴 패턴을 따르도록 설계하라
 
 ```java
-// public final 필드를 이용한 싱굴턴
+// public final 필드를 이용한 싱글턴
 public class Elvis {
   public static final Elvis INSTANCE = new Elvis();
   private Elvis() {}
@@ -271,6 +271,16 @@ public class UtilityClass {
   * 메모리 요구량이 증가 하며, 성능도 떨어짐
   * 최신 JVM은 고도로 최적화된 쓰레기 수집기를 갖고 있어서, 가벼운(lightweight) 객체라면 객체 풀보다 월등한 성능을 보여줌
 * *방어적 복사가 요구되는 상황에서 객체를 재사용하는 데 드는 비용은 쓸데없이 같은 객체를 여러 벌 만드는 비용보다 훨씬 높다는 것에 유의하자.*
+
+```java
+private static long sum() {
+  Long sum = 0L;
+  for (long i = 0; i <= Integer.MAX_VALUE; i++) {
+    sum += i;
+  }
+  return sum;
+}
+```
 
 ### 규칙 6 유효기간이 지난 객체 참조는 폐기하라
 * 만기 참조란, 다시 이용되지 않을 참조
