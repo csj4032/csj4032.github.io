@@ -32,5 +32,56 @@ public static Boolean valueOf (boolean b) {
 * **두 번째, 호출될 때마다 인스턴스를 새로 생성하지는 않아도 된다.**
   * 불변 클래스는 인스턴스를 미리 만들어 놓거나 새로 생성한 인스턴스를 캐싱하여 재활용하는 식으로 불필요한 객체 생성을 피할 수 있다.
 
+* **세 번째, 반환 타입의 하위 타입 객체를 반환할 수 있는 능력이 있다.**
+
+```java
+
+public interface Java8StaticMethod {
+
+	String STATIC_FIELD = "JAVA_8";
+
+	class MemberClass {
+		public MemberClass() {
+
+		}
+	}
+
+	default void print(String str) {
+		if (isNull(str))
+			System.out.println(str);
+	}
+
+	// 자바 8에서도 인터페이스에는 public 정적 멤버만 허용
+	static boolean isNull(String str) {
+		return str == null ? true : "".equals(str) ? true : false;
+	}
+}
+```
+
+```java
+
+public interface Java9StaticMethod {
+
+	String STATIC_FIELD = "JAVA_9";
+
+	class MemberClass {
+		public MemberClass() {
+
+		}
+	}
+
+	default void print(String str) {
+		if (isNull(str))
+			System.out.println(str);
+	}
+
+	// 자바9에서는 private 정적 메서드까지 허락
+	private static boolean isNull(String str) {
+		return str == null ? true : "".equals(str) ? true : false;
+	}
+}
+```
+
+
 * **네 번째, 입력 매개변수에 따라 메번 다른 클래스의 객체를 반환할 수 있다.**
   * 반환 타입의 하위 타입이기만 하면 어떤 클래스의 객체를 반환하든 상관없다.
