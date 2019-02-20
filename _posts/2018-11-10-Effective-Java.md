@@ -19,7 +19,6 @@ comments: true
 ### 아이템 1. 생성자 대신 정적 팩터리 메서드를 고려하라
 
 ```java
-
 public static Boolean valueOf (boolean b) {
   return b ? Boolean.TRUE : Boolean.FALSE;
 }
@@ -33,9 +32,10 @@ public static Boolean valueOf (boolean b) {
   * 불변 클래스는 인스턴스를 미리 만들어 놓거나 새로 생성한 인스턴스를 캐싱하여 재활용하는 식으로 불필요한 객체 생성을 피할 수 있다.
 
 * **세 번째, 반환 타입의 하위 타입 객체를 반환할 수 있는 능력이 있다.**
+  * 인터페이스를 정적 팩터 리 메서드의 반환 타입으로 사용하는 인터페이스 기반 프레임워크(아이템 20) 를 만드는 핵심 기술
+  * 인터페이스 기반 프레임워크 ?
 
 ```java
-
 public interface Java8StaticMethod {
 
 	String STATIC_FIELD = "JAVA_8";
@@ -59,7 +59,6 @@ public interface Java8StaticMethod {
 ```
 
 ```java
-
 public interface Java9StaticMethod {
 
 	String STATIC_FIELD = "JAVA_9";
@@ -81,7 +80,6 @@ public interface Java9StaticMethod {
 	}
 }
 ```
-
 
 * **네 번째, 입력 매개변수에 따라 메번 다른 클래스의 객체를 반환할 수 있다.**
   * 반환 타입의 하위 타입이기만 하면 어떤 클래스의 객체를 반환하든 상관없다.
