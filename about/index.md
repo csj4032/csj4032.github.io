@@ -11,11 +11,11 @@ layout: page
 
 #### Skills : Java, ActionScript, JavaScript, SQL, PHP, Python, NodeJS, Kotlin
 
-#### Homepage : https://alimy.choibom.com
+#### Homepage : [https://alimy.choibom.com](https://alimy.choibom.com)
 
 #### Email : csj4032@gmail.com
 
-#### ONLINE JUDGE :
+#### Online Judge :
 > [백준 https://www.acmicpc.net/user/genius_choi/](https://www.acmicpc.net/user/genius_choi/)
 
 > [코딩도장 http://codingdojang.com/profile/answer/3309/](http://codingdojang.com/profile/answer/3309/)
