@@ -89,3 +89,10 @@ public interface Java9StaticMethod {
     1. 구현체의 동작을 정의하는 서비스 인터페이스(service interface)
     2. 제공자가 구현체를 등록 할 때 사용하는 제공자 등록 API(provider registration API),
     3. 클라이언트가 서비 스의 인스턴스를 얻을 때 사용하는 서비스 접근 API(service access API)
+    4. 서비스 제공자 인터페이스(service provider interface)
+
+| 핵심 컴포넌트 | JDBC |
+| 서비스 인터페이스 | Connection |
+| 제공자 등록 API | DriverManager.registerDriver |
+| 서비스 접근 API | DriverManager.getConnection |
+| 서비스 제공자 인터페이스 | Driver |
