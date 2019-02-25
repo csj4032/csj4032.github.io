@@ -99,3 +99,11 @@ public interface Java9StaticMethod {
 | 제공자 등록 API | DriverManager.registerDriver |
 | 서비스 접근 API | DriverManager.getConnection |
 | 서비스 제공자 인터페이스 | Driver |
+
+* 자바 5부터는 java.util.ServiceLoader라는 범용 서비스 제공자 프레임워크가 제공 (실제 자바 6 부터 제공 오역)
+* **상속을 하려면 public이나 protected 생성자가 필요하니 정적 팩터리 메서드만 제공하면 하위 클래스를 만들 수 없다.**
+* **두 번째, 정적 팩터리 메서드는 프로그래머가 찾기 어렵다.**
+
+### 아이템 2. 생성자에 매개변수가 많다면 빌더를 고려하라
+
+* 점층적 생성자 패턴(telescoping constructor pattern)을 즐겨 사용
