@@ -191,7 +191,7 @@ public class NutritionFacts {
   public void setCalories(int val) { calories = val;}
   public void setFat(int val) { fat = val;}
   public void setSodium(int val) { sodium = val;}
-  public void setCarbohydrate(int val) { car.bohydrate = val;}
+  public void setCarbohydrate(int val) { carbohydrate = val;}
 }
 
 ```
