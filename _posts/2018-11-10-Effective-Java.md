@@ -119,3 +119,5 @@ public interface Java9StaticMethod {
   * 빌더 생성 비용이 크지는 않지만 성능에 민감한 상황에서는 문제가 될 수 있다.
 
 * 얼리고(freezing)?
+
+### 아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라
