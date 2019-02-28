@@ -121,3 +121,7 @@ public interface Java9StaticMethod {
 * 얼리고(freezing)?
 
 ### 아이템 3. private 생성자나 열거 타입으로 싱글턴임을 보증하라
+
+* 클래스를 싱글턴으로 만들면 이를 사용하는 클라이언트를 테스트하기가 어려워질 수 있다.
+ * Mock 이란?
+ * 테스트 란?
