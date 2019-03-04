@@ -125,3 +125,6 @@ public interface Java9StaticMethod {
 * 클래스를 싱글턴으로 만들면 이를 사용하는 클라이언트를 테스트하기가 어려워질 수 있다.
  * Mock 이란?
  * 테스트 란?
+* 싱글턴을 만드는 방식
+  * public static 멤버가 final 필드인 방식
+  * 정적 팩터리 메서드를 public static 멤버로 제공
