@@ -351,7 +351,7 @@ public final class CaseInsensitiveString {
 ### 규칙 9 equals를 재정의할 때는 반드시 hashCode도 재정의하라
 * equals 메서드를 재정의하는 클래스는 반드시 hashCode 메서드도 재정의 해야 한다.
   * HashMap, HashSet, HashTable 같은 해시(hash) 기반 컬렉션과 함께 시용하면 오동작
-* hashCode를 재정의하지 않으면 위반되는 핵심 규약은 두 번째다. 같은 객체는 같은 혜시 코드 값을 가져야 한다는 규약이 위반되는 것이다.
+* hashCode를 재정의하지 않으면 위반되는 핵심 규약은 두번째다. 같은 객체는 같은 혜시 코드 값을 가져야 한다는 규약이 위반되는 것이다.
 * HashMap은 성능 최적화를 위해 내부에 보관된 항목의 해시 코드를 캐시해 두고, 캐시된 해시 코드가 없는 객체는 동일성 검사조차 하지 않음
 
 ### 규칙 10 toString은 항상 재정의하라
