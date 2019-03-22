@@ -218,13 +218,49 @@ public class Elvis {
   **q(x)를 자료형 T의 객체 x에 대해 증명할 수 있는 속성이라 하자. 그렇다면 S가 T의 하위형이라면 q(y)는 자료형 S의 객체 y에 대해 증명할 수 있어야 한다.**
 * equals의 판단에 신뢰할 수 없는 자원이 끼어 들게 해서는 안 된다.
 * java.net.URL의 equals는 주어진 URL과 매핑된 호스트의 IP 주소 를 이용해 비교
+
+```java
+import java.net.URL;
+
+// 호스트 파일 수정 후
+public class IPAddressExample {
+	public static void main(String args[]) throws Exception {
+		URL url = new URL("http://local-alimy.choibom.com");
+		URL url1 = new URL("http://localhost");
+		System.out.println(url.equals(url1));
+	}
+}
+```
+
 * equals는 항시 메모리에 존재하는 객체만을 사용한 결정적(deterministic) 계산만 수행(?)
 * null-아님은 이름처럼 모든 객체가 null과 같지 않아야 한다는 뜻
+
+### 아이템 11 equals를 재정의하려거든 hashCode도 재정의하라
+* equals를 재정의한 클래스 모두에서 hashCode도 재정의해야 한다.
+* 참조 타입 필드면서 이 클래스의 equals 메서드가 이 필드의 equals 를 재귀적으로 호출해 비교한다면, 이 필드의 hashCode를 재귀적으로 호출한다.(?)
+* 성능을 높인답시고 해시코드를 계산할 때 핵심 필드를 생략해서는 안 된다.
+
+### 아이템 12 toString을 항상 재정의하라
+* 간결하면서 사람이 읽기 쉬운 형태의 유익한 정보
+* toString을 잘 구현한 클래스는 사용하기에 훨씬 즐겁고, 그 클래스를 사용한 시스템은 디버깅하기 쉽다.
+* 실전에서 toString은 그 객체가 가진 주요 정보 모두를 반환하는 게 좋다.
+* 포맷을 명시하든 아니든 여러분의 의도는 명확히 밝혀야 한다.
+* toString이 반환한 값에 포함된 정보를 얻어올 수 있는 API를 제공하자.
+
+### 아이템 13 clone 재정의는 주의해서 진행하라
+* Cloneable을 구현한 스레드 안전 클래스를 작성할 때는 clone 메서드 역시 적절히 동기화해줘야 한다.
+
+### 아이템 14 Comparable을 구현할지 고려하라
 
 ## 4장 클래스와 인터페이스
 
 ### 아이템 15 클래스와 멤버의 접근 권한을 최소화하
 **정보 은닉, 혹은 캡슐화라고 하는 이 개념은 소프트웨어 설계의 근간이 되는 원리다.**
+
+### 아이템 20 추상 클래스보다는 인터페이스를 우선하라
+* 두 메커니즘 모두 인스턴스 메서드를 구현 형태 로 제공할 수 있다.
+* 둘의 가장 큰 차이는 추상 클래스가 정의한 타입을 구 현하는 클래스는 반드시 추상 클래스의 하위 클래스가 되어야 한다는 점이다.
+* 자바 플랫폼에서도 Comparable(Josh Bloch, 1.2), Iterable, AutoCloseable (Josh Bloch, 1.7) 인터페이스가 새로 추가됐을 때 표준 라이브러리의 수많은 기 존 클래스가 이 인터페이스들을 구현한 채 릴리스됐다.
 
 ## 12장 직렬화
 
