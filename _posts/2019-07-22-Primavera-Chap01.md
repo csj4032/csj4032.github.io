@@ -10,6 +10,7 @@ comments: true
 ---
 
 # 스프링 부트 개발 환경 설정
+* 신입 개발자 중 상당수는 스프링 부트를 배우려 한다. 그들에게 작은 도움이나마 되길 바라며 이 책을 집필한다.
 
 ## JDK 설치
 * JDK Download : [링크](https://www.oracle.com/technetwork/java/javase/downloads/index.html)
