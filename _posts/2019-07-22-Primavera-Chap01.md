@@ -1,6 +1,6 @@
 ---
 title: Primavera Chap01
-description: 스프링부트 개발 환경 설정 : 스프링부트로 만드는 커뮤니티 사이트
+description: 스프링부트 개발 환경 설정 - 스프링부트로 만드는 커뮤니티 사이트
 categories:
  - primavera
  - study
@@ -18,7 +18,8 @@ comments: true
 * IntelliJ IDEA : https://www.jetbrains.com/idea/download
 
 ## 스프링부트 프로젝트 생성
-### Spring CLI
+### Spring CLI (Command Line Interface)
+* Spring Boot CLI Download : https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-installing-spring-boot.html#getting-started-installing-the-cli
 ### Spring Initializr
 ### Spring Boot Reference Guide
 ### Building Spring Boot 2 Applications with Gradle
