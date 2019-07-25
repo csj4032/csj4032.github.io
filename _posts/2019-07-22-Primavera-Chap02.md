@@ -2,10 +2,10 @@
 title: Primavera Chap02
 description: 스프링 부트 개발 환경 설정 - 스프링부트로 만드는 커뮤니티 사이트
 categories:
- - primavera
- - study
+- Primavera
+- Spring Boot
 tags:
- - spring boot
+ - Spring Boot
 comments: true
 ---
 
@@ -32,8 +32,8 @@ comments: true
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
 
-# ETC
-* Spring Boot test 참고
-* Spring Boot banner 링크
+# 출처
+* Spring Boot Test 참고
+* Spring Boot Banner 링크
 * Creating Your Own Auto-configuration 링크
 * Creating a Custom Starter with Spring Boot 링크
