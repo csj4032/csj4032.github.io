@@ -2,15 +2,20 @@
 title: Primavera Chap01
 description: 스프링 부트 시작하기 - 스프링부트로 만드는 커뮤니티 사이트
 categories:
- - primavera
- - study
+ - Primavera
+ - Spring Boot
 tags:
  - 스프링 부트, Phil Webb, Spring Boot Team
 comments: true
 ---
 
-# 스프링 부트 시작하기
+# 서문
+
+힘든 겨울날에 봄을 가져다 준 나의 딸, 봄을 위해 책을 바칩니다.
+
 자바 웹 개발자들 중 상당수는 스프링 부트를 배우려 합니다. 그분들에게 작은 도움이나마 되길 바라며 이 책을 집필합니다.
+
+# 스프링 부트 시작하기
 
 ## 스프링 부트 소개
 ![Spring Boot in Context](http://blog.springsource.org/wp-content/uploads/2013/08/spring.png)
