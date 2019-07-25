@@ -13,6 +13,8 @@ comments: true
 자바 웹 개발자들 중 상당수는 스프링 부트를 배우려 합니다. 그분들에게 작은 도움이나마 되길 바라며 이 책을 집필합니다.
 
 ## 스프링 부트 소개
+![Spring Boot in Context](http://blog.springsource.org/wp-content/uploads/2013/08/spring.png)
+
 '컨테이너가 없는 웹 애프리케이션 아키텍처의 향상된 지원'를 목표로 [Phil Webb](https://spring.io/team/pwebb) 외 54명의 스프링 부트 개발자([Spring Boot Team](https://spring.io/team))가 18개월 걸처 개발을 진행 마침내 2014년 4월 1일 Spring Boot 1.0 GA를 출시 하였습니다. 현재는 스프링 부트는 2.2.0 M4 까지 릴리즈 된 상태입니다.
 
 오는날 PaaS (Platform as a service) 환경은 이미 많은 관리, 확장 및 안정성 기능을 제공하므로 스프링 부팅을 클라우드의 애플리케이션 또는 서비스 배포에 적합한 초경량 컨테이너로 만드는 데 중점을 두웠습니다.
@@ -30,8 +32,9 @@ comments: true
 * 메트릭, 상태 점검 및 외부 구성과 같은 운영 준비 기능 제공
 * XML 구성에 대한 코드 생성 및 요구 사항 전무
 
-# ETC
+# 출처
 * Spring Boot [참고](https://spring.io/projects/spring-boot)
 * Spring Boot 1.0 GA Released [참고](https://spring.io/blog/2014/04/01/spring-boot-1-0-ga-released)
 * Spring Boot Github [참고](https://github.com/spring-projects/spring-boot)
 * Spring Toll Suite 이용한 Spring Boot 데모 [참고](https://www.youtube.com/watch?time_continue=771&v=p8AdyMlpmPk)
+* Spring Boot in Context [이미지](https://spring.io/blog/2013/08/06/spring-boot-simplifying-spring-for-everyone)
