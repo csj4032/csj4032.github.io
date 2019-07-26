@@ -15,7 +15,9 @@ layout: page
 
 #### Email : csj4032@gmail.com
 
+#### Github : [https://github.com/csj4032](https://github.com/csj4032)
+
 #### Online Judge :
-> [백준 https://www.acmicpc.net/user/genius_choi/](https://www.acmicpc.net/user/genius_choi/)
+> [백준 https://www.acmicpc.net/user/genius_choi](https://www.acmicpc.net/user/genius_choi)
 
 > [코딩도장 http://codingdojang.com/profile/answer/3309/](http://codingdojang.com/profile/answer/3309/)
