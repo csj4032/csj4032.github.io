@@ -702,4 +702,5 @@ images: assets/images
 version: 5.1.1
 
 # Coupang Partners
-coupang_partners: true
+coupang:
+  partners: true
