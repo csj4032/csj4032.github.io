@@ -10,6 +10,8 @@
         {% include _partials/share/add-this.html %}
         {% elsif site.duoshuo_shortname and site.duoshuo_share %}
         {% include _partials/share/duoshuo_share.html %}
+        {% elsif site.coupang.partners %}
+        {% include _partials/coupang/partners.html %}
         {% endif %}
     </div>
 </div>
