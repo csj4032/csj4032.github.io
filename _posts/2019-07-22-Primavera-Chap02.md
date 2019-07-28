@@ -26,18 +26,15 @@ comments: true
 
 ![idea-download](/assets/images/books/primavera/chap02/idea-download.png)
 
-## 스프링부트 프로젝트 생성
-### Spring CLI (Command Line Interface)
-* Spring Boot CLI Download : [링크](https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-installing-spring-boot.html#getting-started-installing-the-cli)
-### Spring Initializr
-### Spring Boot Reference Guide
-### Building Spring Boot 2 Applications with Gradle
+## 스프링 부트 프로젝트 생성
+스프링 부트 프로젝트를 생성하는 방법은 여러가지가 존재합니다. 그중에 잡근이 가장 용이한 [Spring Initializr](https://start.spring.io/) 사이트를 통한 스프링 부트 프로젝트 생성 방법을 알아 보도록 하겠습니다.
+
+## Hello World
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
 
-# 출처
-* Spring Boot Test 참고
-* Spring Boot Banner 링크
-* Creating Your Own Auto-configuration 링크
-* Creating a Custom Starter with Spring Boot 링크
+# 참고
+* Spring Boot Reference Guide : https://docs.spring.io/spring-boot/docs/current/reference/html/
+* Spring Boot CLI Download : https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-installing-spring-boot.html#getting-started-installing-the-cli
+* Building Spring Boot 2 Applications with Gradle : https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/
