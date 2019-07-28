@@ -31,10 +31,12 @@ comments: true
 프로젝트는 Gradle Project를 랭귀지는 Java 스프링 부트 버전은 최신 버전(2.1.6)을 선택합니다. 그리고 Project Metadata는 아래 이미지를 참고 하시기 바랍니다.
 
 ![Bootstrap your applications](/assets/images/books/primavera/chap02/bootstrap-your-applications.png)
-그리고 Hello World을 위한 Dependencies는 Spring Web Starter, Spring Configuration Processor 선택했습니다.  
+그리고 Hello World을 위한 Dependencies는 Spring Web Starter, Spring Configuration Processor 선택했습니다.
+
 ![dependencies](/assets/images/books/primavera/chap02/dependencies.png)
 
 ## Hello World
+
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
