@@ -28,9 +28,10 @@ comments: true
 
 ## 스프링 부트 프로젝트 생성
 스프링 부트 프로젝트를 생성하는 방법은 여러가지가 존재합니다. 그중에 잡근이 가장 용이한 [Spring Initializr](https://start.spring.io) 사이트를 통한 스프링 부트 프로젝트 생성 방법을 알아 보도록 하겠습니다.
-프로젝트는 Gradle Project를 랭귀지는 Java 스프링 부트 버전은 최신 버전(2.1.6)을 선택합니다. 그리고 Project Metadata, Dependencies는 아래 이미지를 참고 하시기 바랍니다.
+프로젝트는 Gradle Project를 랭귀지는 Java 스프링 부트 버전은 최신 버전(2.1.6)을 선택합니다. 그리고 Project Metadata는 아래 이미지를 참고 하시기 바랍니다.
 
 ![Bootstrap your applications](/assets/images/books/primavera/chap02/bootstrap-your-applications.png)
+그리고 Hello World을 위한 Dependencies는 Spring Web Starter, Spring Configuration Processor 선택했습니다.  
 ![dependencies](/assets/images/books/primavera/chap02/dependencies.png)
 
 ## Hello World
