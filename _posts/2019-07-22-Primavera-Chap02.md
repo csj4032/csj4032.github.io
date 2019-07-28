@@ -18,7 +18,8 @@ comments: true
 1. JDK Download URL에 접속합니다.
   * https://www.oracle.com/technetwork/java/javase/downloads/jdk12-downloads-5295953.html
 2. 사용권 계약 동의(Accept License Agreement)를 체크하고 OS 환경에 맞는 설치 파일을 내려 받습니다.
-![jdk12-downloads](/images/books/primavera/Chap02/jdk12-downloads.png)
+
+![jdk12-downloads](/assets/images/books/primavera/Chap02/jdk12-downloads.png)
 
 ## IntelliJ IDEA 설치
 * IntelliJ IDEA : [링크](https://www.jetbrains.com/idea/download)
