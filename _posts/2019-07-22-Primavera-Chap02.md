@@ -40,7 +40,10 @@ comments: true
 * Explore the project 메뉴는 프로젝트의 기본적인 형태 및 주요 파일들의 내용을 확인 할 수 있습니다.
 
 ## Hello World
+Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 인텔리제이를 이용해 프로젝트를 Import 합니다. Import 하는 방법은 크게 2가지가 있다. File > Open 메뉴를 통한 build.gradle 파일을 선택하는 방법과
+File > New > Project From Existing Sources 으로 프로젝트를 Import 할 수 있습니다.
 
+### Project Import 
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
