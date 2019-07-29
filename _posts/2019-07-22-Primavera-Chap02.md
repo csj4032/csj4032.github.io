@@ -46,6 +46,8 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 * File > New > Project From Existing Sources 메뉴를 통한 방법
 
 ### Project Import
+1. File > Open
+![file-open](/assets/images/books/primavera/chap02/file-open.png)
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
