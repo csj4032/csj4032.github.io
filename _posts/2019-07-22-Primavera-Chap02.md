@@ -49,6 +49,11 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 1. File > Open
 ![file-open](/assets/images/books/primavera/chap02/file-open.png)
 
+2. File Select (build.gradle)
+![file-select](/assets/images/books/primavera/chap02/file-select.png)
+
+![project-structure](/assets/images/books/primavera/chap02/project-structure.png)
+
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
 
