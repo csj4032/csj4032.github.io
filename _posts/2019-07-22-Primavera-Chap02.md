@@ -1,9 +1,9 @@
 ---
 title: Primavera Chap02
-description: 스프링 부트 개발 환경 설정 - 스프링부트로 만드는 커뮤니티 사이트
+description: 스프링 부트 개발 환경 - 스프링부트로 만드는 커뮤니티 사이트
 categories:
-- Primavera
-- Spring Boot
+ - Primavera
+ - Spring Boot
 tags:
  - Spring Boot
 comments: true
@@ -60,7 +60,7 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 ![project-structure](/assets/images/books/primavera/chap02/project-structure.png)
 
 ### Run
-프로젝트가 정상적으로 Import 된 후 HelloApplication 를 Run 시켜줍니다.
+프로젝트가 정상적으로 프로젝트가 Import 된 후 HelloApplication 를 Run 시켜줍니다. 정상적으로 스프링 부트 서비스가 구동된다면 아래 2번의 이미지와 같은 로그를 확인 할 수 있습니다.
 1. Run 'HelloApplication'
 ![file-open](/assets/images/books/primavera/chap02/run-application.png)
 
