@@ -62,7 +62,7 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 ### Run
 프로젝트가 정상적으로 프로젝트가 Import 된 후 HelloApplication 를 Run 시켜줍니다. 정상적으로 스프링 부트 서비스가 구동된다면 아래 2번의 이미지와 같은 로그를 확인 할 수 있습니다.
 
-```Java
+```java
 package com.genius.primavera;
 
 import org.springframework.boot.SpringApplication;
