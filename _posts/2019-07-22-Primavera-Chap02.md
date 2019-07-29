@@ -46,6 +46,7 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 * File > New > Project From Existing Sources 메뉴를 통한 방법
 
 ### Project Import
+아래의 순서로 프로젝트를 Import 합니다.
 1. File > Open
 ![file-open](/assets/images/books/primavera/chap02/file-open.png)
 
@@ -57,6 +58,17 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 
 4. Project Structure
 ![project-structure](/assets/images/books/primavera/chap02/project-structure.png)
+
+### Run
+프로젝트가 정상적으로 Import 된 후 HelloApplication 를 Run 시켜줍니다.
+1. Run 'HelloApplication'
+![file-open](/assets/images/books/primavera/chap02/run-application.png)
+
+2. Console Log
+![file-open](/assets/images/books/primavera/chap02/console-log.png)
+
+3. Run/Debug Configuration
+![file-open](/assets/images/books/primavera/chap02/run-debug-configuration.png)
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
