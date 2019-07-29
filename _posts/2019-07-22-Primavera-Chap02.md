@@ -52,6 +52,10 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 2. File Select (build.gradle)
 ![file-select](/assets/images/books/primavera/chap02/file-select.png)
 
+3. Import Project from Gradle
+![project-structure](/assets/images/books/primavera/chap02/import-project-from-gradle.png)
+
+4. Project Structure
 ![project-structure](/assets/images/books/primavera/chap02/project-structure.png)
 
 # Github
