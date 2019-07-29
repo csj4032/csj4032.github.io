@@ -31,9 +31,13 @@ comments: true
 프로젝트는 Gradle Project를 랭귀지는 Java 스프링 부트 버전은 최신 버전(2.1.6)을 선택합니다. 그리고 Project Metadata는 아래 이미지를 참고 하시기 바랍니다.
 
 ![Bootstrap your applications](/assets/images/books/primavera/chap02/bootstrap-your-applications.png)
-그리고 Hello World을 위한 Dependencies는 Spring Web Starter, Spring Configuration Processor 선택했습니다.
+
+간단한 스프링 부트 (Hello World)를 위한 Dependencies는 Spring Web Starter, Spring Configuration Processor 선택합나다. 선택 방법은 돋보기 모양 아이콘 Search dependencies add 혹은
+리스트 모양의 아이콘 Developer Tools 이용하면 됩니다. 필요한 Dependencies를 선택한 후 Generate the project 버튼을 누르고 프로젝트 ZIP 파일을 내려 받습니다.
 
 ![dependencies](/assets/images/books/primavera/chap02/dependencies.png)
+
+* Explore the project 메뉴는 프로젝트의 기본적인 형태 및 주요 파일들의 내용을 확인 할 수 있습니다.
 
 ## Hello World
 
