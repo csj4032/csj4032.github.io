@@ -46,7 +46,7 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 * File > New > Project From Existing Sources 메뉴를 통한 방법
 
 ### Project Import
-아래의 순서로 프로젝트를 Import 합니다.
+아래의 순서로 프로젝트를 Import 합니다. (모든 인텔리제이 IDE 캡쳐 이미지는 버전에 따라 상이 할 수 있습니다.)
 1. File > Open
 ![file-open](/assets/images/books/primavera/chap02/file-open.png)
 
@@ -61,14 +61,53 @@ Spring Initializr 내려 받은 파일은 적당한 폴더에 암축을 풀고 �
 
 ### Run
 프로젝트가 정상적으로 프로젝트가 Import 된 후 HelloApplication 를 Run 시켜줍니다. 정상적으로 스프링 부트 서비스가 구동된다면 아래 2번의 이미지와 같은 로그를 확인 할 수 있습니다.
-1. Run 'HelloApplication'
-![file-open](/assets/images/books/primavera/chap02/run-application.png)
+
+```Java
+package com.genius.primavera;
+
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+@SpringBootApplication
+public class HelloApplication {
+
+	public static void main(String[] args) {
+		SpringApplication.run(HelloApplication.class, args);
+	}
+}
+```
 
 2. Console Log
-![file-open](/assets/images/books/primavera/chap02/console-log.png)
+```
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::        (v2.1.6.RELEASE)
+
+2019-07-29 16:09:01.193  INFO 79855 --- [           main] com.genius.primavera.HelloApplication    : Starting HelloApplication on * with PID * (/Users/*/Workspace/hello/out/production/classes started by we in /Users/*/Workspace/hello)
+2019-07-29 16:09:01.196  INFO 79855 --- [           main] com.genius.primavera.HelloApplication    : No active profile set, falling back to default profiles: default
+2019-07-29 16:09:02.197  INFO 79855 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2019-07-29 16:09:02.225  INFO 79855 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2019-07-29 16:09:02.225  INFO 79855 --- [           main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.21]
+2019-07-29 16:09:02.293  INFO 79855 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2019-07-29 16:09:02.293  INFO 79855 --- [           main] o.s.web.context.ContextLoader            : Root WebApplicationContext: initialization completed in 1060 ms
+2019-07-29 16:09:02.461  INFO 79855 --- [           main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-07-29 16:09:02.688  INFO 79855 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path ''
+2019-07-29 16:09:02.696  INFO 79855 --- [           main] com.genius.primavera.HelloApplication    : Started HelloApplication in 1.824 seconds (JVM running for 2.343)
+```
 
 3. Run/Debug Configuration
 ![file-open](/assets/images/books/primavera/chap02/run-debug-configuration.png)
+
+### Run With Terminal
+터미널이 조금 더 익숙한 개발자라면 아래 명령으로 스프링 부트를 서비스를 구동 시킬 수도 있습니다.
+
+```
+ $ ./gradlew build && java -jar build/libs/hello-0.0.1-SNAPSHOT.jar
+```
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
