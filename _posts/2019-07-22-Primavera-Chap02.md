@@ -92,11 +92,14 @@ public class HelloApplication {
 
 ### Hello World 어떻게 출력되는가?
 스프링 부트는 어떤 과정을 거처 웹 브라우저에 'Hello World' 를 출력하는지 차근차근 알아보겠습니다.
-HelloApplication 클래스의 main 메소드가 작동 되기 시작하고 메소드 내부의 SpringApplication 클래스 run 메소드로 부터 시작 run 메소드에는 스프링 어플리케이션을 구동시키고 새로운 ApplicationContext 반환합니다.
-SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplication 클래스의 생성자 메소드에서 SpringFactoriesLoader를 이용하여 META-INF/spring.factories 파일의 org.springframework.context.ApplicationListener를 키로 가지는
-ApplicationListener 값을 읽어 드리는 것을 확인 할 수 있다.  이 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현되야할 내용을 담고 있다.
 
-```Java
+HelloApplication 클래스의 main 메소드가 작동 되기 시작하고 메소드 내부의 SpringApplication 클래스 run 메소드로 부터 시작 run 메소드에는 스프링 어플리케이션을 구동시키고 새로운 ApplicationContext 반환합니다.
+
+SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplication 클래스의 생성자 메소드에서 SpringFactoriesLoader를 이용하여 META-INF/spring.factories 파일 내부의 org.springframework.context.ApplicationListener의 값들을 읽어 드리는 것을 확인 할 수 있다.
+
+로드된 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현 되야할 내용을 담고 있다.
+
+```java
 /**
 	 * Create a new {@link SpringApplication} instance. The application context will load
 	 * beans from the specified primary sources (see {@link SpringApplication class-level}
@@ -117,6 +120,20 @@ ApplicationListener 값을 읽어 드리는 것을 확인 할 수 있다.  이 A
 		setListeners((Collection) getSpringFactoriesInstances(ApplicationListener.class));
 		this.mainApplicationClass = deduceMainApplicationClass();
 	}
+```
+
+```
+# Application Listeners
+org.springframework.context.ApplicationListener=\
+org.springframework.boot.ClearCachesApplicationListener,\
+org.springframework.boot.builder.ParentContextCloserApplicationListener,\
+org.springframework.boot.context.FileEncodingApplicationListener,\
+org.springframework.boot.context.config.AnsiOutputApplicationListener,\
+org.springframework.boot.context.config.ConfigFileApplicationListener,\
+org.springframework.boot.context.config.DelegatingApplicationListener,\
+org.springframework.boot.context.logging.ClasspathLoggingApplicationListener,\
+org.springframework.boot.context.logging.LoggingApplicationListener,\
+org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
 ```
 
 # Github
