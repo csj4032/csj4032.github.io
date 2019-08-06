@@ -90,8 +90,11 @@ public class HelloApplication {
  ~$ ./gradlew build && java -jar build/libs/hello-0.0.1-SNAPSHOT.jar
 ```
 
+### Hello World 어떻게 출력되는가?
+이제 어떻게 스프링 부트가 웹 브라우저에 'Hello World' 를 출력하는지 차근차근 알아보겠습니다.
+
 # Github
-* Source : [링크](https://github.com/csj4032/primavera/tree/master/chap01)
+* Source : [링크](https://github.com/csj4032/primavera/tree/master/hello)
 
 # 참고
 * Spring Boot Reference Guide : https://docs.spring.io/spring-boot/docs/current/reference/html/
