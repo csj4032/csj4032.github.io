@@ -99,12 +99,15 @@ SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplicatio
 
 로드된 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현 해야할 코드를 담고 있다.
 
+> ApplicationListener 종류
+
 | 이름 | 설명 |
 | --- | --- |
 |  | |
 |  | |
 |  | |
-[ApplicationListener 종류]
+
+> SpringApplication 클래스 생성자
 
 ```java
 /**
@@ -128,8 +131,8 @@ SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplicatio
 		this.mainApplicationClass = deduceMainApplicationClass();
 	}
 ```
-[SpringApplication 클래스 생성자]
 
+> spring.factories 파일 내부 org.springframework.context.ApplicationListener
 
 ```java
 # Application Listeners
@@ -144,7 +147,6 @@ org.springframework.boot.context.logging.ClasspathLoggingApplicationListener,\
 org.springframework.boot.context.logging.LoggingApplicationListener,\
 org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
 ```
-[spring.factories 파일 내부 org.springframework.context.ApplicationListener]
 
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/hello)
