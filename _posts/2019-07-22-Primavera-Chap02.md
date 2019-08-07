@@ -103,9 +103,15 @@ SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplicatio
 
 | 이름 | 설명 |
 | --- | --- |
-|  | |
-|  | |
-|  | |
+| ClearCachesApplicationListener | |
+| ParentContextCloserApplicationListener | |
+| FileEncodingApplicationListener | |
+| AnsiOutputApplicationListener | |
+| ConfigFileApplicationListener | |
+| DelegatingApplicationListener | |
+| ClasspathLoggingApplicationListener | |
+| LoggingApplicationListener | |
+| LiquibaseServiceLocatorApplicationListener | |
 
 > SpringApplication 클래스 생성자
 
@@ -132,7 +138,7 @@ SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplicatio
 	}
 ```
 
-> spring.factories 파일 내부 org.springframework.context.ApplicationListener
+> spring.factories 파일 내부 (org.springframework.context.ApplicationListener)
 
 ```java
 # Application Listeners
