@@ -97,13 +97,13 @@ HelloApplication 클래스의 main 메서드를 시작으로 SpringApplication �
 
 SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplication 클래스의 생성자 메소드에서 SpringFactoriesLoader를 이용하여 META-INF/spring.factories 파일 내부의 org.springframework.context.ApplicationListener의 값들을 읽어 드리는 것을 확인 할 수 있다.
 
-로드된 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현 해야할 코드를 담고 있다.
+로드된 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현 해야할 코드를 담고 있다. 스프링의 Events에 대한 이해는 아래 링크를 참고 하기 바랍니다.
 
 > ApplicationListener 종류
 
 | 이름 | 설명 |
 | --- | --- |
-| ClearCachesApplicationListener | |
+| ClearCachesApplicationListener | 컨텍스트가 로드되면 캐시를 정리하는 ApplicationListener |
 | ParentContextCloserApplicationListener | |
 | FileEncodingApplicationListener | |
 | AnsiOutputApplicationListener | |
@@ -160,4 +160,5 @@ org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
 # 참고
 * Spring Boot Reference Guide : https://docs.spring.io/spring-boot/docs/current/reference/html/
 * Spring Boot CLI Download : https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-installing-spring-boot.html#getting-started-installing-the-cli
-* Building Spring Boot 2 Applications with Gradle : https://guides.gradle.org/building-spring-boot-2-projects-with-gradle/
+* Building Spring Boot 2 Applications with Gradle : https://guides.gradle.org/building-spring-boot-2-projects-with-gradle
+* Spring Events : https://www.baeldung.com/spring-events
