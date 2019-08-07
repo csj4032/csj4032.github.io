@@ -108,10 +108,10 @@ SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplicatio
 | FileEncodingApplicationListener | 시스템 파일 인코딩이 환경에서 설정된 예상 값과 일치하지 않을 경우 응용 프로그램 시작을 중지하는 ApplicationListener. |
 | AnsiOutputApplicationListener | spring.output.ansi.enabled 속성 값에 따라 AnsiOutput을 구성하는 ApplicationListener.  |
 | ConfigFileApplicationListener | 잘 알려진 파일 위치에서 속성을 로드하여 컨텍스트 환경을 구성하는 EnvironmentPostProcessor. <br/> 기본적으로 속성은 다음 위치에 있는 'application.properties' 및/또는 'application.yml' 파일에서 로드된다. |
-| DelegatingApplicationListener | |
-| ClasspathLoggingApplicationListener | |
-| LoggingApplicationListener | |
-| LiquibaseServiceLocatorApplicationListener | |
+| DelegatingApplicationListener | context.listener.classes 환경 특성에 지정된 다른 리스너에게 위임하는 ApplicationListener. |
+| ClasspathLoggingApplicationListener | DEBUG 레벨에서 스레드 컨텍스트 클래스 로더 (TCCL)의 클래스 경로를 로깅하여 ApplicationEnvironmentPreparedEvent 환경 준비 이벤트 및 ApplicationFailedEvent에 응답하는 SmartApplicationListener. |
+| LoggingApplicationListener | LoggingSystem을 구성하는 ApplicationListener. |
+| LiquibaseServiceLocatorApplicationListener | liquibase ServiceLocator를 Spring Boot 실행 파일 아카이브와 작동하는 버전으로 바꾸는 ApplicationListener. |
 
 > SpringApplication 클래스 생성자
 
