@@ -97,17 +97,17 @@ HelloApplication 클래스의 main 메서드를 시작으로 SpringApplication �
 
 SpringApplication 클래스의 내부 구현을 확인해보면 SpringApplication 클래스의 생성자 메소드에서 SpringFactoriesLoader를 이용하여 META-INF/spring.factories 파일 내부의 org.springframework.context.ApplicationListener의 값들을 읽어 드리는 것을 확인 할 수 있다.
 
-로드된 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현 해야할 코드를 담고 있다. 스프링의 Events에 대한 이해는 아래 링크를 참고 하기 바랍니다.
+로드된 ApplicationListener들은 스프링 부트 어플리케이션이 시작될 때 구현 해야할 코드를 담고 있다. 스프링의 Events에 대한 내용은 아래 링크를 참고 하기 바랍니다.
 
 > ApplicationListener 종류
 
 | 이름 | 설명 |
 | --- | --- |
-| ClearCachesApplicationListener | 컨텍스트가 로드되면 캐시를 정리하는 ApplicationListener |
-| ParentContextCloserApplicationListener | |
-| FileEncodingApplicationListener | |
-| AnsiOutputApplicationListener | |
-| ConfigFileApplicationListener | |
+| ClearCachesApplicationListener | 컨텍스트가 로드되면 캐시를 정리하는 ApplicationListener. |
+| ParentContextCloserApplicationListener | 상위 항목이 닫힌 경우 응용 프로그램 컨텍스트를 닫는 Listener.  |
+| FileEncodingApplicationListener | 시스템 파일 인코딩이 환경에서 설정된 예상 값과 일치하지 않을 경우 응용 프로그램 시작을 중지하는 ApplicationListener. |
+| AnsiOutputApplicationListener | spring.output.ansi.enabled 속성 값에 따라 AnsiOutput을 구성하는 ApplicationListener.  |
+| ConfigFileApplicationListener | 잘 알려진 파일 위치에서 속성을 로드하여 컨텍스트 환경을 구성하는 EnvironmentPostProcessor. <br/> 기본적으로 속성은 다음 위치에 있는 'application.properties' 및/또는 'application.yml' 파일에서 로드된다. |
 | DelegatingApplicationListener | |
 | ClasspathLoggingApplicationListener | |
 | LoggingApplicationListener | |
