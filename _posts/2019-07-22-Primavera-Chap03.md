@@ -13,6 +13,20 @@ comments: true
 최대한 실무에서 경험한 내용을 바탕으로 Primavera 프로젝트를 만들고자 하였습니다. 프로젝트를 만들어 가는 과정에서 많은 경험을 할 수 있을 거라 믿습니다.
 커뮤니티사이트를 만들기 간략한 기능명세와 ERD를 간략하게 정리하였습니다.
 
+## 기술명세
+* Java 12 (Switch expressions)
+* IntelliJ IDEA (2019.2)
+* MariaDB 10.3.14
+* Springboot 2.1.6.RELEASE
+* Springboot Security 2.1.6.RELEASE
+* Thymeleaf
+* Mybatis
+* JPA
+* Lombok
+* Lucy-xss
+* Flyway
+* Bootstrap
+
 ## 기능명세
 * Social 정보를 이용한 회원 가입
 * Social 정보를 이용한 로그인, 로그아웃, 탈퇴
