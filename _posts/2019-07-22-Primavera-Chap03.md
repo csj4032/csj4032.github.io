@@ -37,10 +37,10 @@ comments: true
 * 게시글 편집 기능
 
 ## ERD 및 DDL
-## ERD
+### ERD
 ![ERD](/assets/images/books/primavera/chap03/primavera.png)
 
-## SQL
+### DDL
 
 ```sql
 
