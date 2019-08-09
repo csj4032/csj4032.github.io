@@ -10,7 +10,6 @@ comments: true
 ---
 
 # 스프링 부트 개발 환경
-신입 개발자 중 상당수는 스프링 부트를 배우려 한다. 그들에게 작은 도움이나마 되길 바라며 이 책을 집필한다.
 
 ## JDK 설치
 자바 개발을 위해서는 JDK가 설치가 필요합니다.
@@ -90,7 +89,7 @@ public class HelloApplication {
  ~$ ./gradlew build && java -jar build/libs/hello-0.0.1-SNAPSHOT.jar
 ```
 
-### 스프링 부트는 어떻게 실행 되는가?
+### 스프링 부트 실행 과정 알아보기
 스프링 부트는 어떤 과정을 거처 웹 브라우저에 'Hello World' 를 출력하는지 차근차근 알아보겠습니다.
 
 HelloApplication 클래스의 main 메서드를 시작으로 SpringApplication 클래스 run 메소드를 실행 시킨다. run 메소드에는 스프링 어플리케이션을 실행 시키며 새로운 ApplicationContext 객체를 반환합니다.
