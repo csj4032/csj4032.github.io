@@ -69,9 +69,11 @@ package com.genius.primavera;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+// 스프링 부트 애플리케이션 애노테이션
 @SpringBootApplication
 public class HelloApplication {
 
+  // 스프링 부트 애플리케이션 메인 메서드
 	public static void main(String[] args) {
 		SpringApplication.run(HelloApplication.class, args);
 	}
@@ -156,7 +158,7 @@ org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
 ```
 
 ### 스프링 부트 스타터
-스타터를 통해서 어플리케이션에 필요한 종속성을 편리하게 관리 할 수 있다. 스타터를 애플리케이션에 추가하면 자동으로 관련된 의존성이 추가됩니다.
+스타터를 통해서 어플리케이션에 필요한 종속성을 편리하게 관리 할 수 있습니다. 스타터를 애플리케이션에 추가하면 자동으로 관련된 의존성이 추가됩니다.
 
 > 스프링 부트 애플리케이션 스타터
 
