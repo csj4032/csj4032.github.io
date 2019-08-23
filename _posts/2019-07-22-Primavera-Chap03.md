@@ -11,7 +11,7 @@ comments: true
 
 # Primavera 프로젝트 개요
 최대한 실무에서 경험한 내용을 바탕으로 Primavera 프로젝트를 만들고자 하였습니다. 프로젝트를 만들어 가는 과정에서 많은 경험을 할 수 있을 거라 믿습니다.
-커뮤니티사이트를 만들기 간략한 기능명세와 ERD를 간략하게 정리하였습니다.
+커뮤니티사이트를 만들기 간략한 기능명세와 ERD를 간략하게 정리하였습니다. 참고로 아래 기술명세와 기능명세는 계속 업데이트 될 예정입니다.
 
 ## 기술명세
 * Java 12 (Switch expressions)
@@ -21,7 +21,7 @@ comments: true
 * Springboot Security 2.1.6.RELEASE
 * Thymeleaf
 * Mybatis
-* JPA
+* JPA, ModelMapper
 * Lombok
 * Lucy-xss
 * Flyway
@@ -212,5 +212,5 @@ VALUES (4, 1);
 
 ```
 
-
 # 참고
+* ERD 표기 : http://www.dbguide.net/db.db?cmd=view&boardUid=12845&boardConfigUid=9&boardIdx=31&boardStep=1
