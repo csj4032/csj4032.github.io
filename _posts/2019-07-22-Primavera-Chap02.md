@@ -155,11 +155,22 @@ org.springframework.boot.context.logging.LoggingApplicationListener,\
 org.springframework.boot.liquibase.LiquibaseServiceLocatorApplicationListener
 ```
 
+### 스프링 부트 스타터
+스타터를 통해서 어플리케이션에 필요한 종속성을 편리하게 관리 할 수 있다. 스타터를 애플리케이션에 추가하면 자동으로 관련된 의존성이 추가됩니다.
+
+> 스프링 부트 애플리케이션 스타터
+
+| 이름 | 설명 |
+| --- | --- |
+| spring-boot-starter | Core starter, including auto-configuration support, logging and YAML |
+
+
 # Github
 * Source : [링크](https://github.com/csj4032/primavera/tree/master/hello)
 
 # 참고
 * Spring Boot Reference Guide : https://docs.spring.io/spring-boot/docs/current/reference/html/
 * Spring Boot CLI Download : https://docs.spring.io/spring-boot/docs/current/reference/html/getting-started-installing-spring-boot.html#getting-started-installing-the-cli
+* Spring Boot Starters : https://docs.spring.io/spring-boot/docs/2.1.7.RELEASE/reference/html/using-boot-build-systems.html#using-boot-starter
 * Building Spring Boot 2 Applications with Gradle : https://guides.gradle.org/building-spring-boot-2-projects-with-gradle
 * Spring Events : https://www.baeldung.com/spring-events
