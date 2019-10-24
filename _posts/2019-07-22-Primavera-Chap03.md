@@ -1,6 +1,6 @@
 ---
 title: Primavera Chap03
-description: Primavera 프로젝트 개요 - 스프링부트로 만드는 커뮤니티 사이트
+description: Primavera 프로젝트 기능명세
 categories:
  - Primavera
  - Spring Boot

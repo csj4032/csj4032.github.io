@@ -69,7 +69,7 @@ public class JavaDatabaseConnectivity {
 		// 2. 제공자 등록 API (구현체를 시스템에 등록하여 클라이언트가 쓸 수 있도록 함)
 		DriverManager.registerDriver(driver);
 		// 1. 서비스 인터페이스 (java.sql.Connection)
-    // 3. 서비스 접근 API (구현체에 대한 접근이 가능하도록 한다 DriverManager.getConnection) getConnection() '유연한 정적 팩터라'
+        // 3. 서비스 접근 API (구현체에 대한 접근이 가능하도록 한다 DriverManager.getConnection) getConnection() '유연한 정적 팩터라'
  		Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", null);
 		Statement statement = connection.createStatement();
 		statement.execute("");
