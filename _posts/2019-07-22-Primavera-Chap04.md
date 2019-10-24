@@ -1,6 +1,6 @@
 ---
 title: Primavera Chap04
-description: Primavera 프로젝트 Mybatis
+description: Primavera 프로젝트 Mybatis, Spring Propagation
 categories:
  - Primavera
  - Spring Boot
@@ -34,6 +34,7 @@ mybatis:
 * 지속성(Durability) : 트랜잭션 완료 후 그 결과는 설령 시스템이 실패 하더라도 살마남아야 함 (보통 트랜잭션 결과물은 퍼시스턴스 저장소에 씌어짐)
 
 # Spring Propagation
+
 | 전달 속성 | 설명 |
 |---|---|
 | REQUIRED | 진행 중인 트랜잭션이 있으면 현재 메서드를 그 트랜잭션에서 실행하되, 그렇지 않을 경우 새 트랜잭션을 시작해서 실행 |
@@ -60,9 +61,7 @@ mybatis:
 | REPEATABLE_READ | 트랜잭션이 어떤 필드를 여러 번 읽어도 동일한 값을 읽도록 보장. 트랜잭션이 지속되는 동안에는 다른 트랜잭션이 해당 필드를 변경 할 수 없음. 오염된 값 읽기, 재현 불가한 읽기 문제는 해결되지만 허상 읽기는 여젼히 숙제 |
 | SERIALIZABLE | 트랜잭션이 테이블을 여러 번 읽어도 정확히 동일한 로우를 읽도록 보장. 트랜잭션이 지속되는 동안에는 다른 트랜잭션이 해당 테이블에 삽입 수정, 삭제를 할 수 없음. 동시성 문제는 모두 해소되지만 성능은 현저히 떨어짐 |
 
-
 # 참고
-* ERD 표기 : http://www.dbguide.net/db.db?cmd=view&boardUid=12845&boardConfigUid=9&boardIdx=31&boardStep=1
 * logback [참고](https://logback.qos.ch/)
 * mybatis [참고](http://www.mybatis.org/mybatis-3/)
 * mybatis Dynamic SQL [참고](http://www.mybatis.org/mybatis-dynamic-sql/docs/introduction.html)
