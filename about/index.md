@@ -9,7 +9,9 @@ layout: page
 
 #### Description : 게으르고 명석하지 못한 개발자
 
-#### Skills : Java, ActionScript, JavaScript, SQL, PHP, Python, NodeJS, Kotlin
+#### Skills : Java, ActionScript, JavaScript, PHP, Python, NodeJS, Kotlin, Scala, SQL
+
+#### Platform : MongoDB, Hadoop, Spark, Redis, Couchbase, GCP
 
 #### Homepage : [https://alimy.choibom.com](https://alimy.choibom.com)
 
