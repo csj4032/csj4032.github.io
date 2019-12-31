@@ -6,7 +6,6 @@ categories:
 tags:
  - java
 comments: true
-published : false
 ---
 
 # 오브젝트 디자인
