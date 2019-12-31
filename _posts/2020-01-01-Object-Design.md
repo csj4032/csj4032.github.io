@@ -1,0 +1,35 @@
+---
+title: 소프트웨어 개발의 성공 열쇠 오브젝트 디자인
+description: 소프트웨어 개발의 성공 열쇠 오브젝트 디자인 책 정리
+categories:
+ - book
+tags:
+ - java
+comments: true
+published : false
+---
+
+# 오브젝트 디자인
+---
+## Chapter 1. 디자인 개념
+* 서로 협력하고, 각자의 맡은 바 책임을 수행하는 것이다.
+### 오브젝트 기계 장치
+* 복잡도를 관리하기 위해서 잘 정의된 역할을 수행하는 오브젝트들로 시스템의 동작을 분할하게 된다.
+
+## Chapter 2. 책임 기반 디자인
+
+## Chapter 3. 오브젝트 찾기
+
+## Chapter 4. 책임
+
+## Chapter 5. 협력
+
+## Chapter 6. 제어 스타일
+
+## Chapter 7. 협력 설명하기
+
+## Chapter 8. 신뢰할 수 있는 협력
+
+## Chapter 9. 유연성
+
+## Chapter 10. 디자인할 때
