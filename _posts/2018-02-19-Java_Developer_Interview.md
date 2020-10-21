@@ -301,24 +301,45 @@ public class Dispatch{
 #### Young 영역의 구성
 * Eden 영역, Suvivor 영역(2개)
 * 처리 절차
- * 새로 생성한 대부분의 객체는 Eden 영역에 위치한다.
- * Eden 영역에서 GC가 한 번 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동된다.
- * Eden 영역에서 GC가 발생하면 이미 살아남은 객체가 존재하는 Survivor 영역으로 객체가 계속 쌓인다.
- * 하나의 Survivor 영역이 가득 차게 되면 그 중에서 살아남은 객체를 다른 Survivor 영역으로 이동한다. 그리고 가득 찬 Survivor 영역은 아무 데이터도 없는 상태로 된다.
- * 이 과정을 반복하다가 계속해서 살아남아 있는 객체는 Old 영역으로 이동하게 된다.
+  * 새로 생성한 대부분의 객체는 Eden 영역에 위치한다.
+  * Eden 영역에서 GC가 한 번 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동된다.
+  * Eden 영역에서 GC가 발생하면 이미 살아남은 객체가 존재하는 Survivor 영역으로 객체가 계속 쌓인다.
+  * 하나의 Survivor 영역이 가득 차게 되면 그 중에서 살아남은 객체를 다른 Survivor 영역으로 이동한다. 그리고 가득 찬 Survivor 영역은 아무 데이터도 없는 상태로 된다.
+  * 이 과정을 반복하다가 계속해서 살아남아 있는 객체는 Old 영역으로 이동하게 된다.
 
 ![전과 후의 비교](https://d2.naver.com/content/images/2015/06/helloworld-1329-3.png)
 
 #### Old 영역에 대한 GC
 * GC 방식은 JDK 7을 기준으로 5가지 방식
- * Serial GC (-XX:+UseSerialGC) : 
-   * Young 영역에서의 GC는 앞 절에서 설명한 방식을 사용
-   * Old 영역의 GC는 mark-sweep-compact이라는 알고리즘을 사용
-   * Serial GC는 적은 메모리와 CPU 코어 개수가 적을 때 적합한 방식
- * Parallel GC
+  * Serial GC (-XX:+UseSerialGC)
+    * Young 영역에서의 GC는 앞 절에서 설명한 방식을 사용
+    * Old 영역의 GC는 mark-sweep-compact이라는 알고리즘을 사용
+    * Serial GC는 적은 메모리와 CPU 코어 개수가 적을 때 적합한 방식
+ * Parallel GC (-XX:+UseParallelGC)
+   * Parallel GC는 GC를 처리하는 쓰레드가 여러 개
+   * Parallel GC는 메모리가 충분하고 코어의 개수가 많을 때 유리
+   * Parallel GC는 Throughput GC라고도 부름
+
+![Serial GC와 Parallel GC의 차이](https://d2.naver.com/content/images/2015/06/helloworld-1329-4.png)
+
  * Parallel Old GC(Parallel Compacting GC)
+   * Parallel GC와 비교하여 Old 영역의 GC 알고리즘만 다름
+   * Mark-Summary-Compaction 단계를 거침
  * Concurrent Mark & Sweep GC(이하 CMS)
+   * 초기 Initial Mark 단계에서는 클래스 로더에서 가장 가까운 객체 중 살아 있는 객체만 찾는 것으로 끝냄
+   * Concurrent Mark 단계에서는 방금 살아있다고 확인한 객체에서 참조하고 있는 객체들을 따라가면서 확인 (다른 스레드가 실행 중인 상태에서 동시에 진행)
+   * Remark 단계에서는 Concurrent Mark 단계에서 새로 추가되거나 참조가 끊긴 객체를 확인
+   * Concurrent Sweep 단계에서는 쓰레기를 정리하는 작업을 실행 (다른 스레드가 실행 중인 상태에서 동시에 진행)
+   * 다른 GC 방식보다 메모리와 CPU를 더 많이 사용
+   * Compaction 단계가 기본적으로 제공되지 않음
+
+![Serial GC와 CMS GC](https://d2.naver.com/content/images/2015/06/helloworld-1329-5.png)
+
  * G1(Garbage First) GC
+   * G1 GC는 바둑판의 각 영역에 객체를 할당하고 GC를 실행
+   * 해당 영역이 꽉 차면 다른 영역에서 객체를 할당하고 GC를 실행
+   * Young의 세가지 영역에서 데이터가 Old 영역으로 이동하는 단계가 사라진 GC 방식
+   * G1 GC는 장기적으로 말도 많고 탈도 많은 CMS GC를 대체하기 위해서 만들어 짐
 
 ## String, StringBuilder, StringBuffer 차이
 
