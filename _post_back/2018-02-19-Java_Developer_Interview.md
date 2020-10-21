@@ -280,7 +280,7 @@ public class Dispatch{
 * 자바 언어 자체의 개념에 대한 내용을 삭제하고, 자바 언어 명세에서 찾도록 유도
 * 자바 Thread와 Lock에 대한 내용을 삭제하고, 자바 언어 명세로 내용을 넘김
 
-#### String in switch Statements
+#### String in Switch Statements
 * 자바 SE 7의 새로운 기능인 String in switch는 JVM 자체가 아니라 자바 컴파일러가 처리하고 있는 것이다. 마찬가지로 다른 자바 SE 7의 새로운 기능들도 자바 컴파일러가 처리할 것이라고 유추할 수 있다.
 
 #### Tip
@@ -574,9 +574,40 @@ public class Dispatch{
 
 # Database
 
+### Transation
+* 하나의 논리적 작업 단위를 구성하는 일련의 연산들의 집합
+
+#### ACID
+* Atomicity(원자성) : 트랜잭션의 모든 연산들이 정상적으로 수행 완료되거나 아니면 전혀 어떠한 연산도 수행되지 않은 상태를 보장
+* Consistency(일관성) : 트랜잭션의 수행을 데이터베이스 상태 간의 전이(transition)로 봤을 때, 트랜잭션 수행 전후의 데이터베이스 상태는 각각 일관성이 보장
+* Isolation(고립성) :  여러 트랜잭션이 동시에 수행되더라도 각각의 트랜잭션은 다른 트랜잭션의 수행에 영향을 받지 않고 독립적으로 수행
+* Durability(영구성) : 트랜잭션이 성공적으로 완료되어 커밋되고 나면, 해당 트랜잭션에 의한 모든 변경은 향후에 어떤 소프트웨어나 하드웨어 장애가 발생되더라도 보존
+
+#### Transation Isolation Level
+* READ UNCOMMITTED : 하나의 트랜잭션이 커밋되기 전에 그 변화가 다른 트랜잭션에 그대로 노출
+* READ COMMITTED : 다른 트랜잭션이 커밋하지 않은 정보는 읽수 없음
+* REPEATABLE READ : 하나의 트랜잭션이 읽는 로우를 다른 트랜잭션이 수정하는 것을 막음
+* SELIALIZABLE : 트랜잭션을 순차적으로 진행, 성능이슈
+
+
 # Network
 
 ## Http
+
+### CSRF 
+* Cross-Site Request Forgery
+* CSRF는 웹사이트 취약점 공격의 하나로, 사용자가 자신의 의지와는 무관하게 공격자가 의도한 행위(수정, 삭제, 등록 등)를 특정 웹사이트에 요청하게 하는 공격을 말한다. 
+사이트 간 스크립팅(XSS)을 이용한 공격이 사용자가 특정 웹사이트를 신용하는 점을 노린 것이라면, CSRF는 특정 웹사이트가 사용자의 웹 브라우저를 신용하는 상태를 노린 것이다. 
+일단 사용자가 웹사이트에 로그인한 상태에서 사이트간 요청 위조 공격 코드가 삽입된 페이지를 열면, 공격 대상이 되는 웹사이트는 위조된 공격 명령이 믿을 수 있는 사용자로부터 발송된 것으로 판단하게 되어 공격에 노출된다.
+
+### CORS
+* Cross-Origin Resource Sharing
+* 웹 애플리케이션은 리소스가 자신의 출처(도메인, 프로토콜, 포트)와 다를 때 교차 출처 HTTP 요청을 실행합니다.
+* 교차 출처 요청의 예시: https://domain-a.com의 프론트 엔드 JavaScript 코드가 XMLHttpRequest를 사용하여 https://domain-b.com/data.json을 요청하는 경우.
+![Decorator](https://mdn.mozillademos.org/files/14295/CORS_principle.png)
+* 해결법
+  * Access-Control-Allow-Origin response
+  * JSONP
 
 ### Method
 
@@ -630,7 +661,10 @@ public class Dispatch{
   * B서버는 SYN요청을 받고 A클라이언트에게 요청을 수락한다는 ACK 와 SYN flag 가 설정된 패킷을 발송하고 A가 다시 ACK으로 응답하기를 기다린다. 이때 B서버는 SYN_RECEIVED 상태가 된다.
   * A클라이언트는 B서버에게 ACK을 보내고 이후로부터는 연결이 이루어지고 데이터가 오가게 되는것이다. 이때의 B서버 상태가 ESTABLISHED 이다.
 
-# 알고리즘, 자료구조
+# 자료구조, 알고리즘
+
+## 자료구조
+* 자료구조는 컴퓨터 과학에서 효율적인 접근 및 수정을 가능케 하는 자료의 조직, 관리, 저장을 의미한다 자료 구조는 데이터 값의 모임, 또 데이터 간의 관계, 그리고 데이터에 적용할 수 있는 함수나 명령을 의미한다.
 
 # Reference
 
