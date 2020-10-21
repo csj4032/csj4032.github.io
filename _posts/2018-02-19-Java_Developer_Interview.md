@@ -298,6 +298,28 @@ public class Dispatch{
 
 ![영역 및 데이터 흐름도](http://d2.naver.com/content/images/2015/06/helloworld-1329-1.png)
 
+#### Young 영역의 구성
+* Eden 영역, Suvivor 영역(2개)
+* 처리 절차
+ * 새로 생성한 대부분의 객체는 Eden 영역에 위치한다.
+ * Eden 영역에서 GC가 한 번 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동된다.
+ * Eden 영역에서 GC가 발생하면 이미 살아남은 객체가 존재하는 Survivor 영역으로 객체가 계속 쌓인다.
+ * 하나의 Survivor 영역이 가득 차게 되면 그 중에서 살아남은 객체를 다른 Survivor 영역으로 이동한다. 그리고 가득 찬 Survivor 영역은 아무 데이터도 없는 상태로 된다.
+ * 이 과정을 반복하다가 계속해서 살아남아 있는 객체는 Old 영역으로 이동하게 된다.
+
+![전과 후의 비교](https://d2.naver.com/content/images/2015/06/helloworld-1329-3.png)
+
+#### Old 영역에 대한 GC
+* GC 방식은 JDK 7을 기준으로 5가지 방식
+ * Serial GC (-XX:+UseSerialGC) : 
+   * Young 영역에서의 GC는 앞 절에서 설명한 방식을 사용
+   * Old 영역의 GC는 mark-sweep-compact이라는 알고리즘을 사용
+   * Serial GC는 적은 메모리와 CPU 코어 개수가 적을 때 적합한 방식
+ * Parallel GC
+ * Parallel Old GC(Parallel Compacting GC)
+ * Concurrent Mark & Sweep GC(이하 CMS)
+ * G1(Garbage First) GC
+
 ## String, StringBuilder, StringBuffer 차이
 
 ### String
@@ -585,18 +607,18 @@ public class Dispatch{
 * Isolation(고립성) :  여러 트랜잭션이 동시에 수행되더라도 각각의 트랜잭션은 다른 트랜잭션의 수행에 영향을 받지 않고 독립적으로 수행
 * Durability(영구성) : 트랜잭션이 성공적으로 완료되어 커밋되고 나면, 해당 트랜잭션에 의한 모든 변경은 향후에 어떤 소프트웨어나 하드웨어 장애가 발생되더라도 보존
 
-#### Transation Isolation Level
+#### Transaction Isolation Level
 * Read uncommitted : 하나의 트랜잭션이 커밋되기 전에 그 변화가 다른 트랜잭션에 그대로 노출
-* READ COMMITTED : 다른 트랜잭션이 커밋하지 않은 정보는 읽수 없음
-* REPEATABLE READ : 하나의 트랜잭션이 읽는 로우를 다른 트랜잭션이 수정하는 것을 막음
-* SELIALIZABLE : 트랜잭션을 순차적으로 진행, 성능이슈
+* Read committed : 다른 트랜잭션이 커밋하지 않은 정보는 읽수 없음
+* Repeatable read : 하나의 트랜잭션이 읽는 로우를 다른 트랜잭션이 수정하는 것을 막음
+* Serializable : 트랜잭션을 순차적으로 진행, 성능이슈
 
-| Isolation Level | Dirty Read | Nonrepeatable Read | Phantom Read |
-|---|---|---|---|
-| Read uncommitted | Possible | Possible | Possible |
-| Read committed | Not possible | Possible | Possible |
-| Repeatable read | Not possible | Not possible | Possible |
-| Serializable | Not possible | Not possible | Not possible |
+| Isolation Level | Dirty Read | Nonrepeatable Read | Phantom Read | Serialization Anomaly |
+|---|---|---|---|---|
+| Read uncommitted | Possible | Possible | Possible | Possible |
+| Read committed | Not possible | Possible | Possible | Possible |
+| Repeatable read | Not possible | Not possible | Possible | Possible |
+| Serializable | Not possible | Not possible | Not possible | Not possible |
 
 # Network
 
@@ -688,3 +710,4 @@ public class Dispatch{
 * [Spring - IoC & DI](http://isstory83.tistory.com/m/91)
 * [캡슐화 (Encapsulation)](http://javacan.tistory.com/entry/EncapsulationExcerprtFromJavaBook)
 * [객체지향의 올바른 이해 : 5. 정보 은닉(information hiding)](http://effectiveprogramming.tistory.com/entry/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%A0%95%EB%B3%B4-%EC%9D%80%EB%8B%89information-hiding%EC%97%90-%EB%8C%80%ED%95%9C-%EC%98%AC%EB%B0%94%EB%A5%B8-%EC%9D%B4%ED%95%B4?category=660012)
+* [Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)
