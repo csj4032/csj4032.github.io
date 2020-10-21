@@ -176,42 +176,117 @@ public class Dispatch{
   * 부트스트랩 클래스 로더까지 확인해도 없으면 요청받은 클래스 로더가 파일 시스템에서 해당 클래스를 찾음
 
 #### 클래스 로더 특징
-* 계층 구조: 클래스 로더끼리 부모-자식 관계를 이루어 계층 구조로 생성된다. 최상위 클래스 로더는 부트스트랩 클래스 로더(Bootstrap Class Loader)
-* 위임 모델: 계층 구조를 바탕으로 클래스 로더끼리 로드를 위임하는 구조로 동작한다. 클래스를 로드할 때 먼저 상위 클래스 로더를 확인하여 상위 클래스 로더에 있다면 해당 클래스를 사용하고, 없다면 로드를 요청받은 클래스 로더가 클래스를 로드함
-* 가시성(visibility) 제한: 하위 클래스 로더는 상위 클래스 로더의 클래스를 찾을 수 있지만, 상위 클래스 로더는 하위 클래스 로더의 클래스를 찾을 수 없음
-* 언로드 불가: 클래스 로더는 클래스를 로드할 수는 있지만 언로드할 수는 없다. 언로드 대신, 현재 클래스 로더를 삭제하고 아예 새로운 클래스 로더를 생성하는 방법을 사용할 수 있음
+* 계층 구조
+  * 클래스 로더끼리 부모-자식 관계를 이루어 계층 구조로 생성 
+  * 최상위 클래스 로더는 부트스트랩 클래스 로더(Bootstrap Class Loader)
+* 위임 모델 
+  * 계층 구조를 바탕으로 클래스 로더끼리 로드를 위임하는 구조로 동작 
+  * 클래스를 로드할 때 먼저 상위 클래스 로더를 확인하여 상위 클래스 로더에 있다면 해당 클래스를 사용하고, 없다면 로드를 요청받은 클래스 로더가 클래스를 로드
+* 가시성(visibility) 제한
+  * 하위 클래스 로더는 상위 클래스 로더의 클래스를 찾을 수 있지만, 상위 클래스 로더는 하위 클래스 로더의 클래스를 찾을 수 없음
+* 언로드 불가 
+  * 클래스 로더는 클래스를 로드할 수는 있지만 언로드할 수는 없음 
+  * 언로드 대신, 현재 클래스 로더를 삭제하고 아예 새로운 클래스 로더를 생성하는 방법을 사용할 수 있음
 
 ![클래스 로더 위임 모델](http://d2.naver.com/content/images/2015/06/helloworld-1230-2.png)
 
 #### 클래스 로더 위임 모델
-* 부트스트랩 클래스 로더: JVM을 기동할 때 생성되며, Object 클래스들을 비롯하여 자바 API들을 로드 다른 클래스 로더와 달리 자바가 아니라 네이티브 코드로 구현
-* 익스텐션 클래스 로더(Extension Class Loader): 기본 자바 API를 제외한 확장 클래스들을 로드 다양한 보안 확장 기능 등을 여기에서 로드
-* 시스템 클래스 로더(System Class Loader): 부트스트랩 클래스 로더와 익스텐션 클래스 로더가 JVM 자체의 구성 요소들을 로드하는 것이라 한다면, 시스템 클래스 로더는 애플리케이션의 클래스들을 로드한다고 할 수 있음
+* 부트스트랩 클래스 로더: 
+  * JVM을 기동할 때 생성되며, Object 클래스들을 비롯하여 자바 API들을 로드 
+  * 다른 클래스 로더와 달리 자바가 아니라 네이티브 코드로 구현
+  * the runtime classes in rt.jar, internationalization classes in i18n.jar, and others.
+* 익스텐션 클래스 로더(Extension Class Loader)
+  * 기본 자바 API를 제외한 확장 클래스들을 로드 다양한 보안 확장 기능 등을 여기에서 로드
+  * classes in JAR files in the lib/ext directory of the JRE, and in the system-wide, platform-specific extension directory
+* 시스템 클래스 로더(System Class Loader)
+  * 부트스트랩 클래스 로더와 익스텐션 클래스 로더가 JVM 자체의 구성 요소들을 로드하는 것이라 한다면, 시스템 클래스 로더는 애플리케이션의 클래스들을 로드한다고 할 수 있음
+  * loads files found in the classpath environment variable, -classpath or -cp command line option
 * 사용자가 지정한 $CLASSPATH 내의 클래스들을 로드
 * 사용자 정의 클래스 로더(User-Defined Class Loader): 애플리케이션 사용자가 직접 코드 상에서 생성해서 사용하는 클래스 로더
 * 웹 애플리케이션 서버(WAS)와 같은 프레임워크는 웹 애플리케이션들, 엔터프라이즈 애플리케이션들이 서로 독립적으로 동작하게 하기 위해 사용자 정의 클래스 로더를 사용 (클래스 로더의 위임 모델을 통해 애플리케이션의 독립성을 보장)
 * WAS의 클래스 로더 구조는 WAS 벤더마다 조금씩 다른 형태의 계층 구조를 사용
 
+#### Run-Time Built-in Class Loaders (JDK 9+)
+* Application class loader
+  * 애플리케이션 클래스 로더는 일반적으로 애플리케이션 클래스 경로에서 클래스를 정의하는 데 사용됩니다. 도구 또는 내보내기 도구 API를 제공하는 JDK 모듈의 기본 로더입니다.
+* Platform class loader
+  * Java SE 및 JDK 모듈에서 선택 (보안 / 권한 기반)합니다. 예 : java.sql
+* Bootstrap class loader
+  * 핵심 Java SE 및 JDK 모듈을 정의합니다.
+
+
 ![클래스 로드 단계](http://d2.naver.com/content/images/2015/06/helloworld-1230-3.png)
 
-* 로드: 클래스를 파일에서 가져와서 JVM의 메모리에 로드
-* 검증(Verifying): 읽어 들인 클래스가 자바 언어 명세(Java Language Specification) 및 JVM 명세에 명시된 대로 잘 구성되어 있는지 검사 클래스 로드의 전 과정 중에서 가장 까다로운 검사를 수행하는 과정으로서 가장 복잡하고 시간이 많이 걸린다. JVM TCK의 테스트 케이스 중에서 가장 많은 부분이 잘못된 클래스를 로드하여 정상적으로 검증 오류를 발생시키는지 테스트하는 부분
-* 준비(Preparing): 클래스가 필요로 하는 메모리를 할당하고, 클래스에서 정의된 필드, 메서드, 인터페이스들을 나타내는 데이터 구조를 준비
-* 분석(Resolving): 클래스의 상수 풀 내 모든 심볼릭 레퍼런스를 다이렉트 레퍼런스로 변경
-* 초기화: 클래스 변수들을 적절한 값으로 초기화한다. 즉, static initializer들을 수행하고, static 필드들을 설정된 값으로 초기화
+* 로드(Loading)
+  * 클래스를 파일에서 가져와서 JVM의 메모리에 로드
+* Linking
+  * 검증(Verifying)
+    * 가져온 유형의 정확성 보장
+    * 읽어 들인 클래스가 자바 언어 명세(Java Language Specification) 및 JVM 명세에 명시된 대로 잘 구성되어 있는지 검사 클래스 로드의 전 과정 중에서 가장 까다로운 검사를 수행하는 과정으로서 가장 복잡하고 시간이 많이 걸림
+    * JVM TCK의 테스트 케이스 중에서 가장 많은 부분이 잘못된 클래스를 로드하여 정상적으로 검증 오류를 발생시키는지 테스트하는 부분
+  * 준비(Preparing)
+    * 클래스가 필요로 하는 메모리를 할당하고, 클래스에서 정의된 필드, 메서드, 인터페이스들을 나타내는 데이터 구조를 준비
+  * 분석(Resolving)
+    * 클래스의 상수 풀 내 모든 심볼릭 레퍼런스를 다이렉트 레퍼런스로 변경
+* 초기화(Initialization)
+  * 클래스 변수들을 적절한 값으로 초기화
+  * static initializer들을 수행하고, static 필드들을 설정된 값으로 초기화
 
 #### 런타임 데이터 영역
-* 런타임 데이터 영역은 JVM이라는 프로그램이 운영체제 위에서 실행되면서 할당받는 메모리 영역이다. 런타임 데이터 영역은 6개의 영역으로 나눌 수 있다.
-* 이중 PC 레지스터(PC Register), JVM 스택(JVM Stack), 네이티브 메서드 스택(Native Method Stack)은 스레드마다 하나씩 생성되며 힙(Heap), 메서드 영역(Method Area), 런타임 상수 풀(Runtime Constant Pool)은 모든 스레드가 공유해서 사용
+* 런타임 데이터 영역은 JVM이라는 프로그램이 운영체제 위에서 실행되면서 할당받는 메모리 영역
+* 런타임 데이터 영역은 6개의 영역으로 나눌 수 있다.
 
 ![런타임 데이터 영역](http://d2.naver.com/content/images/2015/06/helloworld-1230-4.png)
 
-* PC 레지스터: PC(Program Counter) 레지스터는 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성된다. PC 레지스터는 현재 수행 중인 JVM 명령의 주소를 가짐
-* JVM 스택: JVM 스택은 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성된다.
-* 스택 프레임(Stack Frame)이라는 구조체를 저장하는 스택으로, JVM은 오직 JVM 스택에 스택 프레임을 추가하고(push) 제거하는(pop) 동작만 수행한다.
-* 예외 발생 시 printStackTrace() 등의 메서드로 보여주는 Stack Trace의 각 라인은 하나의 스택 프레임을 표현
+* PC 레지스터(The PC Register)
+  * PC(Program Counter) 레지스터는 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성 
+  * PC 레지스터는 현재 수행 중인 JVM 명령의 주소를 가짐
 
 ![JVM 스택 구성](http://d2.naver.com/content/images/2015/06/helloworld-1230-5.png)
+
+* JVM 스택(Java Virtual Machine Stacks)
+  * JVM 스택은 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성
+  * 스택 프레임(Stack Frame)이라는 구조체를 저장하는 스택
+  * JVM은 오직 JVM 스택에 스택 프레임을 추가하고(push) 제거하는(pop) 동작만 수행
+  * 예외 발생 시 printStackTrace() 등의 메서드로 보여주는 Stack Trace의 각 라인은 하나의 스택 프레임을 표현
+    * 스택 프레임
+      * JVM 내에서 메서드가 수행될 때마다 하나의 스택 프레임이 생성되어 해당 스레드의 JVM 스택에 추가되고 메서드가 종료되면 스택 프레임이 제거 
+      * 각 스택 프레임은 지역 변수 배열(Local Variable Array), 피연산자 스택(Operand Stack), 현재 실행 중인 메서드가 속한 클래스의 런타임 상수 풀에 대한 레퍼런스를 가짐
+      * 지역 변수 배열, 피연산자 스택의 크기는 컴파일 시에 결정되기 때문에 스택 프레임의 크기도 메서드에 따라 크기가 고정
+      * 스레드에 의해 생성 된 프레임은 해당 스레드에 국한되며 다른 스레드에서 참조 할 수 없음
+      ** 지역 변수 배열 (Local Variables)
+        * 0부터 시작하는 인덱스를 가진 배열
+        * 0은 메서드가 속한 클래스 인스턴스의 this 레퍼런스이고, 1부터는 메서드에 전달된 파라미터들이 저장되며, 메서드 파라미터 이후에는 메서드의 지역 변수들이 저장
+      ** 피연산자 스택(Operand Stacks)
+        * 메서드의 실제 작업 공간 
+        * 각 메서드는 피연산자 스택과 지역 변수 배열 사이에서 데이터를 교환하고, 다른 메서드 호출 결과를 추가하거나(push) 꺼낸다(pop) 
+        * 피연산자 스택(LIFO) 공간이 얼마나 필요한지는 컴파일할 때 결정할 수 있으므로, 피연산자 스택의 크기도 컴파일 시에 결정 [참고](https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-2.html#jvms-2.5)
+      ** Dynamic Linking
+        * 각 프레임에는 메서드 코드의 동적 연결을 지원하기 위해 현재 메서드 유형에 대한 런타임 상수 풀에 대한 참조가 포함
+        * 메서드의 클래스 파일 코드는 호출 할 메서드와 기호 참조를 통해 액세스 할 변수를 나타냄
+      ** Normal Method Invocation Completion
+      ** Abrupt Method Invocation Completion
+* Heap
+  * JVM 성능 등의 이슈에서 가장 많이 언급되는 공간
+  * Java Virtual Machine에는 모든 Java Virtual Machine 스레드간에 공유 
+  * 힙은 모든 클래스 인스턴스 및 배열에 대한 메모리가 할당되는 런타임 데이터 영역
+  * 힙은 가상 머신 시작시 생성
+  * 개체에 대한 힙 저장소는 자동 저장소 관리 시스템 (가비지컬렉터)에 의해 회수
+  * Java Virtual Machine은 특정 유형의 자동 스토리지 관리 시스템을 가정하지 않으며 스토리지 관리 기술은 구현 자의 시스템 요구 사항에 따라 선택할 수 있음
+* 메서드 영역(Method Area)
+  * 메서드 영역은 모든 스레드가 공유하는 영역으로 JVM이 시작될 때 생성 
+  * JVM이 읽어 들인 각각의 클래스와 인터페이스에 대한 런타임 상수 풀, 필드와 메서드 정보, Static 변수, 메서드의 바이트코드 등을 보관 
+  * 메서드 영역은 JVM 벤더마다 다양한 형태로 구현할 수 있으며, 오라클 핫스팟 JVM(HotSpot JVM)에서는 흔히 Permanent Area, 혹은 Permanent Generation(PermGen)이라고 불림 
+  * 메서드 영역에 대한 가비지 컬렉션은 JVM 벤더의 선택 사항
+* 런타임 상수 풀(Runtime Constant Pool)
+  * 클래스 파일 포맷에서 constant_pool 테이블에 해당하는 영역 
+  * 메서드 영역에 포함되는 영역이긴 하지만, JVM 동작에서 가장 핵심적인 역할을 수행하는 곳이기 때문에 JVM 명세에서도 따로 중요하게 기술 
+  * 각 클래스와 인터페이스의 상수뿐만 아니라, 메서드와 필드에 대한 모든 레퍼런스까지 담고 있는 테이블 
+  * 메서드나 필드를 참조할 때 JVM은 런타임 상수 풀을 통해 해당 메서드나 필드의 실제 메모리상 주소를 찾아서 참조
+* Native Method Stacks
+  * 자바 외의 언어로 작성된 네이티브 코드를 위한 스택 
+  * JNI(Java Native Interface)를 통해 호출하는 C/C++ 등의 코드를 수행하기 위한 스택 
+  * 언어에 맞게 C 스택이나 C++ 스택이 생성
 
 * 스택 프레임
  * JVM 내에서 메서드가 수행될 때마다 하나의 스택 프레임이 생성되어 해당 스레드의 JVM 스택에 추가되고 메서드가 종료되면 스택 프레임이 제거된다.
@@ -314,6 +389,10 @@ public class Dispatch{
   * Serial GC (-XX:+UseSerialGC)
     * Young 영역에서의 GC는 앞 절에서 설명한 방식을 사용
     * Old 영역의 GC는 mark-sweep-compact이라는 알고리즘을 사용
+      * 절차
+        1. Old 영역에 살아 있는 객체를 식별(Mark)
+        2. 힙(heap)의 앞 부분부터 확인하여 살아 있는 것만 남김(Sweep)
+        3. 각 객체들이 연속되게 쌓이도록 힙의 가장 앞 부분부터 채워서 객체가 존재하는 부분과 객체가 없는 부분으로 나눔(Compaction).
     * Serial GC는 적은 메모리와 CPU 코어 개수가 적을 때 적합한 방식
  * Parallel GC (-XX:+UseParallelGC)
    * Parallel GC는 GC를 처리하는 쓰레드가 여러 개
@@ -326,10 +405,11 @@ public class Dispatch{
    * Parallel GC와 비교하여 Old 영역의 GC 알고리즘만 다름
    * Mark-Summary-Compaction 단계를 거침
  * Concurrent Mark & Sweep GC(이하 CMS)
-   * 초기 Initial Mark 단계에서는 클래스 로더에서 가장 가까운 객체 중 살아 있는 객체만 찾는 것으로 끝냄
-   * Concurrent Mark 단계에서는 방금 살아있다고 확인한 객체에서 참조하고 있는 객체들을 따라가면서 확인 (다른 스레드가 실행 중인 상태에서 동시에 진행)
-   * Remark 단계에서는 Concurrent Mark 단계에서 새로 추가되거나 참조가 끊긴 객체를 확인
-   * Concurrent Sweep 단계에서는 쓰레기를 정리하는 작업을 실행 (다른 스레드가 실행 중인 상태에서 동시에 진행)
+   * 절차
+     1. 초기 Initial Mark 단계에서는 클래스 로더에서 가장 가까운 객체 중 살아 있는 객체만 찾는 것으로 끝냄
+     2. Concurrent Mark 단계에서는 방금 살아있다고 확인한 객체에서 참조하고 있는 객체들을 따라가면서 확인 (다른 스레드가 실행 중인 상태에서 동시에 진행)
+     3. Remark 단계에서는 Concurrent Mark 단계에서 새로 추가되거나 참조가 끊긴 객체를 확인
+     4. Concurrent Sweep 단계에서는 쓰레기를 정리하는 작업을 실행 (다른 스레드가 실행 중인 상태에서 동시에 진행)
    * 다른 GC 방식보다 메모리와 CPU를 더 많이 사용
    * Compaction 단계가 기본적으로 제공되지 않음
 
@@ -629,10 +709,20 @@ public class Dispatch{
 * Durability(영구성) : 트랜잭션이 성공적으로 완료되어 커밋되고 나면, 해당 트랜잭션에 의한 모든 변경은 향후에 어떤 소프트웨어나 하드웨어 장애가 발생되더라도 보존
 
 #### Transaction Isolation Level
-* Read uncommitted : 하나의 트랜잭션이 커밋되기 전에 그 변화가 다른 트랜잭션에 그대로 노출
-* Read committed : 다른 트랜잭션이 커밋하지 않은 정보는 읽수 없음
-* Repeatable read : 하나의 트랜잭션이 읽는 로우를 다른 트랜잭션이 수정하는 것을 막음
-* Serializable : 트랜잭션을 순차적으로 진행, 성능이슈
+* Read uncommitted
+  * 트랜잭션에 처리중인 혹은 아직 커밋되지 않은 데이터를 다른 트랜잭션이 읽는 것을 허용
+  * 어떤 사용자가 A라는 데이터를 B라는 데이터로 변경하는 동안 다른 사용자는 B라는 아직 완료되지 않은(Uncommitted 혹은 Dirty) 데이터 B를 읽을 수 있음
+  * Dirty read : 위와 같이 다른 트랜잭션에서 처리하는 작업이 완료되지 않았는데도 다른 트랜잭션에서 볼 수 있는 현상을 dirty read 라고 하며, READ UNCOMMITTED 격리수준에서만 일어나는 현상
+* Read committed 
+  * 트랜잭션이 커밋되어 확정된 데이터만을 읽는 것을 허용
+  * dirty read 방지
+* Repeatable read 
+  * 하나의 트랜잭션이 읽는 로우를 다른 트랜잭션이 수정하는 것을 막음
+  * 트랜잭션이 완료될 때까지 SELECT 문장이 사용하는 모든 데이터에 shared lock이 걸리므로 다른 사용자는 그 영역에 해당되는 데이터에 대한 수정이 불가능
+  * 선행 트랜잭션이 읽은 데이터는 트랜잭션이 종료될 때까지 후행 트랜잭션이 갱신하거나 삭제하는 것을 불허함으로써 같은 데이터를 두 번 쿼리했을 때 일관성 있는 결과를 리턴함
+* Serializable
+  * 트랜잭션을 순차적으로 진행
+  * 완벽한 읽기 일관성 모드를 제공
 
 | Isolation Level | Dirty Read | Nonrepeatable Read | Phantom Read | Serialization Anomaly |
 |---|---|---|---|---|
@@ -717,9 +807,49 @@ public class Dispatch{
 ## 자료구조
 * 자료구조는 컴퓨터 과학에서 효율적인 접근 및 수정을 가능케 하는 자료의 조직, 관리, 저장을 의미한다 자료 구조는 데이터 값의 모임, 또 데이터 간의 관계, 그리고 데이터에 적용할 수 있는 함수나 명령을 의미한다.
 
+# Spring
+
+## AOP
+## Bean Scope
+## Transaction Propagation
+* Required
+   * 현재 트랜잭션을 지원하고 존재하지 않는 경우 새 트랜잭션을 만듬
+   * 동일한 이름의 EJB 트랜잭션 속성과 유사
+   * 트랜잭션 주석의 기본 설정
+* Supports
+   * 현재 트랜잭션을 지원하고, 존재하지 않으면 비 트랜잭션으로 실행 
+   * 동일한 이름의 EJB 트랜잭션 속성과 유사
+   * 트랜잭션 동기화를 사용하는 트랜잭션 관리자의 경우 SUPPORTS는 동기화가 적용될 트랜잭션 범위를 정의하므로 트랜잭션이없는 것과 약간 다름 
+   * 결과적으로 동일한 리소스 (JDBC 연결, Hibernate 세션 등)가 지정된 전체 범위에 대해 공유, 이는 트랜잭션 관리자의 실제 동기화 구성에 따라 다름
+* Mandatory
+   * 현재 트랜잭션을 지원하고, 존재하지 않으면 예외를 발생
+   * 동일한 이름의 EJB 트랜잭션 속성과 유사
+* RequiredNew
+   * 새 트랜잭션을 만들고 현재 트랜잭션이 있으면 일시 중단
+   * 동일한 이름의 EJB 트랜잭션 속성과 유사
+   * 실제 거래 일시 중단은 모든 거래 관리자에게 즉시 적용되지는 않음 
+   * 특히 JtaTransactionManager에 적용되며, javax.transaction.TransactionManager를 사용할 수 있어야함 (표준 Java EE에서 서버에 따라 다름)
+* Not Supported
+   * 비 트랜잭션 방식으로 실행하고 현재 트랜잭션이있는 경우 일시 중단 
+   * 동일한 이름의 EJB 트랜잭션 속성과 유사
+   * 실제 거래 일시 중단은 모든 거래 관리자에게 즉시 적용되지는 않음 
+   * JtaTransactionManager에 적용되며, javax.transaction.TransactionManager를 사용할 수 있어야함 (표준 Java EE에서 서버에 따라 다름)
+* Never
+   * 비 트랜잭션 방식으로 실행하고 트랜잭션이있는 경우 예외를 발생 
+   * 동일한 이름의 EJB 트랜잭션 속성과 유사합니다.
+* Nested
+   * 현재 트랜잭션이 있으면 중첩 트랜잭션 내에서 실행하고 그렇지 않으면 REQUIRED처럼 동작. 
+   * EJB에는 유사한 기능이 없음
+   * 중첩 된 트랜잭션의 실제 생성은 특정 트랜잭션 관리자에서만 작동 
+   * 기본적으로 이것은 JDBC DataSourceTransactionManager에만 적용 
+   * 일부 JTA 공급자는 중첩 된 트랜잭션도 지원할 수 있습니다.
+
 # Reference
 
+* [Java Virtual Machine Internals, Part 1: Class Loader](https://dzone.com/articles/java-virtual-machine-internals-class-loader)
+* [Java Virtual Machine Internals, Part 2: Class File Format] https://dzone.com/articles/java-virtual-machine-internals-part-2-class-file-f
 * [JVM Internal](http://d2.naver.com/helloworld/1230)
+* [Loading, Linking, and Initializing](https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-5.html)
 * [JDBC Internal - 타임아웃의 이해](http://d2.naver.com/helloworld/1321)
 * [Java Garbage Collection](http://d2.naver.com/helloworld/1329)
 * [Garbage Collection 모니터링 방법](http://d2.naver.com/helloworld/6043)
