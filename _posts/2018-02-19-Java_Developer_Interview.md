@@ -320,8 +320,7 @@ public class Dispatch{
 ### ETC
 * JDK 1.4 이하에서는 String 타입은 그대로 컴파일
 * JDK 1.5 이후부터 성능이슈로 인해 컴파일러가 자동으로 String 타입을 StringBuilder로 치환하여 컴파일
-* JDK 1.9
-  * [Evolution of Strings in Java to Compact Strings and Indify String Concatenation](https://arnaudroger.github.io/blog/2017/06/14/CompactStrings.html)
+* JDK 1.9 [Evolution of Strings in Java to Compact Strings and Indify String Concatenation](https://arnaudroger.github.io/blog/2017/06/14/CompactStrings.html)
 
 ## Tread
 
@@ -331,6 +330,9 @@ public class Dispatch{
 * 스레드 로컬 변수는 변경 가능한 싱글턴이나 전역 변수 등을 기반으로 설계되어 있는 구조에서 변수가 임의로 공유되는 상황을 막기 위해 사용하는 경우가 많음
 * ThreadLocal 클래스는 애플리케이션 프레임원을 구현할 때 상당히 많이 사용되는 편
   * 예를 들어 J2EE 컨테이너는 EJB를 사용하는 동안 해당 스레드와 트랜잭션 컨텍스트를 연결해 관리
+
+## 동기화
+
 
 ## Collection
 
@@ -584,11 +586,17 @@ public class Dispatch{
 * Durability(영구성) : 트랜잭션이 성공적으로 완료되어 커밋되고 나면, 해당 트랜잭션에 의한 모든 변경은 향후에 어떤 소프트웨어나 하드웨어 장애가 발생되더라도 보존
 
 #### Transation Isolation Level
-* READ UNCOMMITTED : 하나의 트랜잭션이 커밋되기 전에 그 변화가 다른 트랜잭션에 그대로 노출
+* Read uncommitted : 하나의 트랜잭션이 커밋되기 전에 그 변화가 다른 트랜잭션에 그대로 노출
 * READ COMMITTED : 다른 트랜잭션이 커밋하지 않은 정보는 읽수 없음
 * REPEATABLE READ : 하나의 트랜잭션이 읽는 로우를 다른 트랜잭션이 수정하는 것을 막음
 * SELIALIZABLE : 트랜잭션을 순차적으로 진행, 성능이슈
 
+| Isolation Level | Dirty Read | Nonrepeatable Read | Phantom Read |
+|---|---|---|---|
+| Read uncommitted | Possible | Possible | Possible |
+| Read committed | Not possible | Possible | Possible |
+| Repeatable read | Not possible | Not possible | Possible |
+| Serializable | Not possible | Not possible | Not possible |
 
 # Network
 
