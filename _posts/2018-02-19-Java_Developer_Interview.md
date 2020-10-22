@@ -904,7 +904,7 @@ public class PrivateMatter {
     * REST 서버는 다중 계층으로 구성될 수 있으며 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있고 PROXY, 게이트웨이 같은 네트워크 기반의 중간매체를 사용할 수 있게 함
 
 ## HTTP와 HTTPS 차이 및 S가 보호하는 OSI7계층 위치
-* HTTP : 
+* HTTP
   * 인터넷에서 하이퍼텍스트(hypertext) 문서를 교환하기 위하여 사용되는 통신규약 
   * 하이퍼텍스트는 문서 중간중간에 특정 키워드를 두고 문자나 그림을 상호 유기적으로 결합하여 연결시킴으로써, 서로 다른 문서라 할지라도 하나의 문서인 것처럼 보이면서 참조하기 쉽도록 하는 방식을 의미
 * HTTPS
@@ -954,7 +954,35 @@ public class PrivateMatter {
 # Spring
 
 ## AOP
+* Aspect
+* Weaving
+* Join point
+* Targe object
+* Advice
+  * Before advice
+  * After retunning advice
+  * After throwing advice
+  * After (finally) advice
+  * Around advice
 ## Bean Scope
+* Singleton
+  * 각 Spring IoC 컨테이너에 대한 단일 객체 인스턴스에 단일 Bean 정의 범위를 지정
+* Prototype
+  * 임의의 수의 오브젝트 인스턴스로 단일 Bean 정의 범위를 지정
+* Request
+  * 단일 빈 정의의 범위를 단일 HTTP 요청의 수명 주기로 지정 
+  * 각 HTTP 요청에는 단일 빈 정의 뒤에서 생성 된 빈 인스턴스 
+  * 웹 인식 Spring ApplicationContext의 컨텍스트에서만 유효
+* Session
+  * 단일 Bean 정의의 범위를 HTTP 세션의 라이프 사이클로 지정 
+  * 웹 인식 Spring ApplicationContext의 컨텍스트에서만 유효
+* Application
+  * 단일 빈 정의의 범위를 ServletContext의 수명 주기로 지정
+  * 웹 인식 Spring ApplicationContext의 컨텍스트에서만 유효합니다.
+* Websocket
+  * WebSocket의 라이프 사이클에 대한 단일 Bean 정의 범위를 지정 
+  * 웹 인식 Spring ApplicationContext의 컨텍스트에서만 유효
+
 ## Transaction Propagation
 * Required
    * 현재 트랜잭션을 지원하고 존재하지 않는 경우 새 트랜잭션을 만듬
@@ -987,6 +1015,22 @@ public class PrivateMatter {
    * 중첩 된 트랜잭션의 실제 생성은 특정 트랜잭션 관리자에서만 작동 
    * 기본적으로 이것은 JDBC DataSourceTransactionManager에만 적용 
    * 일부 JTA 공급자는 중첩 된 트랜잭션도 지원할 수 있습니다.
+
+# JPA
+* 1차 캐시
+  * 영속성 컨텍스트 내부에 있음
+  * 엔티티 매니저로 조회하거나 변경하는 모든 엔티티는 1차 캐시에 저장
+  * JAP를 J2EE나 스프링 프레임워크 같은 컨테이너 위에서 실행하면 컨텍스트도 종료
+  * OSVI를 사용하면 요청의 시작부터 끝까지 같은 영속성 컨텍스트를 유지
+* 2차 캐시
+  * 애플리케이션 범위의 캐시
+  * 분산 캐시나 클러스터링 환경의 캐시는 애플리케이션보다 더 오래 유지될 수 있음
+  * 2차 캐시의 동작 방식
+    1. 영속성 컨텍스트는 엔티티가 필요한면 2차 캐시를 조회
+    2. 2차 캐시에 엔티티가 없으면 데이터베이스를 조회
+    3. 결과를 2차 캐시에 보관
+    4. 2차 캐시는 자신이 보관하고 있는 엔티티를 복사해서 반환
+    5. 2차 캐시에 저장되어 있는 엔티티를 조회하면 복사본을 만들어 반환
 
 # Redis
 * 레디스는 고성능 키-값 저장소로서 문자열, 리스트, 해시, 셋, 정렬된 셋 형식으로 데이터를 지원하는 NoSQL
