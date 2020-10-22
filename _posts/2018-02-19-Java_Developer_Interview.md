@@ -610,6 +610,16 @@ public class PrivateMatter {
 ## AOP
 
 ## 디자인패턴
+* 패턴 분류 기준
+  * 목적 (Purpose)
+    * 생성 : 객체의 생성 과정에 관여하는 것
+    * 구조 : 클래스나 객체의 합성에 관한 패턴
+    * 행동 : 클래스나 객체들의 상호작용하는 방법과 책임을 분상하는 방법 정의
+  * 범위 (Scope)
+    * 클래스 : 클래스와 서브클래스 간의 관련성을 다루는 패턴
+    * 객체 : 객체 관련성을 다루는 패턴, 런타임에 변경할 수 있으며 더 동적인 성격을 가짐
+
+![디자인 패턴 영역](/assets/images/etc/javadevlopinterview/design-pattern.png)
 
 ### Iterator
 * 순서대로 지정해서 처리하기
@@ -868,7 +878,30 @@ public class PrivateMatter {
 
 ### RESTful API
 * Representational State Transfer 라는 용어의 약자로서 2000년도에 로이 필딩 (Roy Fielding)의 박사학위 논문에서 최초로 소개
-* REST는 요소로는 크게 리소스,메서드,메세지 3가지 요소로 구성
+* REST 요소
+  * 자원 (Resource) - URL
+  * 행위 (Verb) - HTTP Method
+  * 표현 (Repesentations)
+* REST 의 특정
+  * Uniform (유니폼 인터페이스)
+    * Uniform Interface는 URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일을 말함
+  * Stateless (무상태성)
+    * REST는 무상태성 성격 
+    * 다시 말해 작업을 위한 상태정보를 따로 저장하고 관리하지 않음 
+    * 세션 정보나 쿠키정보를 별도로 저장하고 관리하지 않기 때문에 API 서버는 들어오는 요청만을 단순히 처리하면 됨 
+    * 서비스의 자유도가 높아지고 서버에서 불필요한 정보를 관리하지 않음으로써 구현이 단순해짐
+  * Cacheable (캐시 가능)
+    * REST의 가장 큰 특징 중 하나는 HTTP라는 기존 웹표준을 그대로 사용
+    * 웹에서 사용하는 기존 인프라를 그대로 활용이 가능 
+    * HTTP가 가진 캐싱 기능이 적용 가능 
+    * HTTP 프로토콜 표준에서 사용하는 Last-Modified태그나 E-Tag를 이용하면 캐싱 구현이 가능
+  * **Self-descriptiveness (자체 표현 구조)
+    * REST의 또 다른 큰 특징 중 하나는 REST API 메시지만 보고도 이를 쉽게 이해 할 수 있는 자체 표현 구조로 되어 있다는 것
+  * Client - Server 구조
+    * REST 서버는 API 제공 
+    * 클라이언트는 사용자 인증이나 컨텍스트(세션, 로그인 정보)등을 직접 관리하는 구조로 각각의 역할이 확실히 구분되기 때문에 클라이언트와 서버에서 개발해야 할 내용이 명확해지고 서로간 의존성이 줄어들게 됨
+  * 계층형 구조
+    * REST 서버는 다중 계층으로 구성될 수 있으며 보안, 로드 밸런싱, 암호화 계층을 추가해 구조상의 유연성을 둘 수 있고 PROXY, 게이트웨이 같은 네트워크 기반의 중간매체를 사용할 수 있게 함
 
 ## HTTP와 HTTPS 차이 및 S가 보호하는 OSI7계층 위치
 * HTTP : 
@@ -955,16 +988,29 @@ public class PrivateMatter {
    * 기본적으로 이것은 JDBC DataSourceTransactionManager에만 적용 
    * 일부 JTA 공급자는 중첩 된 트랜잭션도 지원할 수 있습니다.
 
-# MAS
-
+# 마이크로서비스 (MSA)
+* 마이크로서비스
+  * 작고 자율적으로 협업하는 서비스
+## 마이크로서비스 아키텍처의 장점
+* 크고 복잡한 애플리케이션을 지속적으로 전달/배포 할 수 있음
+* 서비스 규모가 작아 관리하기 쉬움
+* 서비스를 독립적으로 배포/확장할 수 있음
+* 마이크로서비스 아키텍처 덕분에 팀이 자율적으로 움직임
+* 결함 격리가 잘됨
+* 새로운 기술을 실험하고 도입하기 쉬움
+## 마이크로서비스 아키텍처의 단점
+* 딱 맞는 서비스를 찾기가 쉽지 않음
+* 분산 시스템은 너무 복잡해서 개발, 테스트, 배포가 어려움
+* 여러 서비스에 걸친 기능을 배포할 때에는 잘 조정해야 함
+* 마이크로서비스 아키텍처 도임 시점을 결정하기 어려움
 
 # Reference
 
 * [Java Virtual Machine Internals, Part 1: Class Loader](https://dzone.com/articles/java-virtual-machine-internals-class-loader)
-* [Java Virtual Machine Internals, Part 2: Class File Format] https://dzone.com/articles/java-virtual-machine-internals-part-2-class-file-f
+* [Java Virtual Machine Internals, Part 2: Class File Format](https://dzone.com/articles/java-virtual-machine-internals-part-2-class-file-f)
 * [JVM Internal](http://d2.naver.com/helloworld/1230)
 * [Loading, Linking, and Initializing](https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-5.html)
-* [HotSpot Runtime Overview]{https://openjdk.java.net/groups/hotspot/docs/RuntimeOverview.html}
+* [HotSpot Runtime Overview](https://openjdk.java.net/groups/hotspot/docs/RuntimeOverview.html)
 * [JDBC Internal - 타임아웃의 이해](http://d2.naver.com/helloworld/1321)
 * [Java Garbage Collection](http://d2.naver.com/helloworld/1329)
 * [Garbage Collection 모니터링 방법](http://d2.naver.com/helloworld/6043)
@@ -977,3 +1023,4 @@ public class PrivateMatter {
 * [캡슐화 (Encapsulation)](http://javacan.tistory.com/entry/EncapsulationExcerprtFromJavaBook)
 * [객체지향의 올바른 이해 : 5. 정보 은닉(information hiding)](http://effectiveprogramming.tistory.com/entry/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%A0%95%EB%B3%B4-%EC%9D%80%EB%8B%89information-hiding%EC%97%90-%EB%8C%80%ED%95%9C-%EC%98%AC%EB%B0%94%EB%A5%B8-%EC%9D%B4%ED%95%B4?category=660012)
 * [Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)
+* [REST API 제대로 알고 사용하기 : TOAST Meetup](https://meetup.toast.com/posts/92)
