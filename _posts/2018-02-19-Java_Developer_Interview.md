@@ -289,18 +289,18 @@ public class PrivateMatter {
       * 각 스택 프레임은 지역 변수 배열(Local Variable Array), 피연산자 스택(Operand Stack), 현재 실행 중인 메서드가 속한 클래스의 런타임 상수 풀에 대한 레퍼런스를 가짐
       * 지역 변수 배열, 피연산자 스택의 크기는 컴파일 시에 결정되기 때문에 스택 프레임의 크기도 메서드에 따라 크기가 고정
       * 스레드에 의해 생성 된 프레임은 해당 스레드에 국한되며 다른 스레드에서 참조 할 수 없음
-      ** 지역 변수 배열 (Local Variables)
+      * 지역 변수 배열 (Local Variables)
         * 0부터 시작하는 인덱스를 가진 배열
         * 0은 메서드가 속한 클래스 인스턴스의 this 레퍼런스이고, 1부터는 메서드에 전달된 파라미터들이 저장되며, 메서드 파라미터 이후에는 메서드의 지역 변수들이 저장
-      ** 피연산자 스택(Operand Stacks)
+      * 피연산자 스택(Operand Stacks)
         * 메서드의 실제 작업 공간 
         * 각 메서드는 피연산자 스택과 지역 변수 배열 사이에서 데이터를 교환하고, 다른 메서드 호출 결과를 추가하거나(push) 꺼낸다(pop) 
         * 피연산자 스택(LIFO) 공간이 얼마나 필요한지는 컴파일할 때 결정할 수 있으므로, 피연산자 스택의 크기도 컴파일 시에 결정 [참고](https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-2.html#jvms-2.5)
-      ** Dynamic Linking
+      * Dynamic Linking
         * 각 프레임에는 메서드 코드의 동적 연결을 지원하기 위해 현재 메서드 유형에 대한 런타임 상수 풀에 대한 참조가 포함
         * 메서드의 클래스 파일 코드는 호출 할 메서드와 기호 참조를 통해 액세스 할 변수를 나타냄
-      ** Normal Method Invocation Completion
-      ** Abrupt Method Invocation Completion
+      * Normal Method Invocation Completion
+      * Abrupt Method Invocation Completion
 * Heap
   * JVM 성능 등의 이슈에서 가장 많이 언급되는 공간
   * Java Virtual Machine에는 모든 Java Virtual Machine 스레드간에 공유 
@@ -341,7 +341,7 @@ public class PrivateMatter {
 
 ![자바 컴파일러와 JIT  컴파일러](http://d2.naver.com/content/images/2015/06/helloworld-1230-7.png)
 
-*** 실행 엔진이 어떻게 동작하는지는 JVM 명세에 규정되지 않았다. 따라서 JVM 벤더들은 다양한 기법으로 실행 엔진을 향상시키고 다양한 방식의 JIT 컴파일러를 도입
+** 실행 엔진이 어떻게 동작하는지는 JVM 명세에 규정되지 않았다. 따라서 JVM 벤더들은 다양한 기법으로 실행 엔진을 향상시키고 다양한 방식의 JIT 컴파일러를 도입
 
 ![JIT 컴파일러](http://d2.naver.com/content/images/2015/06/helloworld-1230-8.png)
 
@@ -381,9 +381,15 @@ public class PrivateMatter {
 
 ### 가비지 컬렉션 과정 - Generational Garbage Collection
 * 가비지 컬렉터는 두 가지 가설 하에 만듬
-** 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 됨
-** 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재
+* 대부분의 객체는 금방 접근 불가능 상태(unreachable)가 됨
+* 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재
 * HotSpot VM에서는 크게 2개로 물리적 공간을 나눔
+
+### Root Set 과 Garbage
+* Local variable Section, Opernad Statck 에 Object의 Reference 정보가 있드면 Reachable Object
+* Method Area에 로딩된 클래스 중 constant pool 에 있는 Reference 정보를 토대로 Thread 에서 직접 참조하지 않지마 constant pool을 통해 간접 link 를 하고 있는 Object는 Reachable Object
+* 아직 Memory에 남아 있으며 Natice Method Area 로 넘겨진 Object의 Reference 가 JIN 형태로 참조 관계가 있는 Object는 Reachable Ojbect
+* 위 3 가지 경우를 제외하면 모두 GC 대상
 
 ![영역 및 데이터 흐름도](http://d2.naver.com/content/images/2015/06/helloworld-1329-1.png)
 
@@ -408,32 +414,55 @@ public class PrivateMatter {
         2. 힙(heap)의 앞 부분부터 확인하여 살아 있는 것만 남김(Sweep)
         3. 각 객체들이 연속되게 쌓이도록 힙의 가장 앞 부분부터 채워서 객체가 존재하는 부분과 객체가 없는 부분으로 나눔(Compaction).
     * Serial GC는 적은 메모리와 CPU 코어 개수가 적을 때 적합한 방식
- * Parallel GC (-XX:+UseParallelGC)
-   * Parallel GC는 GC를 처리하는 쓰레드가 여러 개
-   * Parallel GC는 메모리가 충분하고 코어의 개수가 많을 때 유리
-   * Parallel GC는 Throughput GC라고도 부름
+  * Parallel GC (-XX:+UseParallelGC)
+    * Parallel GC는 GC를 처리하는 쓰레드가 여러 개
+    * Parallel GC는 메모리가 충분하고 코어의 개수가 많을 때 유리
+    * Parallel GC는 Throughput GC라고도 부름
 
 ![Serial GC와 Parallel GC의 차이](https://d2.naver.com/content/images/2015/06/helloworld-1329-4.png)
 
- * Parallel Old GC(Parallel Compacting GC)
-   * Parallel GC와 비교하여 Old 영역의 GC 알고리즘만 다름
-   * Mark-Summary-Compaction 단계를 거침
- * Concurrent Mark & Sweep GC(이하 CMS)
-   * 절차
-     1. 초기 Initial Mark 단계에서는 클래스 로더에서 가장 가까운 객체 중 살아 있는 객체만 찾는 것으로 끝냄
-     2. Concurrent Mark 단계에서는 방금 살아있다고 확인한 객체에서 참조하고 있는 객체들을 따라가면서 확인 (다른 스레드가 실행 중인 상태에서 동시에 진행)
-     3. Remark 단계에서는 Concurrent Mark 단계에서 새로 추가되거나 참조가 끊긴 객체를 확인
-     4. Concurrent Sweep 단계에서는 쓰레기를 정리하는 작업을 실행 (다른 스레드가 실행 중인 상태에서 동시에 진행)
-   * 다른 GC 방식보다 메모리와 CPU를 더 많이 사용
-   * Compaction 단계가 기본적으로 제공되지 않음
+  * Parallel Old GC(Parallel Compacting GC)
+    * Parallel GC와 비교하여 Old 영역의 GC 알고리즘만 다름
+    * Mark-Summary-Compaction 단계를 거침
+  * Concurrent Mark & Sweep GC(이하 CMS)
+    * 절차
+      1. 초기 Initial Mark 단계에서는 클래스 로더에서 가장 가까운 객체 중 살아 있는 객체만 찾는 것으로 끝냄
+      2. Concurrent Mark 단계에서는 방금 살아있다고 확인한 객체에서 참조하고 있는 객체들을 따라가면서 확인 (다른 스레드가 실행 중인 상태에서 동시에 진행)
+      3. Remark 단계에서는 Concurrent Mark 단계에서 새로 추가되거나 참조가 끊긴 객체를 확인
+      4. Concurrent Sweep 단계에서는 쓰레기를 정리하는 작업을 실행 (다른 스레드가 실행 중인 상태에서 동시에 진행)
+    * 다른 GC 방식보다 메모리와 CPU를 더 많이 사용
+    * Compaction 단계가 기본적으로 제공되지 않음
 
 ![Serial GC와 CMS GC](https://d2.naver.com/content/images/2015/06/helloworld-1329-5.png)
 
- * G1(Garbage First) GC
-   * G1 GC는 바둑판의 각 영역에 객체를 할당하고 GC를 실행
-   * 해당 영역이 꽉 차면 다른 영역에서 객체를 할당하고 GC를 실행
-   * Young의 세가지 영역에서 데이터가 Old 영역으로 이동하는 단계가 사라진 GC 방식
-   * G1 GC는 장기적으로 말도 많고 탈도 많은 CMS GC를 대체하기 위해서 만들어 짐
+  * G1(Garbage First) GC
+    * G1 GC는 바둑판의 각 영역에 객체를 할당하고 GC를 실행
+    * 해당 영역이 꽉 차면 다른 영역에서 객체를 할당하고 GC를 실행
+    * Young의 세가지 영역에서 데이터가 Old 영역으로 이동하는 단계가 사라진 GC 방식
+    * G1 GC는 장기적으로 말도 많고 탈도 많은 CMS GC를 대체하기 위해서 만들어 짐
+
+#### Garbage Collector 관련 옵션
+* Serial Collector : client class 의 기본 collector로 한 개의 thread가 serail로 수행
+
+| Garbage Collector | Option | Young Generation Collection 알고리즘 | Old Generation Collection 알고리즘 |
+|---|---|---|---|
+| Serial Collector | -XX:+UseSerialGC | Serial | Serial Mark-Sweep-Compact |
+| Parallel Collector | -XX:+UseParallelGC | Parallel Scavenge | Serial Mark-Sweep-Compact |
+| Parallel Compacting Collector | -XX:+UseParallelOldGC | Parallel Scavenge | Parallel Mark-Sweep-Compact |
+| CMS Collector | -XX:+UseConcMarkSweepGC | Parallel | Concurrent Mark-Sweep |
+| Serial Collector | -XX:+UseG1GC | Snapshot-At-The-Beginning(SATB) |
+
+#### Java8 Metaspace
+* Java8에서 JVM 메모리 구조적인 개선 사항으로 Perm 영역이 Metaspcae 영역으로 전환되고 기존 Perm 영역은 사라짐
+
+| 구분 | 상세구분 | ~ Java 7 | Java 8 |
+|---|---|---|---|
+| 저장 정보 | Class의 Meta 정보 | 저장 | 저장 |
+| 저장 정보 | Method의 Meta 정보 | 저장 | 저장 |
+| 저장 정보 | Static Object | 저장 | 저장 |
+| 관리 포인트 | 메모리 관리(튜닝) | Heap 영역 튜닝외에 Perm 영역 별로 튜닝 | Heap 영역 튜닝 Native 영역 동적 조정 (별도 옵션으로 조절 가능) |
+| GC 측명 | GC 수행 대상 | Full GC 수행 대상 | Full GC 수행 대상 |
+| 메모리 측명 | 메모리 크기 (옵션) | -XX:PermSize -XX:MaxPermSize  | -XX:MetaspaceSize -XX:MaxMetaspaceSize |
 
 ## String, StringBuilder, StringBuffer 차이
 
@@ -476,6 +505,22 @@ public class PrivateMatter {
 ### 재진입성
 * 스레드가 다른 스레드가 가진 락을 요청하면 해당 스레드는 대기 상태로 들어간다. 하지만 암묵적인 락은 재진입 가능하기 때문에 특정 스레드가 자기가 이미 획특한 락을 다시 확보할 수 있음.
 * 재진입성은 확보 요청 단위가 아닌 스레드 단위로 락을 얻는다는 것을 의미
+
+## Blocking NoBlocking
+* Blocking
+  * I/O가 가득 수신할 때까지 주어진 스레드가 아무것도 하지 않는다고 가정
+  * 메서드가 즉시 애플리케이션 플로우로 제어를 반환하지 않으므로 애플리케이션의 플로우가 블록됨
+
+* NonBlocking
+  * I/O 요청을 즉시 큐에 넣고 애플리키에션 플로우로 제어를 반환
+  * Selector [참고](https://docs.oracle.com/javase/8/docs/api/java/nio/channels/Selector.html)
+    * A multiplexor of SelectableChannel objects.
+  * SelectionKey
+    * A token representing the registration of a SelectableChannel with a Selector.
+  * SelectableChannel [참고](https://docs.oracle.com/javase/8/docs/api/java/nio/channels/SelectableChannel.html)
+    * A channel that can be multiplexed via a Selector.
+
+![Java NIO: A Thread uses a Selector to handle 3 Channel's](http://tutorials.jenkov.com/images/java-nio/overview-selectors.png)
 
 ## Collection
 
