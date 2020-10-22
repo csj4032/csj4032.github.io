@@ -57,15 +57,6 @@ tags:
   * 멤버메소드 : public, protected, default, private
   * 지역변수 : 접근제한자 사용 불허
 
-## Overloading VS Overriding
-* Overloading
-  * 클래스의 메서드끼리 이름은 같은데 매개변수가 다르며 메서드 오버로딩이 일어남
-  * 메서드를 호출할 때 어떤 메서드를 사용하지는 컴파일 할 때 결정
-* Overriding
-  * 자식 클래스에 있는 인스턴스 메서드가 부모 클래스의 접근 가능한 메서드와 동일한 이름과 매개변수를 가지면 오버라이딩 함
-  * 오버라이딩 되면 **동적 디스패치** 가 가능해짐
-  * 오버라이딩은 객체 지향 프로그램밍의 가장 핵심이 되는 기능
-
 ## final, finally, finalize()
 * final
   * 원시 변수에 적용하면 : 해당 변수의 값은 변경이 불가능
@@ -78,6 +69,15 @@ tags:
   * finally 블록은 try와 catch 블록 다음과, 통제권이 이전으로 다시 돌아가기 전 사이에 실행
 * finalize()
   * 가비지 컬렉터가 객체를 해제하기 전에 호출하는 메서드
+
+## Overloading VS Overriding
+* Overloading
+  * 클래스의 메서드끼리 이름은 같은데 매개변수가 다르며 메서드 오버로딩이 일어남
+  * 메서드를 호출할 때 어떤 메서드를 사용하지는 컴파일 할 때 결정
+* Overriding
+  * 자식 클래스에 있는 인스턴스 메서드가 부모 클래스의 접근 가능한 메서드와 동일한 이름과 매개변수를 가지면 오버라이딩 함
+  * 오버라이딩 되면 **동적 디스패치** 가 가능해짐
+  * 오버라이딩은 객체 지향 프로그램밍의 가장 핵심이 되는 기능
 
 ## Dynamic dispatch VS Static dispatch
 * Dynamic dispatch
@@ -141,6 +141,26 @@ public class Dispatch{
     new Service().run();
     new Service().run(1);
     new Service().run("Dispatch");
+  }
+}
+
+```
+
+## 하이딩
+
+```java
+
+class Base {
+  public String className = "Base";
+}
+
+class Derived extends Base {
+  private String className = "Derived";
+}
+
+public class PrivateMatter {
+  public static void main(String[] args) {
+    System.out.println(new Derived().className);  
   }
 }
 
@@ -449,7 +469,13 @@ public class Dispatch{
   * 예를 들어 J2EE 컨테이너는 EJB를 사용하는 동안 해당 스레드와 트랜잭션 컨텍스트를 연결해 관리
 
 ## 동기화
+* Java에서는 Monitor를 이용해 Thread를 동기화
+* Java 객체는 하나의 Monitor를 가짐
+* Monitor는 하나의 Thread 만 소유할 수 있음
 
+### 재진입성
+* 스레드가 다른 스레드가 가진 락을 요청하면 해당 스레드는 대기 상태로 들어간다. 하지만 암묵적인 락은 재진입 가능하기 때문에 특정 스레드가 자기가 이미 획특한 락을 다시 확보할 수 있음.
+* 재진입성은 확보 요청 단위가 아닌 스레드 단위로 락을 얻는다는 것을 의미
 
 ## Collection
 
@@ -800,20 +826,47 @@ public class Dispatch{
 * REST는 요소로는 크게 리소스,메서드,메세지 3가지 요소로 구성
 
 ## HTTP와 HTTPS 차이 및 S가 보호하는 OSI7계층 위치
-* HTTP : 인터넷에서 하이퍼텍스트(hypertext) 문서를 교환하기 위하여 사용되는 통신규약이다. 하이퍼텍스트는 문서 중간중간에 특정 키워드를 두고 문자나 그림을 상호 유기적으로 결합하여 연결시킴으로써, 서로 다른 문서라 할지라도 하나의 문서인 것처럼 보이면서 참조하기 쉽도록 하는 방식을 의미
-* HTTPS : 인터넷 상에서 정보를 암호화하는 SSL(Secure Socket Layer) 프로토콜을 이용하여 데이터를 전송하고 있다는 것을 의미
-* HTTPS OSI7 계층 위치 : 5계층 (Session) FIFO(파이프), 넷바이오스, SAP, SDP, SSL, TLS
+* HTTP : 
+  * 인터넷에서 하이퍼텍스트(hypertext) 문서를 교환하기 위하여 사용되는 통신규약 
+  * 하이퍼텍스트는 문서 중간중간에 특정 키워드를 두고 문자나 그림을 상호 유기적으로 결합하여 연결시킴으로써, 서로 다른 문서라 할지라도 하나의 문서인 것처럼 보이면서 참조하기 쉽도록 하는 방식을 의미
+* HTTPS
+  * 전송 중의 메세지를 전송 계층 보안(TLS Transport Layer Security) 프로토콜을 사용해 암호화하는 HTTP의 보안 버전
+  * 암호화 : 메세지는 전송 중에 제3자에게 읽힐 수 없음
+  * 무결성 : 암호화된 메시지가 디지털 서명되고 서명이 복호화되기 전에는 암호학적으로 검증되기 때문에 전송 중에 변경되지 않음
+  * 인증 : 서버는 클라이언트가 메시지를 주고 받으려던 바로 그 서버다.
+* HTTPS 핸드세이크
+  1. ClientHello 메세지 전송 (C->S, 비암호)
+  2. ServerHello 메세지 전송 (C<-S, 비암호)
+  3. 서버 HTTPS 인증서 제공 (ServerCertificate) (C<-S, 비암호)
+  4. 암호화 방식에 따라 ServerKeyExchange 메세지 전송 (C<-S, 비암호)
+  5. 클라이언트 HTTPS 인증서가 필요한지 여부 (CertificateRequest) 전송 (C<-S, 비암호)
+  6. ServerHello가 완료됐다는 (ServerHelloDone) 메세지 전송 (C<-S, 비암호)
+  7. 클라이언트 인증서 제공 (ClientCerificate) (C->S, 비암호)
+  8. ServerHello 메세지 전송 (C->S, 공개키/개인키 암호)
+  9. 클라이언트 인증서를 검증하는(CertificateVerify) 메세지 전송 (C->S, 공개키/개인키 암호)
+  10. 클라이언트에서 이제부터 암호화가 시작됨을 알림 (ChangeCipherSpec) (C<->S, 비암호)
+  11. ServerHello 메세지 전송 (C->S, 합의된 비밀키로 암호화)
+  12. 서버측에서 클라이언트로 암호화가 시작됨을 알림 (ChangeCipherSpec) (C<-S, 비암호)
+  13. 서버 측에서 핸드세이크가 끝났다는 메세지(Finsihed) 전송 (C<-S, 합의된 비밀키로 암호화)
 
 ## TCP UDP 차이
+* TCP
+  * 유니캐스트 연결 지향 (Connection-Oriented) 프로토콜
+  * 기본적으로 IP 계층(혹은 아래 계층)에서의 패킷 손실, 중복, 혹은 오류에 의해 발생될 수 있는 모든 데이터 전송 문제를 검출하고 복구
+* UDP
+  * 단순한 데이터그램 지향 트랜스포트 계층 프로토콜
+  * 연결의 설정과 종료를 포함하지 않는 비연결형 (Connectionless) 프로토콜
+  * 오류 정정, 순서화, 중복 제거, 흐름 제어 혹은 혼잡 제어를 제공하지 않음
+  * 오류 검출은 제공할 수 있으며, 트랜스포트 계층에서 종단간 검사합을 포함
 
 ## TCP 3-WAY HAND SHAKING
 * TCP/IP 프로토콜을 이용해서 통신을 하는 응용프로그램이 데이터를 전송하기 전에 먼저 정확한 전송을 보장하기 위해 상대방 컴퓨터와 사전에 세션을 수립하는 과정을 의미
 * 양쪽 모두 데이타를 전송할 준비가 되었다는 것을 보장하고, 실제로 데이타 전달이 시작하기전에 한쪽이 다른 쪽이 준비되었다는 것을 알수 있도록 함
 * 양쪽 모두 상대편에 대한 초기 순차일련변호를 얻을 수 있도록 함
 * 과정
-  * A클라이언트는 B서버에 접속을 요청하는 SYN 패킷을 보낸다. 이때 A클라이언트는 SYN 을 보내고 SYN/ACK 응답을 기다리는SYN_SENT 상태가 되는 것이다.
-  * B서버는 SYN요청을 받고 A클라이언트에게 요청을 수락한다는 ACK 와 SYN flag 가 설정된 패킷을 발송하고 A가 다시 ACK으로 응답하기를 기다린다. 이때 B서버는 SYN_RECEIVED 상태가 된다.
-  * A클라이언트는 B서버에게 ACK을 보내고 이후로부터는 연결이 이루어지고 데이터가 오가게 되는것이다. 이때의 B서버 상태가 ESTABLISHED 이다.
+  1. A클라이언트는 B서버에 접속을 요청하는 SYN 패킷을 보낸다. 이때 A클라이언트는 SYN 을 보내고 SYN/ACK 응답을 기다리는SYN_SENT 상태가 되는 것이다.
+  2. B서버는 SYN요청을 받고 A클라이언트에게 요청을 수락한다는 ACK 와 SYN flag 가 설정된 패킷을 발송하고 A가 다시 ACK으로 응답하기를 기다린다. 이때 B서버는 SYN_RECEIVED 상태가 된다.
+  3. A클라이언트는 B서버에게 ACK을 보내고 이후로부터는 연결이 이루어지고 데이터가 오가게 되는것이다. 이때의 B서버 상태가 ESTABLISHED 이다.
 
 # 자료구조, 알고리즘
 
@@ -856,6 +909,9 @@ public class Dispatch{
    * 중첩 된 트랜잭션의 실제 생성은 특정 트랜잭션 관리자에서만 작동 
    * 기본적으로 이것은 JDBC DataSourceTransactionManager에만 적용 
    * 일부 JTA 공급자는 중첩 된 트랜잭션도 지원할 수 있습니다.
+
+# MAS
+
 
 # Reference
 
