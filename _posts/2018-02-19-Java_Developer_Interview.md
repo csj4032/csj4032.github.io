@@ -966,7 +966,7 @@ public class PrivateMatter {
 * Join point
   * 어드바이스를 적용할 수 있는 곳을 조인포인트
   * 애플리케이션 실행에 애스펙트를 끼워 넣을 수 있는 지점
-* Targe object
+* Target object
 * Advice
   * Before advice
     * 어드바이스 대상 메서드가 호출되기 전에 어드바이스 기능을 수행
@@ -1051,6 +1051,10 @@ public class PrivateMatter {
   ### 연관관계의 주인
   ### 양방향 연관관계 저장
   ### 양방향 연관관계 주의점
+## N+1
+  * 전체 조회 및 N 번 조회
+  * Join Fetch (Inner Join)
+  * @EntityGraph (Outer Join)
 ## OSIV
   * OSIV(Open Session In View)는 영속성 컨텍스트를 뷰까지 열어둔다는 뜻
   * 과거 OSIV : 요청 당 트랜잭션
