@@ -525,7 +525,7 @@ public class PrivateMatter {
   * SelectableChannel [참고](https://docs.oracle.com/javase/8/docs/api/java/nio/channels/SelectableChannel.html)
     * A channel that can be multiplexed via a Selector.
 
-![Java NIO: A Thread uses a Selector to handle 3 Channel's](http://tutorials.jenkov.com/images/java-nio/overview-selectors.png)
+![Java NIO: A Thread uses a Selector to handle 3 Channel's](/assets/images/etc/javadevlopinterview/selectors.png)
 
 ## Collection
 
