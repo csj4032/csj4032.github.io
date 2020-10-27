@@ -64,7 +64,7 @@ tags:
   * 메서드에 적용하면 : 해당 메서드를 오버라이드할 수 없음
   * 클래스에 적용하면 : 해당 클래스의 하위 클래스를 정의할 수 없음
 * finally
-  * finally는 선택적으로 try 혹은 catch블록 뒤에 정의할 때 사용
+  * finally는 선택적으로 try 혹은 catch 블록 뒤에 정의할 때 사용
   * finally 블록은 예외가 발생하더라도 항상 실행
   * finally 블록은 try와 catch 블록 다음과, 통제권이 이전으로 다시 돌아가기 전 사이에 실행
 * finalize()
@@ -85,24 +85,24 @@ tags:
 
 ```java
 
-public class Dispatch{
-  static abstract class Service{
+public class Dispatch {
+  static abstract class Service {
     abstract void run();
   }
-  static class MyService1 extends Service{
+  static class MyService1 extends Service {
      @Override
      void run(){
        System.out.println("run1");
      }
   }
-  static class MyService2 extends Service{
+  static class MyService2 extends Service {
      @Override
      void run(){
        System.out.println("run2");
      }
   }
 
-  public static void main(String[] args){
+  public static void main(String[] args) {
     MyService1 svc = new MyService1();
     svc.run(); //run1 - 정적 디스패치
     MyService2 svc2 = new MyService2();
@@ -125,8 +125,8 @@ public class Dispatch{
 
 ```java
 
-public class Dispatch{
-  static class Service{
+public class Dispatch {
+  static class Service {
     void run(){
       System.out.println("run()");
     }
@@ -137,7 +137,7 @@ public class Dispatch{
       System.out.println("run(" + msg + ")");
     }
   }
-  public static void main(String[] args){
+  public static void main(String[] args) {
     new Service().run();
     new Service().run(1);
     new Service().run("Dispatch");
@@ -175,8 +175,8 @@ public class PrivateMatter {
 
 ## JVM Internal
 
-* 가상 머신(virtual machine)이란 여러 가지로 정의할 수 있지만, 프로그램을 실행하기 위해 물리적 머신(즉, 컴퓨터)과 유사한 머신을 소프트웨어로 구현한 것을 말한다고 할 수 있다.
-* 지금은 비록 빛이 바랜 목표이긴 하나 자바는 원래 WORA(Write Once Run Anywhere)를 구현하기 위해 물리적인 머신과 별개의 가상 머신을 기반으로 동작하도록 설계되었다.
+* 가상 머신(virtual machine)이란 여러 가지로 정의할 수 있지만, 프로그램을 실행하기 위해 물리적 머신(즉, 컴퓨터)과 유사한 머신을 소프트웨어로 구현한 것을 말한다고 할 수 있음
+* 지금은 비록 빛이 바랜 목표이긴 하나 자바는 원래 WORA(Write Once Run Anywhere)를 구현하기 위해 물리적인 머신과 별개의 가상 머신을 기반으로 동작하도록 설계
 * 자바 바이트코드를 실행하고자 하는 모든 하드웨어에 JVM을 동작시킴으로써 자바 실행 코드를 변경하지 않고도 모든 종류의 하드웨어에서 동작되게 한 것
 
 ### 가상 머신
@@ -186,19 +186,20 @@ public class PrivateMatter {
 * 스택 기반의 가상 머신: 대표적인 컴퓨터 아키텍처인 인텔 x86 아키텍처나 ARM 아키텍처와 같은 하드웨어가 레지스터 기반으로 동작하는 데 비해 JVM은 스택 기반으로 동작
 * 심볼릭 레퍼런스: 기본 자료형(primitive data type)을 제외한 모든 타입(클래스와 인터페이스)을 명시적인 메모리 주소 기반의 레퍼런스가 아니라 심볼릭 레퍼런스를 통해 참조
 * 가비지 컬렉션(garbage collection): 클래스 인스턴스는 사용자 코드에 의해 명시적으로 생성되고 가비지 컬렉션에 의해 자동으로 파괴
-* 기본 자료형을 명확하게 정의하여 플랫폼 독립성 보장: C/C++ 등의 전통적인 언어는 플랫폼에 따라 int 형의 크기가 변한다. JVM은 기본 자료형을 명확하게 정의하여 호환성을 유지하고 플랫폼 독립성을 보장
-* 네트워크 바이트 오더(network byte order): 자바 클래스 파일은 네트워크 바이트 오더를 사용한다.
-  * 인텔 x86 아키텍처가 사용하는 리틀 엔디안이나, RISC 계열 아키텍처가 주로 사용하는 빅 엔디안 사이에서 플랫폼 독립성을 유지하려면 고정된 바이트 오더를 유지해야 하므로 네트워크 전송 시에 사용하는 바이트 오더인 네트워크 바이트 오더를 사용한다.
-  * 네트워크 바이트 오더는 빅 엔디안이다.
+* 기본 자료형을 명확하게 정의하여 플랫폼 독립성 보장: C/C++ 등의 전통적인 언어는 플랫폼에 따라 int 형의 크기가 변함 
+* JVM은 기본 자료형을 명확하게 정의하여 호환성을 유지하고 플랫폼 독립성을 보장
+* 네트워크 바이트 오더(network byte order): 자바 클래스 파일은 네트워크 바이트 오더를 사용
+  * 인텔 x86 아키텍처가 사용하는 리틀 엔디안이나, RISC 계열 아키텍처가 주로 사용하는 빅 엔디안 사이에서 플랫폼 독립성을 유지하려면 고정된 바이트 오더를 유지해야 하므로 네트워크 전송 시에 사용하는 바이트 오더인 네트워크 바이트 오더를 사용
+  * 네트워크 바이트 오더는 빅 엔디안
   * 오라클 핫스팟 JVM 외에도 IBM JVM을 비롯한 다양한 JVM이 존재
 
 #### 자바 바이트코드
-* WORA를 구현하기 위해 JVM은 사용자 언어인 자바와 기계어 사이의 중간 언어인 자바 바이트코드를 사용한다.
+* WORA를 구현하기 위해 JVM은 사용자 언어인 자바와 기계어 사이의 중간 언어인 자바 바이트코드를 사용
 * 이 자바 바이트코드가 자바 코드를 배포하는 가장 작은 단위
 
 #### JVM 구조
 
-![JVM 구조](http://d2.naver.com/content/images/2015/06/helloworld-1230-1.png)
+![JVM 구조](https://d2.naver.com/content/images/2015/06/helloworld-1230-1.png)
 
 * 자바로 작성한 코드는 클래스 로더(Class Loader)가 컴파일된 자바 바이트코드를 런타임 데이터 영역(Runtime Data Areas)에 로드하고, 실행 엔진(Execution Engine)이 자바 바이트코드를 실행
 
@@ -223,7 +224,7 @@ public class PrivateMatter {
   * 클래스 로더는 클래스를 로드할 수는 있지만 언로드할 수는 없음 
   * 언로드 대신, 현재 클래스 로더를 삭제하고 아예 새로운 클래스 로더를 생성하는 방법을 사용할 수 있음
 
-![클래스 로더 위임 모델](http://d2.naver.com/content/images/2015/06/helloworld-1230-2.png)
+![클래스 로더 위임 모델](https://d2.naver.com/content/images/2015/06/helloworld-1230-2.png)
 
 #### 클래스 로더 위임 모델
 * 부트스트랩 클래스 로더: 
@@ -243,14 +244,14 @@ public class PrivateMatter {
 
 #### Run-Time Built-in Class Loaders (JDK 9+)
 * Application class loader
-  * 애플리케이션 클래스 로더는 일반적으로 애플리케이션 클래스 경로에서 클래스를 정의하는 데 사용됩니다. 도구 또는 내보내기 도구 API를 제공하는 JDK 모듈의 기본 로더입니다.
+  * 애플리케이션 클래스 로더는 일반적으로 애플리케이션 클래스 경로에서 클래스를 정의하는 데 사용됩니다. 도구 또는 내보내기 도구 API를 제공하는 JDK 모듈의 기본 로더
 * Platform class loader
   * Java SE 및 JDK 모듈에서 선택 (보안 / 권한 기반)합니다. 예 : java.sql
 * Bootstrap class loader
   * 핵심 Java SE 및 JDK 모듈을 정의합니다.
 
 
-![클래스 로드 단계](http://d2.naver.com/content/images/2015/06/helloworld-1230-3.png)
+![클래스 로드 단계](https://d2.naver.com/content/images/2015/06/helloworld-1230-3.png)
 
 * 로드(Loading)
   * 클래스를 파일에서 가져와서 JVM의 메모리에 로드
@@ -271,13 +272,13 @@ public class PrivateMatter {
 * 런타임 데이터 영역은 JVM이라는 프로그램이 운영체제 위에서 실행되면서 할당받는 메모리 영역
 * 런타임 데이터 영역은 6개의 영역으로 나눌 수 있다.
 
-![런타임 데이터 영역](http://d2.naver.com/content/images/2015/06/helloworld-1230-4.png)
+![런타임 데이터 영역](https://d2.naver.com/content/images/2015/06/helloworld-1230-4.png)
 
 * PC 레지스터(The PC Register)
   * PC(Program Counter) 레지스터는 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성 
   * PC 레지스터는 현재 수행 중인 JVM 명령의 주소를 가짐
 
-![JVM 스택 구성](http://d2.naver.com/content/images/2015/06/helloworld-1230-5.png)
+![JVM 스택 구성](https://d2.naver.com/content/images/2015/06/helloworld-1230-5.png)
 
 * JVM 스택(Java Virtual Machine Stacks)
   * JVM 스택은 각 스레드마다 하나씩 존재하며 스레드가 시작될 때 생성
@@ -339,11 +340,11 @@ public class PrivateMatter {
 * JIT 컴파일러가 컴파일하는 과정은 바이트코드를 하나씩 인터프리팅하는 것보다 훨씬 오래 걸리므로, 만약 한 번만 실행되는 코드라면 컴파일하지 않고 인터프리팅하는 것이 훨씬 유리
 * JIT 컴파일러를 사용하는 JVM들은 내부적으로 해당 메서드가 얼마나 자주 수행되는지 체크하고, 일정 정도를 넘을 때에만 컴파일을 수행
 
-![자바 컴파일러와 JIT  컴파일러](http://d2.naver.com/content/images/2015/06/helloworld-1230-7.png)
+![자바 컴파일러와 JIT  컴파일러](https://d2.naver.com/content/images/2015/06/helloworld-1230-7.png)
 
 ** 실행 엔진이 어떻게 동작하는지는 JVM 명세에 규정되지 않았다. 따라서 JVM 벤더들은 다양한 기법으로 실행 엔진을 향상시키고 다양한 방식의 JIT 컴파일러를 도입
 
-![JIT 컴파일러](http://d2.naver.com/content/images/2015/06/helloworld-1230-8.png)
+![JIT 컴파일러](https://d2.naver.com/content/images/2015/06/helloworld-1230-8.png)
 
 * JIT 컴파일러는 바이트코드를 일단 중간 단계의 표현인 IR(Intermediate Representation)로 변환하여 최적화를 수행하고 그 다음에 네이티브 코드를 생성
 * 오라클 핫스팟 VM은 핫스팟 컴파일러라고 불리는 JIT 컴파일러를 사용
@@ -351,7 +352,7 @@ public class PrivateMatter {
 * 핫스팟 VM은 한번 컴파일된 바이트코드라도 해당 메서드가 더 이상 자주 불리지 않는다면, 즉 핫스팟이 아니게 된다면 캐시에서 네이티브 코드를 덜어내고 다시 인터프리터 모드로 동작
 * 핫스팟 VM은 서버 VM과 클라이언트 VM으로 나뉘어 있고, 각각 다른 JIT 컴파일러를 사용
 
-![핫스팟 클라이언트 VM과 서버 VM](http://d2.naver.com/content/images/2015/06/helloworld-1230-9.png)
+![핫스팟 클라이언트 VM과 서버 VM](https://d2.naver.com/content/images/2015/06/helloworld-1230-9.png)
 
 * 클라이언트 VM과 서버 VM은 각각 오라클 핫스팟 VM을 실행할 때 입력하는 -client, -server 옵션으로 실행
 * 클라이언트 VM과 서버 VM은 동일한 런타임을 사용하지만 다른 JIT 컴파일러(Simple Compiler)를 사용
@@ -391,7 +392,7 @@ public class PrivateMatter {
 * 아직 Memory에 남아 있으며 Natice Method Area 로 넘겨진 Object의 Reference 가 JIN 형태로 참조 관계가 있는 Object는 Reachable Ojbect
 * 위 3 가지 경우를 제외하면 모두 GC 대상
 
-![영역 및 데이터 흐름도](http://d2.naver.com/content/images/2015/06/helloworld-1329-1.png)
+![영역 및 데이터 흐름도](https://d2.naver.com/content/images/2015/06/helloworld-1329-1.png)
 
 #### Young 영역의 구성
 * Eden 영역, Suvivor 영역(2개)
@@ -1070,7 +1071,7 @@ public class PrivateMatter {
       * 엔티티를 읽기 전용 인터페이스로 제공
       * 엔티티 래핑
       * DTO만 반환
-  * 스프링 OSIV : 비즤스 계층 트랜잭션
+  * 스프링 OSIV : 비즈니스 계층 트랜잭션
     * 스프링 프레임워크가 제공하는 OSIV 라이브러리
     * 스프링 OSIV
       1. 클라이언트의 요청이 들어오면 서블릿 필터나, 스프링 인터셉터에서 영속성 컨텍스트를 생성 (트랜잭션 시작하지 않음)
@@ -1080,6 +1081,27 @@ public class PrivateMatter {
       5. 서블릿 필터나, 스프링 인터셉터로 요청이 돌아오면 영속성 컨텍스트를 종료 (플러시를 호출하지 않고 바로 종료)
     * 스프링 OSIV 주의사항
       * 프리젠테이션 계층에서 엔티티를 수정 후 트랜잭션을 시작하는 서비스 계층을 호출하면 문제 발생
+
+```java
+class MemberController {
+
+  public String viewMember(Long id) {
+    Member member = memberService.getMember(id);
+    member.setName("***");
+
+    memberService.biz();
+    return "view";
+  }
+}
+
+class MemberService {
+
+  @Transcactional
+  public void biz() {
+
+  }
+}
+```
 
 ## 2차 캐시
 * 1차 캐시
