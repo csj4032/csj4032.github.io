@@ -1094,7 +1094,6 @@ public class Team {
   private String name;
 }
 ```
-  ### 연관관계 사용
   ### 양방향 연관관계
   ### 연관관계의 주인
   ### 양방향 연관관계 저장
