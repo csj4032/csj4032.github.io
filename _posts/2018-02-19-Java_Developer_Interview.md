@@ -250,7 +250,6 @@ public class PrivateMatter {
 * Bootstrap class loader
   * 핵심 Java SE 및 JDK 모듈을 정의합니다.
 
-
 ![클래스 로드 단계](https://d2.naver.com/content/images/2015/06/helloworld-1230-3.png)
 
 * 로드(Loading)
@@ -469,11 +468,11 @@ public class PrivateMatter {
 
 ### String
 * String 클래스는 문자열을 나타냅니다.
-* Java 프로그램의 모든 문자열 리터럴 (예 : "abc")은이 클래스의 인스턴스로 구현됩니다.
-* 문자열은 일정합니다.
-* 해당 값은 작성된 후에는 변경할 수 없습니다.
-* 문자열 버퍼는 변경 가능한 문자열을 지원합니다.
-* String 객체는 변경할 수 없기 때문에 공유 할 수 있습니다.
+* Java 프로그램의 모든 문자열 리터럴 (예 : "abc")은이 클래스의 인스턴스로 구현됨
+* 문자열은 일정
+* 해당 값은 작성된 후에는 변경할 수 없음
+* 문자열 버퍼는 변경 가능한 문자열을 지원
+* String 객체는 변경할 수 없기 때문에 공유 할 수 있음
 
 ### StringBuffer
 * thread로부터 안전하고 변경 가능한 일련의 문자. 문자열 버퍼는 String과 비슷하지만 수정할 수 있습니다.
