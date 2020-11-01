@@ -1050,6 +1050,50 @@ public class PrivateMatter {
 # JPA
 ## 연관관계
   ### 단반향 연관관계
+```sql
+CREATE TABLE MEMBER (
+  ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+  TEAM_ID BIGINT(20),
+  NAME VARCHAR(20),
+  PRIMARY KEY (ID)
+)
+
+CREATE TABLE TEAM (
+  ID BIGINT(20) NOT NULL AUTO_INCREMENT,
+  NAME VARCHAR(20),
+  PRIMARY KEY (ID)
+)
+
+ALTER TABLE MEMBER ADD CONSTRAINT FK_MEMBER_TEAM FOREIGN KEY (ID) REFERENCES TEAM
+
+```
+
+```java
+@Entity
+public class Member {
+  @Id
+  @Column(name = "ID")
+  private Long id;
+
+  @Column(name = "NAME")
+  private String name;
+
+  @ManyToOne
+  @JoinColumn(name="ID")
+  private Team team;
+
+}
+
+@Entity
+public class Team {
+  @Id
+  @Column(name="ID")
+  private Long id;
+
+  @Column(name="NAME")
+  private String name;
+}
+```
   ### 연관관계 사용
   ### 양방향 연관관계
   ### 연관관계의 주인
