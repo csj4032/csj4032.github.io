@@ -1223,6 +1223,20 @@ class MemberService {
 * 여러 서비스에 걸친 기능을 배포할 때에는 잘 조정해야 함
 * 마이크로서비스 아키텍처 도임 시점을 결정하기 어려움
 
+## Asynchronous Event-Driven Microservices
+* Granularity
+* Scalability
+* Technological flexibility
+* Business requirement flexibility
+* Loosely coupling
+* Continuous delivery support
+* High testability
+
+## Organizing Code
+* Organizing by Layer
+* Organizing by Feature
+* An Architecturally Expressive Package Structure
+
 # Reference
 
 * [Java Virtual Machine Internals, Part 1: Class Loader](https://dzone.com/articles/java-virtual-machine-internals-class-loader)
