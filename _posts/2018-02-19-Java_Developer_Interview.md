@@ -197,6 +197,43 @@ public class PrivateMatter {
 * WORA를 구현하기 위해 JVM은 사용자 언어인 자바와 기계어 사이의 중간 언어인 자바 바이트코드를 사용
 * 이 자바 바이트코드가 자바 코드를 배포하는 가장 작은 단위
 
+#### 클래스 파일 포맷
+```
+ClassFile {
+    u4             magic;
+    u2             minor_version;
+    u2             major_version;
+    u2             constant_pool_count;
+    cp_info        constant_pool[constant_pool_count-1];
+    u2             access_flags;
+    u2             this_class;
+    u2             super_class;
+    u2             interfaces_count;
+    u2             interfaces[interfaces_count];
+    u2             fields_count;
+    field_info     fields[fields_count];
+    u2             methods_count;
+    method_info    methods[methods_count];
+    u2             attributes_count;
+    attribute_info attributes[attributes_count];
+}
+```
+* magic
+* minor_version, major_version
+* constant_pool_count
+* constant_pool[]
+* access_flags
+* this_class
+* super_class
+* interfaces_count
+* interfaces[]
+* fields_count
+* fields[]
+* methods_count
+* methods[]
+* attributes_count
+* attributes[]
+
 #### JVM 구조
 
 ![JVM 구조](https://d2.naver.com/content/images/2015/06/helloworld-1230-1.png)
@@ -263,6 +300,15 @@ public class PrivateMatter {
     * 클래스가 필요로 하는 메모리를 할당하고, 클래스에서 정의된 필드, 메서드, 인터페이스들을 나타내는 데이터 구조를 준비
   * 분석(Resolving)
     * 클래스의 상수 풀 내 모든 심볼릭 레퍼런스를 다이렉트 레퍼런스로 변경
+      * Class and Interface Resolution
+      * Field Resolution
+      * Method Resolution
+      * Interface Method Resolution
+      * Method Type and Method Handle Resolution
+      * Dynamically-Computed Constant and Call Site Resolution
+  * Access Control    
+  * Method Overriding    
+  * Method Selection
 * 초기화(Initialization)
   * 클래스 변수들을 적절한 값으로 초기화
   * static initializer들을 수행하고, static 필드들을 설정된 값으로 초기화
@@ -986,15 +1032,17 @@ public class PrivateMatter {
   * 애스펙트가 어드바이스할 조인포인트의 영역을 좁히는 일을 함
   * 어드바이스는 애스펙트가 무엇을 언제 할지를 정의한다면, 포인트컷은 어디서 할지를 정의
   * 각 포인트컷은 어드바이스가 위빙돼야 하는 하나 이상의 조인포인트를 정의
-* Introduction:
+* Introduction
   * 기존 클래스에 코드 변경 없이도 새 메소드나 멤버 변수를 추가하는 기능
-* AOP proxy
+
+## AOP proxy
   * JDK 동적 Proxy
     * 기본적인 Proxy
     * 인터페이스가 필요 함 
   * CGLIB Proxy
     * 서브 클래싱을 통해 Proxy 생성
     * 인터페이스가 필요 없음
+
 ## Bean Scope
 * Singleton
   * 각 Spring IoC 컨테이너에 대한 단일 객체 인스턴스에 단일 Bean 정의 범위를 지정
@@ -1241,6 +1289,7 @@ class MemberService {
 
 * [Java Virtual Machine Internals, Part 1: Class Loader](https://dzone.com/articles/java-virtual-machine-internals-class-loader)
 * [Java Virtual Machine Internals, Part 2: Class File Format](https://dzone.com/articles/java-virtual-machine-internals-part-2-class-file-f)
+* [The class File Format](https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-4.html)
 * [JVM Internal](http://d2.naver.com/helloworld/1230)
 * [Loading, Linking, and Initializing](https://docs.oracle.com/javase/specs/jvms/se15/html/jvms-5.html)
 * [HotSpot Runtime Overview](https://openjdk.java.net/groups/hotspot/docs/RuntimeOverview.html)
