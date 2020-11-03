@@ -721,6 +721,23 @@ ClassFile {
 * 암묵적인 락은 재진입 가능하기 때문에 특정 스레드가 자기가 이미 획특한 락을 다시 확보할 수 있음
 * 재진입성은 확보 요청 단위가 아닌 스레드 단위로 락을 얻는다는 것을 의미
 
+```java
+public class Widget {
+
+  public synchronized void doSomething() {
+
+  }
+}
+
+public class LoggingWidget extends Widget {
+
+  public synchronized void doSomething() {
+    System.out.println(toString() + " : calling doSomething");
+    super.doSomething();
+  }
+}
+```
+
 ## Blocking NoBlocking
 * Blocking
   * I/O가 가득 수신할 때까지 주어진 스레드가 아무것도 하지 않는다고 가정
