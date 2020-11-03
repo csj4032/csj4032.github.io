@@ -580,7 +580,8 @@ ClassFile {
 * 자바 Thread와 Lock에 대한 내용을 삭제하고, 자바 언어 명세로 내용을 넘김
 
 #### String in Switch Statements
-* 자바 SE 7의 새로운 기능인 String in switch는 JVM 자체가 아니라 자바 컴파일러가 처리하고 있는 것이다. 마찬가지로 다른 자바 SE 7의 새로운 기능들도 자바 컴파일러가 처리할 것이라고 유추할 수 있다.
+* 자바 SE 7의 새로운 기능인 String in switch는 JVM 자체가 아니라 자바 컴파일러가 처리하고 있는 것 
+* 자바 SE 7의 새로운 기능들도 자바 컴파일러가 처리할 것이라고 유추할 수 있음
 
 #### Tip
 * Java 메서드 크기 65535바이트 제한
@@ -596,8 +597,8 @@ ClassFile {
 * HotSpot VM에서는 크게 2개로 물리적 공간을 나눔
 
 ### Root Set 과 Garbage
-* Local variable Section, Opernad Statck 에 Object의 Reference 정보가 있드면 Reachable Object
-* Method Area에 로딩된 클래스 중 constant pool 에 있는 Reference 정보를 토대로 Thread 에서 직접 참조하지 않지마 constant pool을 통해 간접 link 를 하고 있는 Object는 Reachable Object
+* Local Variable Section, Opernad Statck 에 Object의 Reference 정보가 있으면 Reachable Object
+* Method Area에 로딩된 클래스 중 constant pool 에 있는 Reference 정보를 토대로 Thread 에서 직접 참조하지 않지마 Constant pool을 통해 간접 link 를 하고 있는 Object는 Reachable Object
 * 아직 Memory에 남아 있으며 Natice Method Area 로 넘겨진 Object의 Reference 가 JIN 형태로 참조 관계가 있는 Object는 Reachable Ojbect
 * 위 3 가지 경우를 제외하면 모두 GC 대상
 
@@ -606,11 +607,12 @@ ClassFile {
 #### Young 영역의 구성
 * Eden 영역, Suvivor 영역(2개)
 * 처리 절차
-  * 새로 생성한 대부분의 객체는 Eden 영역에 위치한다.
-  * Eden 영역에서 GC가 한 번 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동된다.
-  * Eden 영역에서 GC가 발생하면 이미 살아남은 객체가 존재하는 Survivor 영역으로 객체가 계속 쌓인다.
-  * 하나의 Survivor 영역이 가득 차게 되면 그 중에서 살아남은 객체를 다른 Survivor 영역으로 이동한다. 그리고 가득 찬 Survivor 영역은 아무 데이터도 없는 상태로 된다.
-  * 이 과정을 반복하다가 계속해서 살아남아 있는 객체는 Old 영역으로 이동하게 된다.
+  * 새로 생성한 대부분의 객체는 Eden 영역에 위치
+  * Eden 영역에서 GC가 한 번 발생한 후 살아남은 객체는 Survivor 영역 중 하나로 이동
+  * Eden 영역에서 GC가 발생하면 이미 살아남은 객체가 존재하는 Survivor 영역으로 객체가 계속 쌓임
+  * 하나의 Survivor 영역이 가득 차게 되면 그 중에서 살아남은 객체를 다른 Survivor 영역으로 이동
+  * 가득 찬 Survivor 영역은 아무 데이터도 없는 상태로 됨
+  * 이 과정을 반복하다가 계속해서 살아남아 있는 객체는 Old 영역으로 이동하게 됨
 
 ![전과 후의 비교](https://d2.naver.com/content/images/2015/06/helloworld-1329-3.png)
 
@@ -650,6 +652,8 @@ ClassFile {
     * 해당 영역이 꽉 차면 다른 영역에서 객체를 할당하고 GC를 실행
     * Young의 세가지 영역에서 데이터가 Old 영역으로 이동하는 단계가 사라진 GC 방식
     * G1 GC는 장기적으로 말도 많고 탈도 많은 CMS GC를 대체하기 위해서 만들어 짐
+  * The Z Garbage Collector
+    * 확장 가능한 저 지연 가비지 수집기
 
 #### Garbage Collector 관련 옵션
 * Serial Collector : client class 의 기본 collector로 한 개의 thread가 serail로 수행
@@ -822,7 +826,7 @@ ClassFile {
 ### 객체(Object)
 * 객체는 데이터와 그 데이터를 조작하는 프로시저(오퍼레이션, 메서드, 함수)로 구성
 
-## 디자인패턴
+## 디자인패턴 (Design Pattern)
 * 패턴 분류 기준
   * 목적 (Purpose)
     * 생성 : 객체의 생성 과정에 관여하는 것
@@ -915,6 +919,10 @@ ClassFile {
 * 상위 수준의 모듈은 하위 수준의 모둘에 의존해서는 안된다. 둘 모두 추상화에 의존해야 한다.
 * 추상화는 구체적으로 사항에 의존해서는 안 된다. 구체적인 사항은 추상화에 의존해야 한다.
 
+## GRASP (General Responsibility Assignment Software Pattern)
+* 크레이그 라만(Craig Larman)이 패턴 형식으로 제안
+* 객체에게 책임을 할당할 때 지침으로 삼을 수 있는 원칙들의 집합을 패턴 형식으로 정리한 것
+
 ## 추상화
 * 사람이 객체를 인식할 때 객체의 중요 특징을 추출해 내는데, 이 과정을 "추상화"
 * 클래스를 만들 때는 구현하고자 하는 객체의 명사적인 특징만 뽑아내는 것이 아니라 객체가 가지는 동사적인 특징까지도 모두 뽑아내는 추상화 작업이 필요
@@ -933,7 +941,7 @@ ClassFile {
   * 멤버변수와 멤버함수를 모두 묶어서 하나의 단위 (클래스, 객체)로 만드는 일련의 작업
   * 클래스의 내부가 바뀌어도 클래스를 참조하는 다른 클래스나 함수는 변경할 필요가 없음
   * 외부에서 직접 접근을 하면 안되고 오로지 함수를 통해서만 접근
-  * 객체는 속성과 메소드로 만들짐 , 일부 속성과 메소드는 객체의 외부에서 접근 (interface) ,다른 속성,메소드는 객체 자신만의 사적인 용도로 예약되어 있고 이것을 구현 implement
+  * 객체는 속성과 메소드로 만들짐, 일부 속성과 메소드는 객체의 외부에서 접근 (interface), 다른 속성, 메소드는 객체 자신만의 사적인 용도로 예약되어 있고 이것을 구현 implement
 * 캡슐화 원칙
   * Don't Tell Ask
     * 데이터를 물어보지 않고, 기능을 실행해 달라고 말하라
