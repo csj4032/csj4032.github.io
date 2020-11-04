@@ -455,13 +455,13 @@ ClassFile {
 * 로드(Loading)
   * 클래스를 파일에서 가져와서 JVM의 메모리에 로드
 * Linking
-  * 검증(Verifying)
+  * 검증(Verification)
     * 가져온 유형의 정확성 보장
     * 읽어 들인 클래스가 자바 언어 명세(Java Language Specification) 및 JVM 명세에 명시된 대로 잘 구성되어 있는지 검사 클래스 로드의 전 과정 중에서 가장 까다로운 검사를 수행하는 과정으로서 가장 복잡하고 시간이 많이 걸림
     * JVM TCK의 테스트 케이스 중에서 가장 많은 부분이 잘못된 클래스를 로드하여 정상적으로 검증 오류를 발생시키는지 테스트하는 부분
-  * 준비(Preparing)
+  * 준비(Preparation)
     * 클래스가 필요로 하는 메모리를 할당하고, 클래스에서 정의된 필드, 메서드, 인터페이스들을 나타내는 데이터 구조를 준비
-  * 분석(Resolving)
+  * 분석(Resolution)
     * 클래스의 상수 풀 내 모든 심볼릭 레퍼런스를 다이렉트 레퍼런스로 변경
       * Class and Interface Resolution
       * Field Resolution
@@ -704,6 +704,41 @@ ClassFile {
 
 ## Tread
 
+## 스레드 상태
+* NEW
+  * 스레드가 생성되었지만 아직 실행되지 않은 상태
+* RUNNABLE
+  * 현재 CPU를 점유하고 작업을 수행 중인 상태 운영체제의 자원 분배로 인해 WAITING 상태가 될 수도 있음
+* BLOCKED
+  * Monitor를 획득하기 위해 다른 스레드가 락을 해제하기를 기다리는 상태
+* WAITING
+  * wait() 메서드, join() 메서드, park() 메서드 등을 이용해 대기하고 있는 상태
+* TIMED_WAITING
+  * sleep() 메서드, wait() 메서드, join() 메서드, park() 메서드 등을 이용해 대기하고 있는 상태
+  * WAITING 상태와의 차이점은 메서드의 인수로 최대 대기 시간을 명시할 수 있어 외부적인 변화뿐만 아니라 시간에 의해서도 WAITING 상태가 해제될 수 있다는 것
+
+## 스레드의 종류
+  * 데몬 스레드(Daemon Thread) 
+  * 비데몬 스레드(Non-daemon Thread)
+  * 데몬 스레드는 다른 비데몬 스레드가 없다면 동작을 중지
+  * Java 애플리케이션이 기본적으로 여러 개의 스레드를 생성 (대부분이 데몬 스레드인데 가비지 컬렉션이나, JMX 등의 작업을 처리하기 위한 것)
+  * 'static void main(String[] args)' 메서드가 실행되는 스레드는 비데몬 스레드로 생성
+  * main 메서드가 실행되는 스레드를 HotSpot VM에서는 VM Thread라고 부름
+
+## 스레드 덤프의 정보
+  * 스레드 이름
+    * 스레드의 고유 이름. java.lang.Thread 클래스를 이용해 스레드를 생성하면 Thread-(Number) 형식으로 스레드 이름이 생성 
+    * java.util.concurrent.ThreadFactory 클래스를 이용했으면 pool-(number)-thread-(number) 형식으로 스레드 이름이 생성
+  * 우선순위
+    * 스레드의 우선순위
+  * 스레드 ID
+    * 스레드의 ID
+    * 해당 정보를 이용해 스레드의 CPU 사용, 메모리 사용 등 유용한 정보를 얻을 수 있음
+  * 스레드 상태
+    * 스레드의 상태
+  * 스레드 콜스택
+    * 스레드의 콜스택(Call Stack) 정보
+
 ## TreadLocal
 * 스레드 내부의 값과 값을 갖고 있는 객체를 연결해 스레드 한정 기법을 적용할 수 있도록 도와주는 좀더 형식적인 방법
 * ThreadLocal 클래스에는 get과 set 메소드가 있는데 호출하는 스레드마다 다른 값을 사용할 수 있도록 관리해줌
@@ -832,13 +867,18 @@ public class LoggingWidget extends Widget {
 
 #### 참조 https://d2.naver.com/helloworld/831311
 
+## Generics
+
+### Heap Pollution
+ * 힙 오염은 매개 변수화 된 유형의 변수가 해당 매개 변수화 된 유형이 아닌 개체를 참조 할 때 발생
+
 # 개발방법론
 
 ## OOP
 * 데이터와 코드가 Encapsulated
 * 데이터와 그 데이터를 조작하는 코드와 변경은 외부에 영향을 안 미침
 * 외부에 노출된 인터페이스만 변경되지 않는다면 프로시저를 실행하는데 필요한 만큼의 데이터만 가짐
-* IoC를 통해 HIGH Level Policy(클라이언트, 비즈니스로직)를 Low Level Detail로 부터 보호하는 것
+* IoC를 통해 High Level Policy(클라이언트, 비즈니스로직)를 Low Level Detail로 부터 보호하는 것
 
 ### 객체(Object)
 * 객체는 데이터와 그 데이터를 조작하는 프로시저(오퍼레이션, 메서드, 함수)로 구성
@@ -957,12 +997,14 @@ public class LoggingWidget extends Widget {
 
 ## 정보은닉과 캡슐화 차이
 * 정보은닉
+  * 정보 은닉은 모듈을 분할하기 위한 기본 원리
   * 모든 객체지향 언어적 요소를 활용하여 객체에 대한 구체적인 정보를 노출시키지 않도록 하는 기법
   * 종류
     * 객체의 구체적인 타입 은닉
     * 객체의 필드 및 메소드 은닉 (캡슐화)
     * 구현 은닉 (인터페이스 및 추상 클래스 기반의 구현)
 * 캡슐화 (encapsulation)
+  * 데이터를 공용 메소드를 통해서만 접근하도록 허용하는 방법을 데이터 캡슐화
   * 객체가 내부적으로 기능을 어떻게 구현하는지를 감추는 것
   * 멤버변수와 멤버함수를 모두 묶어서 하나의 단위 (클래스, 객체)로 만드는 일련의 작업
   * 클래스의 내부가 바뀌어도 클래스를 참조하는 다른 클래스나 함수는 변경할 필요가 없음
@@ -1388,6 +1430,6 @@ class MemberService {
 * [하나의 메모리 누수를 잡기까지](http://d2.naver.com/helloworld/1326256)
 * [Spring - IoC & DI](http://isstory83.tistory.com/m/91)
 * [캡슐화 (Encapsulation)](http://javacan.tistory.com/entry/EncapsulationExcerprtFromJavaBook)
-* [객체지향의 올바른 이해 : 5. 정보 은닉(information hiding)](http://effectiveprogramming.tistory.com/entry/%EA%B0%9D%EC%B2%B4%EC%A7%80%ED%96%A5-%EC%A0%95%EB%B3%B4-%EC%9D%80%EB%8B%89information-hiding%EC%97%90-%EB%8C%80%ED%95%9C-%EC%98%AC%EB%B0%94%EB%A5%B8-%EC%9D%B4%ED%95%B4?category=660012)
+* [정보 은닉 (Information Hiding)](http://aeternum.egloos.com/1232020)
 * [Transaction Isolation](https://www.postgresql.org/docs/current/transaction-iso.html)
 * [REST API 제대로 알고 사용하기 : TOAST Meetup](https://meetup.toast.com/posts/92)
