@@ -917,6 +917,15 @@ public class LoggingWidget extends Widget {
 ### Flyweight
 * 복수의 장소에서 동일한 것이 등장할 때 그것들을 공유해서 낭비를 없앰
 
+### Proxy
+* 정말로 목적한 것이 필요하게 될 때까지 대리인을 사용해서 처리하는 진행
+
+### Command
+* 요구나 명령을 형태로 만들어서 클래스로 표현
+
+### Interpreter
+* 문법규칙을 클래스로 표현
+
 ## SOLID
 
 ### Single Responsibility Principle : 단일책임의 원칙
