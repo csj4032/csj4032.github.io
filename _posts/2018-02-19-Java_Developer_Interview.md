@@ -95,7 +95,7 @@ tags:
 * 콘텐츠를 변경할 수 있게 해주기 떄문에, 많은 웹 서버가 PUT을 수행하기 전에 사용자에게 비밀번호를 입력해서 로그인을 하도록 요구
 
 #### POST
-* non-idempotent
+* Non-Idempotent
 * 서버에 입력 데이터를 전송하기 위해서 설계
 
 #### TRACE
@@ -117,10 +117,10 @@ tags:
   * Uniform Interface
     * Uniform Interface는 URI로 지정한 리소스에 대한 조작을 통일되고 한정적인 인터페이스로 수행하는 아키텍처 스타일을 말함
     * Uniform interface 제약조건
-        * identification of resources
-        * manipulation of resources thorough representations
-        * self-descriptive message
-        * HATEOS (hypermedia as the engine of application state)
+        * Identification of Resources
+        * Manipulation of Resources Thorough Representations
+        * Self-Descriptive Message
+        * HATEOS (Hypermedia as The Engine of Application State)
   * Stateless
     * REST는 무상태성 성격 
     * 다시 말해 작업을 위한 상태정보를 따로 저장하고 관리하지 않음 
@@ -844,7 +844,7 @@ public class LoggingWidget extends Widget {
 
 #### HashMap
 * 해쉬 테이블 자료 구조를 기반으로 하는 맵 구현
-* null 키와 값을 가진 항목을 허용하는데 항목이 저장되는 순서는 보장 하지 않음
+* Null 키와 값을 가진 항목을 허용하는데 항목이 저장되는 순서는 보장 하지 않음
 * HashMap은 보조 해시 함수(Additional Hash Function)를 사용하기 때문에 보조 해시 함수를 사용하지 않는 HashTable에 비하여 해시 충돌(hash collision)이 덜 발생할 수 있어 상대으로 성능상 이점이 있음
 
 #### HashTable
@@ -898,7 +898,7 @@ public class LoggingWidget extends Widget {
 ### Iterator (B, O)
 * 순서대로 지정해서 처리하기
 
-### Adapter (S, C, B)
+### Adapter (S, C, O)
 * 바꿔서 재이용하기
 
 ### Template Method (B, C)
@@ -943,7 +943,7 @@ public class LoggingWidget extends Widget {
 * 복잡하게 얽힌 클래스를 개별적으로 제어하는 것이 아니라, 창구 역할을 하는 클래스를 하나 배치해서 시스템 전체의 조작성을 좋게 함
 
 ### Mediator (B, O)
-* 복수의 클래스가 상호간에 직접 의사 소통을 하는 것이 아니라, 중개역을 하는 클래스를 하나 준비하고, 그 클래스하고만 의사 소통을 하게 해서 프로그램을 단순하게 만드듬
+* 복수의 클래스가 상호간에 직접 의사 소통을 하는 것이 아니라, 중개역을 하는 클래스를 하나 준비하고, 그 클래스하고만 의사 소통을 하게 해서 프로그램을 단순하게 만듬
 
 ### Observer (B, O)
 * 상태가 변화하는 클래스와 그 변화를 통지받는 클래스를 분리해서 생각
@@ -969,11 +969,11 @@ public class LoggingWidget extends Widget {
 ## SOLID
 
 ### Single Responsibility Principle : 단일책임의 원칙
-* Single Responsibility Principle 란 클래스는 하나의 책임을 가져야하며 그 책임에 대한 이유로 변경되어야 한다.
+* Single Responsibility Principle 란 클래스는 하나의 책임을 가져야하며 그 책임에 대한 이유로 변경
 * 책임 : '변경을 위한 이유', 한 클래스를 변경하기 위한 한 가지 이상의 이유를 생각할 수 있다면, 그 클래스는 한 가지 이상의 책임을 맡고 있는 것
 
 ### Open Close Principle : 개방폐쇄의 원칙
-* 소프트웨어 개체(클래스, 모듈, 함수 등)는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 한다.
+* 소프트웨어 개체(클래스, 모듈, 함수 등)는 확장에 대해 열려 있어야 하고, 수정에 대해서는 닫혀 있어야 함
 
 ### The Liskov Substitution Principle : 리스코브 치환의 원칙
 * 서브 타입은 그것의 기반 타입으로 치환 가능해야 한다.
@@ -1046,7 +1046,7 @@ public class LoggingWidget extends Widget {
 
 ### Aggregate
 * 연관된 Entity와 Value Object의 묶음. 일관성과 트랜잭션, 분산의 단위, 캡슐화를 통한 복잡성 관리
-* 예를 들어 쇼핑몰 사이트에서 주문 Entity 내에 배송주소 정보를 우편번호, 주소1, 주소2, 상세주소, 이런식으로 각 칼럼으로 정의하는 것이 아니라, 주소라는 Value Object를 별도로 작성하고 주문 Entity는 주소 Value Object을 포함하는 방식으로 관계 일관성 및 단순성화를 유지한다.
+* 예를 들어 쇼핑몰 사이트에서 주문 Entity 내에 배송주소 정보를 우편번호, 주소1, 주소2, 상세주소, 이런식으로 각 칼럼으로 정의하는 것이 아니라, 주소라는 Value Object를 별도로 작성하고 주문 Entity는 주소 Value Object을 포함하는 방식으로 관계 일관성 및 단순성화를 유지
 
 ### Factory
 * 복잡한 Entity의 생성 절차에 캡슐화 할 수 있는 개념
@@ -1056,10 +1056,15 @@ public class LoggingWidget extends Widget {
 ### Repository
 * 도메인 영역과 데이터 인프라스트럭쳐 계층의 분리하여 데이터 계층에 대한 결합도를 낮추기 위한 방안
 * 생성된 Aggregate에 대한 영속성 관리, 조회, 등록, 수정, 삭제시 Aggregate의 일관성 유지
-* DB및 데이터 저장소의 데이터를 조회하고 저장하는 경우 Repository를 활용한다.
+* DB및 데이터 저장소의 데이터를 조회하고 저장하는 경우 Repository를 활용함
 
 ### Bounded Context
-* 각각의 업무는 분할된 컨텍스트로 나눌 수 있으며 각 Context에 사용되는 모델은 서로 분리되어야 하며, 각 하나의 Context는 하나의 팀에 할당되어 관리되는 것이 좋다. 또한 이러한 방향은 Micro Service Architecture에서 추구하는 방향이기도 하다.
+* 각각의 업무는 분할된 컨텍스트로 나눌 수 있으며 각 Context에 사용되는 모델은 서로 분리되어야 하며, 각 하나의 Context는 하나의 팀에 할당되어 관리되는 것이 좋음
+* Micro Service Architecture에서 추구하는 방향
+
+# Refactoring
+
+# TDD
 
 # Database
 
@@ -1126,7 +1131,6 @@ public class LoggingWidget extends Widget {
 * POJO 조건
   * 특정 규약에 종송되지 않는다.
   * 특정 환경에 종속되지 않는다.
-
 
 ## Dispatcher Servlet
 
