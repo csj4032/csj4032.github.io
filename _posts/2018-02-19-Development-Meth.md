@@ -200,3 +200,33 @@ tags:
 ## Refactoring
 
 ## TDD
+
+# 마이크로서비스 (MSA)
+* 마이크로서비스
+  * 작고 자율적으로 협업하는 서비스
+## 마이크로서비스 아키텍처의 장점
+* 크고 복잡한 애플리케이션을 지속적으로 전달/배포 할 수 있음
+* 서비스 규모가 작아 관리하기 쉬움
+* 서비스를 독립적으로 배포/확장할 수 있음
+* 마이크로서비스 아키텍처 덕분에 팀이 자율적으로 움직임
+* 결함 격리가 잘됨
+* 새로운 기술을 실험하고 도입하기 쉬움
+## 마이크로서비스 아키텍처의 단점
+* 딱 맞는 서비스를 찾기가 쉽지 않음
+* 분산 시스템은 너무 복잡해서 개발, 테스트, 배포가 어려움
+* 여러 서비스에 걸친 기능을 배포할 때에는 잘 조정해야 함
+* 마이크로서비스 아키텍처 도임 시점을 결정하기 어려움
+
+## Asynchronous Event-Driven Microservices
+* Granularity
+* Scalability
+* Technological flexibility
+* Business requirement flexibility
+* Loosely coupling
+* Continuous delivery support
+* High testability
+
+## Organizing Code
+* Organizing by Layer
+* Organizing by Feature
+* An Architecturally Expressive Package Structure
