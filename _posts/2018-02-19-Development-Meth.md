@@ -1,10 +1,10 @@
 ---
 title: Software Development Methodology
-description: 자바 개발자 기술 면접 정리
+description: 기술 면접 정리
 categories:
  - Interviwe
 tags:
- - java, os, network, database
+ - OOP, SOLID, TDD
 ---
 
 # 개발방법론
