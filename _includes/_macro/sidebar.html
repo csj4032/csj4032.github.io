@@ -57,7 +57,7 @@
               {% assign hasCategoriesPage = true %}
             {% endif %}
             <div class="site-state-item site-state-categories">
-              {% if hasCategoriesPage %}<a href="{{ categoriesPageQuery[0].url | relative_url) }}">{% endif %}
+              {% if hasCategoriesPage %}<a href="{{ categoriesPageQuery[0].url | relative_url }}">{% endif %}
                 <span class="site-state-item-count">{{ site.categories.size }}</span>
                 <span class="site-state-item-name">{{ __.state.categories }}</span>
               {% if hasCategoriesPage %}</a>{% endif %}
