@@ -25,15 +25,41 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 
 이 블로그의 알고리즘·자료구조·디자인 패턴·Spark·Airflow 글은 그 과정에서 다시 익힌 것들의 기록입니다.
 
-#### Data : Spark, Airflow, Delta Lake, Hadoop, Pandas
+#### Work
 
-#### Storage : MySQL, Elasticsearch, Neo4j, MongoDB, Redis, Couchbase
+18년 9개월째 개발을 하고 있고, 최근 몇 년은 데이터 엔지니어링에 집중하고 있습니다.
+
+| 기간 | 회사 | 역할 |
+| --- | --- | --- |
+| 2025.04 – 재직 중 | 윌로그 | 데이터엔지니어 팀장 |
+| 2024.10 – 2025.04 | 플로틱 | 데이터/백엔드 |
+| 2020.12 – 2024.10 | 뉴넥스 | 데이터 엔지니어 |
+| 2017 – 2020 | 위메프 | 추천·프로모션 시스템 |
+| 2016 – 2017 | 메쉬코리아 | 백엔드 |
+| 2013 – 2016 | 디케이테크인 (a Kakao company) | 백엔드 |
+| 2007 – 2013 | 지앤솔루션 · 대형웍스 외 | 웹 개발 |
+
+최근에 한 일들을 몇 가지 추리면 이렇습니다. EC2 위에서 돌던 Airflow를 MWAA로 전면 이관하고 CI/CD와 형상관리 체계를 세웠습니다. AWS의 실시간·IoT 데이터를 GCP BigQuery로 모으는 하이브리드 아키텍처를 설계하면서 메달리온 4계층 구조를 잡고, Redshift에서 BigQuery로의 마이그레이션과 Aurora CDC 파이프라인을 구축했습니다. MSK(Kafka) 클러스터를 개발·스테이징·운영 3종으로 올리고 Connect와 커스텀 SMT로 실시간 적재를 붙였습니다. 파이프라인 산출물에는 Deequ와 Great Expectations로 품질 검증을 걸었고, 검색 쪽은 OpenSearch에 Nori 형태소 분석과 KNN 벡터 검색을 얹어 RAG 인덱싱까지 이어붙였습니다.
+
+그 전에는 추천과 검색이 주된 일이었습니다. 협업 필터와 Association Rule 기반 추천, 상품 데이터 마트, 사용자 행동 로그 ETL, 데이터브릭스 기반 웨어하우스 같은 것들입니다.
+
+#### Data : Spark, Airflow(MWAA), Kafka(MSK), Hadoop, EMR, Databricks, Great Expectations, Pandas
+
+#### Storage : BigQuery, MySQL·Aurora, PostgreSQL, Elasticsearch·OpenSearch, Redshift, MongoDB, Redis, InfluxDB
 
 #### Languages : Java, Kotlin, Scala, Python, SQL, JavaScript
 
 #### Cloud : AWS, GCP
 
+#### Certificates : 빅데이터분석기사, ADSP, SQLD, DASP, 정보처리기사
+
+#### Education : 경상대학교 (2006 졸업)
+
 #### Email : csj4032@gmail.com
+
+#### LinkedIn : [linkedin.com/in/성조-최](https://www.linkedin.com/in/%EC%84%B1%EC%A1%B0-%EC%B5%9C-253723105/)
+
+#### AWS 기술 블로그 기고 : [AWS 서비스를 활용한 검색 시스템 구축과 운영](https://aws.amazon.com/ko/blogs/tech/building-and-operating-search-system-using-aws-services/)
 
 #### Github : [https://github.com/csj4032](https://github.com/csj4032)
 
