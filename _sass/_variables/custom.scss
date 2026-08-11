@@ -30,6 +30,26 @@ $dark-text-dim                  : #8b929e;
 $dark-accent                    : #fc6423;  // 테마 기본 orange 유지
 
 
+// Grayscale 반전
+//
+// 컴포넌트 SCSS가 $text-color 같은 의미 변수 대신 원시 팔레트를 직접
+// 참조하는 곳이 49군데 있다(예: scaffolding/base.scss:47, post-title.scss:14,
+// post-collapse.scss:27). 개별 선택자를 덮는 대신 팔레트의 명암을 뒤집어
+// 한 번에 맞춘다. 밝을수록 배경, 어두울수록 글자라는 원래 의미가 유지된다.
+// --------------------------------------------------
+
+$whitesmoke   : #22262d;  // was #f5f5f5 — 가장 밝은 배경 → 가장 어두운 표면
+$gainsboro    : #2b3038;  // was #eee
+$gray-lighter : #333941;  // was #ddd
+$grey-light   : #3d444e;  // was #ccc
+$grey         : #59606b;  // was #bbb
+$grey-dark    : #8b929e;  // was #999
+$grey-dim     : #a7aeb9;  // was #666
+$black-light  : #c8ccd4;  // was #555 — 본문 글자
+$black-dim    : #dadde3;  // was #333
+$black-deep   : #e6e9ef;  // was #222 — 가장 진한 글자 → 가장 밝은 글자
+
+
 // Scaffolding
 // --------------------------------------------------
 

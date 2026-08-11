@@ -35,6 +35,13 @@
   background: $dark-text;
 }
 
+// 팔레트 반전으로 $black-deep 이 밝아졌으므로, 그 위에 얹히는
+// 토글 막대가 묻히지 않도록 버튼 배경을 다시 어둡게 둔다.
+// (Pisces 에서는 기본적으로 감춰지지만 안전하게 맞춰 둔다)
+.sidebar-toggle {
+  background: $dark-surface-raised;
+}
+
 
 // 본문 타이포그래피
 // 제목류는 본문보다 한 단계 밝게 두어 위계를 만든다.
