@@ -21,6 +21,15 @@
       {% if page.layout == 'category' %}
         {% assign collections = site.categories %}
         {% assign redirect = '/categories/' | relative_url %}
+        {% capture labels %}
+          {% for parent in site.data.categories %}
+            '{{ parent.slug }}': '{{ parent.label }}',
+            {% for child in parent.children %}
+              '{{ child.slug }}': '{{ child.label }}',
+            {% endfor %}
+          {% endfor %}
+        {% endcapture %}
+        {% assign labels = labels | normalize_whitespace %}
       {% endif %}
 
       {% if page.layout == 'tag' %}
@@ -52,8 +61,11 @@
           return;
         }
 
-        $('.collection-title')[0].childNodes[1].childNodes[0].nodeValue = collection;
-        document.title = "{{ __.title[page.layout] }}: " + collection + " | {{ site.title }}";
+        var labels = { {{ labels }} };
+        var displayName = labels[collection] || collection;
+
+        $('.collection-title')[0].childNodes[1].childNodes[0].nodeValue = displayName;
+        document.title = "{{ __.title[page.layout] }}: " + displayName + " | {{ site.title }}";
 
         var sizes = maps[collection];
         var base = "#" + "/" + collection;
