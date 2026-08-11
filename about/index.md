@@ -33,7 +33,7 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 
 #### Platform : GCP
 
-전에는 ActionScript · PHP · Node.js 쪽 일도 했습니다.
+전에는 Node.js 쪽 일도 했습니다.
 
 #### Email : csj4032@gmail.com
 
