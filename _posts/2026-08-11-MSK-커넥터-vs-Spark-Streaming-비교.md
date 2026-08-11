@@ -38,7 +38,7 @@ Kafka(MSK)에 쌓이는 이벤트를 BigQuery로 옮겨야 할 일이 생겼습�
 {
   "connector.class": "com.wepay.kafka.connect.bigquery.BigQuerySinkConnector",
   "tasks.max": "1",
-  "topics": "sensor-rule-signal-v1,sensor-self-signal-v1",
+  "topics": "sample-event-v1,sample-alert-v1",
   "project": "mmix-prod-data-iron",
   "datasets": "stg_platform",
   "defaultDataset": "stg_platform",
@@ -119,8 +119,8 @@ df = spark.readStream \
 
 # 토픽별 분기 처리 및 BigQuery 저장
 def process_batch(batch_df, batch_id):
-    df_self = batch_df.filter(col("topic") == "sensor-self-signal-v1")
-    df_rule = batch_df.filter(col("topic") == "sensor-rule-signal-v1")
+    df_event = batch_df.filter(col("topic") == "sample-event-v1")
+    df_alert = batch_df.filter(col("topic") == "sample-alert-v1")
     # 각 토픽별 스키마 파싱 및 BigQuery 저장
 
 query = df.writeStream \
