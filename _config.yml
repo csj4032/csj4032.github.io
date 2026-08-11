@@ -233,7 +233,7 @@ social_icons:
 
 
 # Sidebar Avatar
-# in directory: /assets/images/avatar.gif
+# Defaults to /assets/images/avatar.jpg when unset.
 #avatar:
 
 
