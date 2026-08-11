@@ -1,1 +1,146 @@
 // Custom styles.
+//
+// 이 파일은 Schemes Layer 다음, 가장 마지막에 import 된다.
+// (assets/css/main.scss 의 Custom Layer 참고)
+//
+// 다크테마 색상 대부분은 _variables/custom.scss 의 변수 재정의로 처리했다.
+// 여기에는 테마가 색상을 변수가 아닌 리터럴로 박아둔 곳만 덮어쓴다.
+
+
+// Pisces 가 `background: white` 로 하드코딩한 표면들
+//   _schemes/Pisces/_layout.scss:20   .header-inner
+//   _schemes/Pisces/_layout.scss:65   .content-wrap
+//   _schemes/Pisces/_sidebar.scss:18  .sidebar-inner
+// --------------------------------------------------
+
+.header-inner,
+.content-wrap,
+.sidebar-inner {
+  background: $dark-surface;
+}
+
+// 사이드바는 페이지 바탕과 같은 톤을 쓴다 (Pisces 기본 동작)
+.sidebar {
+  background: $dark-bg;
+}
+
+
+// 모바일/태블릿 메뉴 토글 막대
+//   _schemes/Pisces/_menu.scss:58            .btn-bar
+//   _common/components/sidebar/sidebar-toggle.scss:30
+// --------------------------------------------------
+
+.btn-bar,
+.sidebar-toggle-line {
+  background: $dark-text;
+}
+
+
+// 본문 타이포그래피
+// 제목류는 본문보다 한 단계 밝게 두어 위계를 만든다.
+// --------------------------------------------------
+
+h1, h2, h3, h4, h5, h6 {
+  color: $dark-text-strong;
+}
+
+hr {
+  background-color: $dark-border;
+  border: none;
+  height: 1px;
+}
+
+blockquote {
+  color: $dark-text-dim;
+  border-left-color: $dark-border;
+}
+
+// 본문 링크는 강조색으로 구분한다
+.post-body a {
+  color: $dark-accent;
+  border-bottom-color: rgba($dark-accent, .4);
+
+  &:hover {
+    color: lighten($dark-accent, 10%);
+    border-bottom-color: $dark-accent;
+  }
+}
+
+
+// 코드
+// 블록은 highlight_theme: night 가 담당하고, 여기서는 테두리만 맞춘다.
+// --------------------------------------------------
+
+.post-body pre,
+.highlight,
+figure.highlight {
+  border: 1px solid $dark-border;
+}
+
+
+// 목록/아카이브
+// --------------------------------------------------
+
+.posts-collapse .collection-title h1,
+.posts-collapse .collection-title h2 {
+  color: $dark-text-strong;
+}
+
+.posts-collapse .post-title a {
+  color: $dark-text;
+
+  &:hover { color: $dark-accent; }
+}
+
+.posts-collapse::after,
+.posts-collapse .post-header::before {
+  background: $dark-border;
+}
+
+.category-list-count,
+.tag-list-count,
+.archive-list-count {
+  color: $dark-text-dim;
+}
+
+
+// 푸터
+// --------------------------------------------------
+
+.footer {
+  color: $dark-text-dim;
+}
+
+.footer a {
+  color: $dark-text-dim;
+
+  &:hover { color: $dark-text-strong; }
+}
+
+
+// 스크롤바 (WebKit)
+// --------------------------------------------------
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $dark-bg;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $dark-border;
+  border-radius: 5px;
+
+  &:hover { background: lighten($dark-border, 10%); }
+}
+
+
+// 브라우저 UI(폼 컨트롤, 스크롤바)에 다크 스킴임을 알린다
+// --------------------------------------------------
+
+:root {
+  color-scheme: dark;
+}

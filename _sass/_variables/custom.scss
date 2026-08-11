@@ -1,0 +1,155 @@
+// Custom variables.
+//
+// 이 파일은 _variables/base 와 _variables/{scheme} 다음에 import 되므로,
+// 여기서 다시 정의한 값이 최종적으로 컴포넌트에 적용된다.
+// (assets/css/main.scss 의 Variables Layer 참고)
+
+
+// Layout sizes
+// 기본 960/700 에서 넓힌다. Pisces 는 sidebar(240) + gap(20) + content 구성이므로
+// content = main - 260 이 되어야 사이드바와 본문이 어긋나지 않는다.
+// --------------------------------------------------
+
+$main-desktop                   : 1200px;
+$main-desktop-large             : 1400px;
+
+$content-desktop                : 940px;   // 1200 - 240 - 20
+$content-desktop-large          : 1140px;  // 1400 - 240 - 20
+
+
+// Dark palette
+// --------------------------------------------------
+
+$dark-bg                        : #16181d;  // 페이지 바탕
+$dark-surface                   : #1e2127;  // 본문/사이드바 카드
+$dark-surface-raised            : #262a31;  // 코드, 테이블 줄무늬
+$dark-border                    : #333941;
+$dark-text                      : #c8ccd4;
+$dark-text-strong               : #e6e9ef;
+$dark-text-dim                  : #8b929e;
+$dark-accent                    : #fc6423;  // 테마 기본 orange 유지
+
+
+// Scaffolding
+// --------------------------------------------------
+
+$text-color                     : $dark-text;
+
+$link-color                     : $dark-text;
+$link-hover-color               : $dark-text-strong;
+$link-decoration-color          : $dark-border;
+$link-decoration-hover-color    : $dark-text-strong;
+
+$border-color                   : $dark-border;
+$body-bg-color                  : $dark-bg;
+
+$selection-bg                   : $dark-accent;
+$selection-color                : #ffffff;
+
+
+// Table
+// --------------------------------------------------
+
+$table-border-color             : $dark-border;
+$table-cell-border-right-color  : $dark-border;
+$table-cell-border-bottom-color : $dark-border;
+$table-row-odd-bg-color         : $dark-surface-raised;
+$table-row-hover-bg-color       : lighten($dark-surface-raised, 4%);
+
+
+// Inline code
+// (코드 블록은 _config.yml 의 highlight_theme: night 가 담당)
+// --------------------------------------------------
+
+$code-foreground                : #e6a06a;
+$code-background                : $dark-surface-raised;
+
+
+// Button
+// --------------------------------------------------
+
+$btn-default-bg                 : $dark-surface-raised;
+$btn-default-color              : $dark-text;
+$btn-default-border-color       : $dark-border;
+$btn-default-hover-bg           : $dark-accent;
+$btn-default-hover-color        : #ffffff;
+$btn-default-hover-border-color : $dark-accent;
+
+$read-more-color                : $dark-text;
+$read-more-bg-color             : $dark-surface-raised;
+
+
+// Pagination
+// --------------------------------------------------
+
+$pagination-border              : $dark-border;
+$pagination-link-color          : $dark-text;
+$pagination-link-border         : $dark-border;
+$pagination-link-hover-color    : $dark-text-strong;
+$pagination-link-hover-border   : $dark-accent;
+$pagination-active-bg           : $dark-accent;
+$pagination-active-color        : #ffffff;
+$pagination-active-border       : $dark-accent;
+
+
+// Header / brand
+// --------------------------------------------------
+
+$headband-bg                    : $dark-accent;
+$head-bg                        : transparent;
+$brand-color                    : $dark-text-strong;
+$brand-hover-color              : #ffffff;
+$brand-bg                       : transparent;
+$site-subtitle-color            : $dark-text-dim;
+$subtitle-color                 : $dark-text-dim;
+
+$menu-link-border               : $dark-accent;
+$menu-link-hover-border         : $dark-accent;
+
+
+// Sidebar (Pisces)
+// --------------------------------------------------
+
+$sidebar-nav-color              : $dark-text-dim;
+$sidebar-nav-hover-color        : $dark-accent;
+$sidebar-highlight              : $dark-accent;
+
+$site-author-image-border-color : $dark-border;
+$site-author-name-color         : $dark-text-strong;
+$site-description-color         : $dark-text-dim;
+
+$site-state-item-count-color    : $dark-text-strong;
+$site-state-item-name-color     : $dark-text-dim;
+$site-state-item-border-color   : $dark-border;
+
+$toc-link-color                       : $dark-text-dim;
+$toc-link-border-color                : $dark-border;
+$toc-link-hover-color                 : $dark-text-strong;
+$toc-link-hover-border-color          : $dark-text-strong;
+$toc-link-active-color                : $dark-accent;
+$toc-link-active-border-color         : $dark-accent;
+$toc-link-active-current-color        : $dark-accent;
+$toc-link-active-current-border-color : $dark-accent;
+
+
+// Back to top
+// --------------------------------------------------
+
+$b2t-color                      : $dark-text-strong;
+$b2t-bg-color                   : $dark-surface-raised;
+
+
+// Post
+// $post-copyright 은 색상이 아니라 맵이다. 색상만 갈아끼운다.
+// --------------------------------------------------
+
+$post-copyright : (
+  margin: 2em 0 0,
+  padding: .5em 1em,
+  bg: $dark-surface-raised,
+  border: (
+    width: 3px,
+    style: solid,
+    color: $dark-accent
+  )
+);
