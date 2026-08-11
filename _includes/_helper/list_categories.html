@@ -1,14 +1,39 @@
-{% comment %} list_categories(paginator, prev_text, next_text) {% endcomment %}
+{% comment %} list_categories() — renders _data/categories.yml as a two level tree {% endcomment %}
+{% capture known_slugs %}{% for parent in site.data.categories %}|{{ parent.slug }}{% for child in parent.children %}|{{ child.slug }}{% endfor %}{% endfor %}|{% endcapture %}
 {% capture list_categories %}
   <ul class="category-list">
+    {% for parent in site.data.categories %}
+      {% assign parent_posts = site.categories[parent.slug] %}
+      {% if parent_posts.size > 0 %}
+        {% capture child_items %}
+          {% for child in parent.children %}
+            {% assign child_posts = site.categories[child.slug] %}
+            {% if child_posts.size > 0 %}
+              <li class="category-list-item">
+                <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: child.slug }}">{{ child.label }}</a>
+                <span class="category-list-count">{{ child_posts.size }}</span>
+              </li>
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+        <li class="category-list-item">
+          <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: parent.slug }}">{{ parent.label }}</a>
+          <span class="category-list-count">{{ parent_posts.size }}</span>
+          {% unless child_items == blank %}
+            <ul class="category-list category-list-child">{{ child_items }}</ul>
+          {% endunless %}
+        </li>
+      {% endif %}
+    {% endfor %}
     {% for cat_posts in site.categories %}
-    <li class="category-list-item">
-      {% assign cat = cat_posts[0] %}
-      {% assign posts = cat_posts[1] %}
-      {% assign cat_url_encode = cat | url_encode | replace: '+', '%20' %}
-      <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: cat_url_encode }}">{{ cat }}</a>
-      <span class="category-list-count">{{ posts.size }}</span>
-    </i>
+      {% capture probe %}|{{ cat_posts[0] }}|{% endcapture %}
+      {% unless known_slugs contains probe %}
+        {% assign cat_url_encode = cat_posts[0] | url_encode | replace: '+', '%20' %}
+        <li class="category-list-item">
+          <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: cat_url_encode }}">{{ cat_posts[0] }}</a>
+          <span class="category-list-count">{{ cat_posts[1].size }}</span>
+        </li>
+      {% endunless %}
     {% endfor %}
   </ul>
 {% endcapture %}

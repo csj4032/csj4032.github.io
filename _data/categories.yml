@@ -1,0 +1,43 @@
+- slug: algorithm
+  label: 알고리즘
+  children:
+    - slug: data-structure
+      label: 자료구조
+    - slug: sort
+      label: 정렬
+    - slug: search
+      label: 검색
+    - slug: graph
+      label: 그래프
+    - slug: baekjoon
+      label: 백준온라인저지
+    - slug: programmers
+      label: 프로그래머스
+
+- slug: programming
+  label: 프로그래밍
+  children:
+    - slug: design-pattern
+      label: DesignPattern
+    - slug: java
+      label: Java
+    - slug: python
+      label: Python
+
+- slug: data-engineering
+  label: 데이터엔지니어링
+  children:
+    - slug: spark
+      label: Spark
+    - slug: airflow
+      label: Airflow
+    - slug: pandas
+      label: Pandas
+
+- slug: certificate
+  label: 자격증
+  children:
+    - slug: bigdata-analytics
+      label: 빅데이터분석기사
+    - slug: adp
+      label: ADP
