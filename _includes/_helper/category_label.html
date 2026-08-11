@@ -1,0 +1,18 @@
+{%- comment -%}
+  category_label(slug) — _data/categories.yml 의 slug -> label 매핑을 찾아 출력한다.
+  매핑에 없으면 slug 를 그대로 돌려준다.
+
+  사용: {% include _helper/category_label.html slug=cat %}
+{%- endcomment -%}
+{%- assign cat_label = include.slug -%}
+{%- for parent in site.data.categories -%}
+  {%- if parent.slug == include.slug -%}
+    {%- assign cat_label = parent.label -%}
+  {%- endif -%}
+  {%- for child in parent.children -%}
+    {%- if child.slug == include.slug -%}
+      {%- assign cat_label = child.label -%}
+    {%- endif -%}
+  {%- endfor -%}
+{%- endfor -%}
+{{- cat_label -}}
