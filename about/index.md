@@ -3,7 +3,7 @@ title: about
 layout: page
 ---
 
-#### Name : 최성조
+#### Name : MMIX
 
 #### Job : Web Developer
 
