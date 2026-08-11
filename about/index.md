@@ -31,9 +31,7 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 
 #### Languages : Java, Kotlin, Scala, Python, SQL, JavaScript
 
-#### Platform : GCP
-
-전에는 Node.js 쪽 일도 했습니다.
+#### Cloud : AWS, GCP
 
 #### Email : csj4032@gmail.com
 
