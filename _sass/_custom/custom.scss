@@ -25,6 +25,48 @@
 }
 
 
+// 헤더 / 브랜드 / 메뉴
+//
+// Pisces 는 .site-meta 배경에 $black-deep 을 쓴다. 팔레트를 뒤집으면서
+// 이 값이 밝아졌는데 글자는 리터럴 white 로 남아 헤더가 하얗게 보였다.
+// 배경과 글자를 함께 다시 지정한다.
+//   _schemes/Pisces/_brand.scss:6-8   .site-meta
+//   _schemes/Pisces/_menu.scss:29-30  .menu-item a:hover  (리터럴 #f9f9f9)
+//   _schemes/Pisces/_menu.scss:58     .btn-bar            (리터럴 white)
+// --------------------------------------------------
+
+.site-meta {
+  color: $dark-text-strong;
+  background: $dark-surface;
+}
+
+.brand,
+.brand:hover,
+.site-title {
+  color: $dark-text-strong;
+  background: none;
+}
+
+.site-subtitle {
+  color: $dark-text-dim;
+}
+
+.menu .menu-item a {
+  color: $dark-text;
+
+  &:hover {
+    background: $dark-surface-raised;
+    border-bottom-color: $dark-accent;
+    color: $dark-text-strong;
+  }
+}
+
+.menu-item-active a {
+  background: $dark-surface-raised;
+  color: $dark-text-strong;
+}
+
+
 // 모바일/태블릿 메뉴 토글 막대
 //   _schemes/Pisces/_menu.scss:58            .btn-bar
 //   _common/components/sidebar/sidebar-toggle.scss:30
