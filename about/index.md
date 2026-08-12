@@ -47,11 +47,11 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 - **스트리밍 인프라** — MSK 클러스터와 MSK Connect를 구성했습니다. 보안 그룹·서브넷·Secrets·KMS 같은 주변 설정까지 포함합니다.
 - **AWS ↔ GCP 연동** — MSK Connect로 BigQuery에 실시간 적재하는 경로와, Aurora를 Datastream으로 BigQuery에 CDC 복제하는 경로를 각각 구성했습니다. 두 클라우드를 잇는 네트워크와 인증(OIDC) 설정이 실제로는 가장 손이 많이 갔습니다.
 - **데이터베이스 운영** — RDS Aurora 파라미터 그룹을 관리했습니다.
-- **인프라 코드화와 권한 관리** — Terraform으로 리소스를 코드로 옮기고, IAM 역할·정책·계정 권한 체계를 정리했습니다.
+- **인프라 설정 관리** — 이미 갖춰져 있던 Terraform 구성 위에서 필요한 부분만 수정하고 배포를 관리했습니다. Secrets Manager, IAM 역할·정책, 계정 권한이 주된 대상이었습니다.
 
 #### Data : Spark, Airflow(MWAA), Kafka(MSK), Hadoop, EMR, Databricks, Great Expectations, Pandas
 
-#### Infra : Terraform, IAM, MSK Connect, Datastream, ECR, EMR Studio, SageMaker
+#### Infra : Terraform, IAM, Secrets Manager, MSK Connect, Datastream, ECR, EMR Studio, SageMaker
 
 #### Storage : BigQuery, MySQL·Aurora, PostgreSQL, Elasticsearch·OpenSearch, Redshift, MongoDB, Redis, InfluxDB
 
@@ -60,8 +60,6 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 #### Cloud : AWS, GCP
 
 #### Certificates : 빅데이터분석기사, ADSP, SQLD, DASP, 정보처리기사
-
-#### Education : 경상대학교 (2006 졸업)
 
 #### Email : csj4032@gmail.com
 
