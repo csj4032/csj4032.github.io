@@ -49,6 +49,8 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 - **데이터베이스 운영** — RDS Aurora 파라미터 그룹을 관리했습니다.
 - **인프라 설정 관리** — 이미 갖춰져 있던 Terraform 구성 위에서 필요한 부분만 수정하고 배포를 관리했습니다. Secrets Manager, IAM 역할·정책, 계정 권한이 주된 대상이었습니다.
 
+전담은 아니었지만, 데이터 처리를 위한 AWS 인프라가 어떻게 구성되는지 이해하고 있고 필요한 설정은 직접 할 수 있습니다.
+
 #### Data : Spark, Airflow(MWAA), Kafka(MSK), Hadoop, EMR, Databricks, Great Expectations, Pandas
 
 #### Infra : Terraform, IAM, Secrets Manager, MSK Connect, Datastream, ECR, EMR Studio, SageMaker
