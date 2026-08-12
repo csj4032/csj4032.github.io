@@ -52,7 +52,7 @@
   label: 기타
   children: []
 
-# 슬러그의 오타(Interviwe)는 이미 배포된 URL이라 그대로 두고 표시명만 지정한다
-- slug: Interviwe
+# 슬러그의 오타(Interview)는 이미 배포된 URL이라 그대로 두고 표시명만 지정한다
+- slug: Interview
   label: 인터뷰
   children: []

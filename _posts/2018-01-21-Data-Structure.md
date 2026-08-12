@@ -2,7 +2,7 @@
 title: Data Structure
 description: Effective Java 책 정리
 categories:
- - Interviwe
+ - Interview
 tags:
  - data structure
 ---

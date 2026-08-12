@@ -2,7 +2,7 @@
 title: Software Development Methodology
 description: 기술 면접 정리
 categories:
- - Interviwe
+ - Interview
 tags:
  - OOP, SOLID, TDD
 ---
