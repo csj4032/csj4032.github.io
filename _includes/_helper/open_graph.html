@@ -21,20 +21,23 @@
   {% assign updated = page.updated %}
   {% assign twitter_card = 'summary' %}
 
+  {% comment %}
+    page.content 는 변환 전 원본 마크다운이라 strip_html 만으로는 '####' 같은
+    기호가 남는다. markdownify 로 HTML 로 바꾼 뒤 태그를 제거해 순수 텍스트를 만든다.
+    메타 설명은 길 필요가 없으므로 잘라낸다.
+    이스케이프는 출력 시점에 xml_escape 로 한 번만 한다.
+    (기존 코드는 '<' -> '&lt;' 를 먼저 하고 '&' 를 나중에 치환해
+     '&amp;lt;' 로 이중 이스케이프되는 버그가 있었다)
+  {% endcomment %}
   {% if description %}
-    {% assign description = description | strip_html | strip |
-                            replace: '<', '&lt;' |
-                            replace: '>', '&gt;' |
-                            replace: '&', '&amp;' |
-                            replace: '"', '&quot;' |
-                            replace: "'", '&apos;' |
-                            replace: '\n', ' ' %}
+    {% assign description = description | markdownify | strip_html
+                            | normalize_whitespace | strip | truncate: 200 %}
   {% endif %}
 
   {% if images.size == 0 and page_content %}
     {% assign imgs = page_content | strip | split: '<img' | shift %}
     {% for img in imgs %}
-      {% assign tmp = img | strip | split: 'src=' | shfit %}
+      {% assign tmp = img | strip | split: 'src=' | shift %}
       {% assign tmp = tmp | strip | split: '\"' | shift %}
       {% assign image = tmp[0] | strip %}
       {% if image %}
@@ -44,7 +47,7 @@
   {% endif %}
 
   {% if description %}
-    <meta name="description" content="{{ description }}">
+    <meta name="description" content="{{ description | xml_escape }}">
     <!--newline-->
   {% endif %}
 
@@ -59,7 +62,7 @@
   <meta property="og:site_name" content="{{ site_name | xml_escape }}"><!--newline-->
 
   {% if description %}
-    <meta property="og:description" content="{{ description }}">
+    <meta property="og:description" content="{{ description | xml_escape }}">
     <!--newline-->
   {% endif %}
 
@@ -82,7 +85,7 @@
   <meta name="twitter:title" content="{{ title | xml_escape }}"><!--newline-->
 
   {% if description %}
-    <meta name="twitter:description" content="{{ description }}">
+    <meta name="twitter:description" content="{{ description | xml_escape }}">
     <!--newline-->
   {% endif %}
 

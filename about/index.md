@@ -1,6 +1,7 @@
 ---
 title: about
 layout: page
+description: "18년 9개월차 개발자 MMIX입니다. Spark·Airflow·Kafka로 데이터 파이프라인을 만들고, AWS와 GCP를 오가는 데이터 플랫폼을 설계합니다. 경력과 기술 스택을 정리했습니다."
 ---
 
 #### Name : MMIX
