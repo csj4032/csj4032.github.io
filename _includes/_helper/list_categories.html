@@ -4,7 +4,11 @@
   <ul class="category-list">
     {% for parent in site.data.categories %}
       {% assign parent_posts = site.categories[parent.slug] %}
-      {% if parent_posts.size > 0 %}
+      {% comment %}
+        hidden: true 인 항목은 목록에서 감춘다. known_slugs 에는 그대로 남겨야
+        아래 fallback 루프가 슬러그를 날것으로 다시 출력하지 않는다.
+      {% endcomment %}
+      {% if parent_posts.size > 0 and parent.hidden != true %}
         {% capture child_items %}
           {% for child in parent.children %}
             {% assign child_posts = site.categories[child.slug] %}

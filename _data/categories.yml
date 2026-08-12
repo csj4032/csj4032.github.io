@@ -18,26 +18,41 @@
   label: 프로그래밍
   children:
     - slug: design-pattern
-      label: DesignPattern
+      label: 디자인패턴
     - slug: java
-      label: Java
+      label: 자바
     - slug: python
-      label: Python
+      label: 파이썬
 
 - slug: data-engineering
   label: 데이터엔지니어링
   children:
     - slug: spark
-      label: Spark
+      label: 스파크
     - slug: airflow
-      label: Airflow
+      label: 에어플로우
     - slug: pandas
-      label: Pandas
+      label: 판다스
 
+# hidden: true — 목록에서만 감춘다. 글과 URL은 그대로 살아 있다.
 - slug: certificate
   label: 자격증
+  hidden: true
   children:
     - slug: bigdata-analytics
       label: 빅데이터분석기사
     - slug: adp
       label: ADP
+
+- slug: book
+  label: 서적
+  children: []
+
+- slug: etc
+  label: 기타
+  children: []
+
+# 슬러그의 오타(Interviwe)는 이미 배포된 URL이라 그대로 두고 표시명만 지정한다
+- slug: Interviwe
+  label: 인터뷰
+  children: []

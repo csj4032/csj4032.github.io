@@ -1,6 +1,13 @@
 ---
-title: Claude Code 통합 가이드
-layout: page
+title: "Claude Code 통합 가이드"
+description: "하나의 Mac에서 2개의 Claude Code 인스턴스를 독립적으로 운영하면서, 각 계정별로 MCP 서버와 Telegram 봇을 연결하는 방법을 정리합니다."
+categories:
+ - etc
+tags:
+ - claude-code
+ - mcp
+ - telegram
+ - bigquery
 ---
 
 하나의 Mac에서 2개의 Claude Code 인스턴스를 독립적으로 운영하면서, 각 계정별로 MCP 서버(Atlassian, Slack, GitHub, BigQuery, PostgreSQL, Google Workspace)와 Telegram 봇을 연결하는 방법을 정리합니다.
