@@ -39,7 +39,19 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 
 그 전에는 추천과 검색이 주된 일이었습니다. 협업 필터와 Association Rule 기반 추천, 상품 데이터 마트, 사용자 행동 로그 ETL, 데이터브릭스 기반 웨어하우스 같은 것들입니다.
 
+#### DevOps
+
+데브옵스 담당이 공석인 기간 동안 데이터 플랫폼의 인프라를 직접 맡았습니다. 파이프라인을 만드는 일과 그것이 돌아갈 바닥을 까는 일이 분리되지 않는 상황이었는데, 덕분에 위에서 쓰는 것들이 아래에서 어떻게 서 있는지 알게 됐습니다.
+
+- **분석·처리 환경 구축** — MWAA, EMR Studio, SageMaker를 세팅하고, EMR Spark 실행 이미지를 ECR로 관리했습니다.
+- **스트리밍 인프라** — MSK 클러스터와 MSK Connect를 구성했습니다. 보안 그룹·서브넷·Secrets·KMS 같은 주변 설정까지 포함합니다.
+- **AWS ↔ GCP 연동** — MSK Connect로 BigQuery에 실시간 적재하는 경로와, Aurora를 Datastream으로 BigQuery에 CDC 복제하는 경로를 각각 구성했습니다. 두 클라우드를 잇는 네트워크와 인증(OIDC) 설정이 실제로는 가장 손이 많이 갔습니다.
+- **데이터베이스 운영** — RDS Aurora 파라미터 그룹을 관리했습니다.
+- **인프라 코드화와 권한 관리** — Terraform으로 리소스를 코드로 옮기고, IAM 역할·정책·계정 권한 체계를 정리했습니다.
+
 #### Data : Spark, Airflow(MWAA), Kafka(MSK), Hadoop, EMR, Databricks, Great Expectations, Pandas
+
+#### Infra : Terraform, IAM, MSK Connect, Datastream, ECR, EMR Studio, SageMaker
 
 #### Storage : BigQuery, MySQL·Aurora, PostgreSQL, Elasticsearch·OpenSearch, Redshift, MongoDB, Redis, InfluxDB
 
