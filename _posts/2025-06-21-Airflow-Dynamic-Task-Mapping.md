@@ -53,13 +53,15 @@ process_data.expand( x=[1, 2, 3], y=['a', 'b'] )
 
 ## 5. Named Mapping (이름 기반 매핑)
 
-Named mapping은 매핑된 태스크의 기본 정수 인덱스(0, 1, 2...)를 의미있는 이름으로 바꿔주는 기능으로, map_index_template에 Jinja 템플릿을 제공하여 태스크 입력값 기반의 이름을 지정할 수 있습니다. 이 코드는 Named mapping의 예시로, @task 데코레이터에 map_index_template="{{ task.filename }}"를 설정하여 매핑된 각 태스크 인스턴스가 Airflow UI에서 "file1.txt", "file2.txt"로 표시되도록 합니다. 기본 정수 인덱스(0, 1) 대신 파일명으로 태스크를 식별할 수 있어 가독성과 디버깅이 용이해집니다.
+Named mapping은 매핑된 태스크의 기본 정수 인덱스(0, 1, 2...)를 의미있는 이름으로 바꿔주는 기능으로, map_index_template에 Jinja 템플릿을 제공하여 태스크 입력값 기반의 이름을 지정할 수 있습니다. 이 코드는 Named mapping의 예시로, @task 데코레이터에 map_index_template={% raw %}"{{ task.filename }}"{% endraw %}를 설정하여 매핑된 각 태스크 인스턴스가 Airflow UI에서 "file1.txt", "file2.txt"로 표시되도록 합니다. 기본 정수 인덱스(0, 1) 대신 파일명으로 태스크를 식별할 수 있어 가독성과 디버깅이 용이해집니다.
 
+{% raw %}
 ```python
 @task(map_index_template="{{ task.filename }}") 
 def process_file(filename): 
     return f"Processed {filename}" process_file.expand(filename=["file1.txt", "file2.txt"])
 ```
+{% endraw %}
 
 ## 6. Mapping with non-TaskFlow operators
 
@@ -93,6 +95,7 @@ load = LoadOperator.partial(task_id="load").expand(input=transform.output)
 
 **Mixing TaskFlow and classic operators**는 클래식 오퍼레이터와 TaskFlow 함수를 함께 사용하여 동적 매핑을 구현한다. S3ListOperator(클래식)로 S3 버킷의 파일 목록을 가져온 후, count_lines TaskFlow 함수를 list_filenames.output으로 동적 매핑하여 각 파일의 라인 수를 계산합니다. 클래식 오퍼레이터의 결과를 TaskFlow 함수의 매핑 입력으로 사용하는 혼합 방식을 보여주는 실용적인 S3 파일 처리 예시다.
 
+{% raw %}
 ```python
 list_filenames = S3ListOperator(
         task_id="get_input",
@@ -117,6 +120,7 @@ list_filenames = S3ListOperator(
     
     total(lines=counts)
 ```
+{% endraw %}
 
 ## 9. Assigning multiple parameters to a non-TaskFlow operator
 
@@ -152,8 +156,9 @@ BashOperator.partial(task_id="limited_task", max_active_tis_per_dag=16).expand(b
 
 ## 12. 템플릿 필드와의 상호작용
 
-Operator의 모든 인수는 매핑 가능하지만, 템플릿 필드로 표시된 필드가 매핑되면 템플릿 렌더링이 수행되지 않습니다. 예를 들어 ["{{ ds }}"]를 매핑하면 실제 날짜가 아닌 문자 그대로 {{ ds }}가 출력되므로, 템플릿 값을 사용하려면 task.render_template을 직접 호출하거나 컨텍스트에서 값을 미리 추출해야 한다.
+Operator의 모든 인수는 매핑 가능하지만, 템플릿 필드로 표시된 필드가 매핑되면 템플릿 렌더링이 수행되지 않습니다. 예를 들어 [{% raw %}"{{ ds }}"{% endraw %}]를 매핑하면 실제 날짜가 아닌 문자 그대로 {% raw %}`{{ ds }}`{% endraw %}가 출력되므로, 템플릿 값을 사용하려면 task.render_template을 직접 호출하거나 컨텍스트에서 값을 미리 추출해야 한다.
 
+{% raw %}
 ```python
 @task
 def make_templates():
@@ -165,6 +170,7 @@ def make_templates(**context):
     ds = context["task"].render_template("{{ ds }}", context)
     return [ds]
 ```
+{% endraw %}
 
 ## 13. Automatically skipping zero-length maps
 
