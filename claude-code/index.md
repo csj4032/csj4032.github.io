@@ -67,6 +67,9 @@ Claude Code는 `CLAUDE_CONFIG_DIR` 환경변수로 설정 디렉토리를 지정
 export ATLASSIAN_API_TOKEN="your-atlassian-api-token"
 # Slack
 export SLACK_BOT_TOKEN="xoxb-your-slack-bot-token"
+export SLACK_TEAM_ID="your-slack-team-id"
+# BigQuery
+export GOOGLE_CLOUD_PROJECT="your-gcp-project-id"
 # GitHub
 export GITHUB_PERSONAL_ACCESS_TOKEN="ghp_your-github-token"
 # PostgreSQL
@@ -150,7 +153,7 @@ claude-genius() {
       "args": ["-y", "@modelcontextprotocol/server-slack"],
       "env": {
         "SLACK_BOT_TOKEN": "${SLACK_BOT_TOKEN}",
-        "SLACK_TEAM_ID": "T0XXXXXXXXX"
+        "SLACK_TEAM_ID": "${SLACK_TEAM_ID}"
       }
     },
     "github": {
@@ -180,7 +183,7 @@ claude-genius() {
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-bigquery"],
       "env": {
-        "GOOGLE_CLOUD_PROJECT": "your-gcp-project"
+        "GOOGLE_CLOUD_PROJECT": "${GOOGLE_CLOUD_PROJECT}"
       }
     }
   }
@@ -240,8 +243,7 @@ Claude App은 브라우저/데스크탑 앱에서 MCP 서버를 원격으로 연
 npm install -g @modelcontextprotocol/proxy
 
 # BigQuery MCP 서버를 HTTP 프록시로 실행
-GOOGLE_CLOUD_PROJECT=your-gcp-project \
-  mcp-proxy --port 3100 npx -y @modelcontextprotocol/server-bigquery
+mcp-proxy --port 3100 npx -y @modelcontextprotocol/server-bigquery
 ```
 
 claude.ai에서 등록:
@@ -260,8 +262,6 @@ claude.ai에서 등록:
 | `execute-query` | SELECT 쿼리 실행 (읽기 전용) | "최근 주문 건수 집계해줘" |
 
 > `execute-query`는 읽기 전용(SELECT)만 허용됩니다. INSERT/UPDATE/DELETE는 실행되지 않습니다.
-
-데이터셋은 보통 환경 접두사로 나눠 둡니다. `prod_`, `stg_`, `da_` 처럼 구분해 두면 MCP로 조회할 때도 범위를 좁히기 쉽습니다.
 
 ## 7. Telegram 봇 연결
 
