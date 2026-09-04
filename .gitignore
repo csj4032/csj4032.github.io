@@ -9,3 +9,7 @@ Thumbs.db
 .rbenv-version
 .rvmrc
 .idea/*
+
+# Bundler
+.bundle/
+vendor/bundle/

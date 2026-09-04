@@ -120,6 +120,7 @@ menu:
   categories: /categories/
   tags: /tags/
   about: /about/
+  portfolio: /portfolio/
   #archives: /archives/
   #sitemap: /sitemap.xml
   #commonweal: /404.html
@@ -135,6 +136,7 @@ menu_icons:
   #KeyMapsToMenuItemKey: NameOfTheIconFromFontAwesome
   home: home
   about: user
+  portfolio: briefcase
   categories: th
   schedule: calendar
   tags: tags
