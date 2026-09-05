@@ -9,9 +9,21 @@
   {% assign paginate = site.category.paginate | default: site.paginate  %}
   {% assign paginate_path = site.category.paginate_path | default: site.paginate_path  %}
 
+  {% comment %}
+    서적 아래의 책 카테고리는 날짜 역순이 아니라 장 번호 순으로 세운다.
+    글에 chapter 가 없으면 Jekyll 의 sort 가 nil 을 앞에 두므로, 장 번호를
+    붙이지 않은 글은 목록 맨 위에 남는다.
+  {% endcomment %}
+  {% capture book_slugs %}{% for parent in site.data.categories %}{% if parent.slug == 'book' %}{% for child in parent.children %}|{{ child.slug }}{% endfor %}{% endif %}{% endfor %}|{% endcapture %}
+
   {% for cat_posts in site.categories %}
     {% assign cat = cat_posts[0] | url_encode | replace: '+', '%20' %}
-    {% assign posts = cat_posts[1] %}
+    {% capture cat_probe %}|{{ cat_posts[0] }}|{% endcapture %}
+    {% if book_slugs contains cat_probe %}
+      {% assign posts = cat_posts[1] | sort: 'chapter' %}
+    {% else %}
+      {% assign posts = cat_posts[1] %}
+    {% endif %}
 
     {% for post in posts %}
       {% if paginate > 0 %}
