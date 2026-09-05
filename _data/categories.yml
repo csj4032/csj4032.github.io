@@ -44,18 +44,14 @@
     - slug: adp
       label: ADP
 
-# 서적은 3뎁스다: 서적 > 책 > 챕터
-# 챕터 슬러그는 URL 경로이자 Jekyll 의 전역 카테고리 키라서, 책이 달라도
-# 서로 겹치면 안 된다. 장 번호(chap01 등)가 아니라 챕터 주제를 슬러그로 쓰고,
-# 장 번호는 label 에 적는다.
+# 서적은 책 단위까지만 카테고리로 나눈다. 챕터는 글 자체이므로
+# 카테고리로 만들지 않는다 — 책의 카테고리 페이지가 곧 챕터 목록이다.
 - slug: book
   label: 서적
   children:
     - slug: agentic-design-patterns
       label: Agentic Design Patterns
-      children:
-        - slug: prompt-chaining
-          label: 1장 프롬프트 체이닝
+      children: []
     - slug: object-design
       label: 소프트웨어 개발의 성공 열쇠 오브젝트 디자인
       children: []

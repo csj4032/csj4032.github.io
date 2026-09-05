@@ -4,11 +4,11 @@ description: "복잡한 작업을 단일 프롬프트로 처리할 때의 한계
 categories:
  - book
  - agentic-design-patterns
- - prompt-chaining
 tags:
  - agentic
  - design-pattern
  - llm
+ - prompt-chaining
  - langchain
 ---
 

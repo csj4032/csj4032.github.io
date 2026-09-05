@@ -1,6 +1,5 @@
 {%- comment -%}
   category_label(slug) — _data/categories.yml 의 slug -> label 매핑을 찾아 출력한다.
-  서적처럼 3뎁스(부모 > 자식 > 손자)인 항목까지 훑는다.
   매핑에 없으면 slug 를 그대로 돌려준다.
 
   사용: {% include _helper/category_label.html slug=cat %}
@@ -14,11 +13,6 @@
     {%- if child.slug == include.slug -%}
       {%- assign cat_label = child.label -%}
     {%- endif -%}
-    {%- for grandchild in child.children -%}
-      {%- if grandchild.slug == include.slug -%}
-        {%- assign cat_label = grandchild.label -%}
-      {%- endif -%}
-    {%- endfor -%}
   {%- endfor -%}
 {%- endfor -%}
 {{- cat_label -}}
