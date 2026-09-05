@@ -38,7 +38,7 @@
           </li>
         {% else %}
           <li class="category-list-item">
-            <details class="category-group" open>
+            <details class="category-group" open data-slug="{{ parent.slug }}">
               <summary class="category-group-summary">
                 <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: parent.slug }}">{{ parent.label }}</a>
                 <span class="category-list-count">{{ parent_posts.size }}</span>

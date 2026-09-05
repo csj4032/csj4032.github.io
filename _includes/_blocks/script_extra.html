@@ -19,5 +19,11 @@
     {% include _scripts/pages/pagination.html %}
   {% endcapture %}
 {% else %}
-  {% capture script_extra %}{% include _scripts/pages/post-details.html %}{% endcapture %}
+  {% capture script_extra %}
+    {% include _scripts/pages/post-details.html %}
+    {% comment %} /categories/ 는 layout: page 라 여기로 온다 {% endcomment %}
+    {% if page.type == 'categories' %}
+      {% include _scripts/pages/category-tree.html %}
+    {% endif %}
+  {% endcapture %}
 {% endcase %}
