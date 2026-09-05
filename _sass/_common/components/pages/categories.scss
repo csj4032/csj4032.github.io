@@ -24,4 +24,33 @@
   }
 
   .category-list-child { padding-left: 10px; }
+
+  // 1뎁스(부모 카테고리)를 접고 펼치는 details/summary
+  .category-group-summary {
+    cursor: pointer;
+    // 브라우저 기본 삼각형 마커를 지우고 아래에서 직접 그린다
+    list-style: none;
+    &::-webkit-details-marker { display: none; }
+    &::marker { content: ''; }
+
+    &::before {
+      content: '\25B8';        // ▸
+      display: inline-block;
+      width: 1em;
+      color: $grey-dark;
+      transition: transform 0.15s ease;
+    }
+
+    &:hover::before { color: $grey-dim; }
+  }
+
+  .category-group[open] > .category-group-summary::before {
+    transform: rotate(90deg);
+  }
+
+  // 자식이 없어 캐럿이 붙지 않는 항목의 줄맞춤용 빈 자리
+  .category-caret-spacer {
+    display: inline-block;
+    width: 1em;
+  }
 }
