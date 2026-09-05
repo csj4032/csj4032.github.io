@@ -3,6 +3,7 @@ title: Effective Java 2판
 description: Effective Java 책 정리
 categories:
  - book
+ - effective-java
 tags:
  - java
 comments: true

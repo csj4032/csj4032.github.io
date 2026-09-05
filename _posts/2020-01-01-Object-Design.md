@@ -3,6 +3,7 @@ title: 소프트웨어 개발의 성공 열쇠 오브젝트 디자인
 description: 소프트웨어 개발의 성공 열쇠 오브젝트 디자인 책 정리
 categories:
  - book
+ - object-design
 tags:
  - java
 comments: true

@@ -3,11 +3,12 @@ title: "Agentic Design Patterns 1장 — 프롬프트 체이닝"
 description: "복잡한 작업을 단일 프롬프트로 처리할 때의 한계와, 이를 순차적 하위 작업으로 분해하는 프롬프트 체이닝(파이프라인) 패턴, 구조화된 출력의 역할, LangChain LCEL 구현, 컨텍스트 엔지니어링과의 관계를 정리합니다."
 categories:
  - book
+ - agentic-design-patterns
+ - prompt-chaining
 tags:
  - agentic
  - design-pattern
  - llm
- - prompt-chaining
  - langchain
 ---
 

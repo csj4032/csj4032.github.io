@@ -1,5 +1,5 @@
-{% comment %} list_categories() — renders _data/categories.yml as a two level tree {% endcomment %}
-{% capture known_slugs %}{% for parent in site.data.categories %}|{{ parent.slug }}{% for child in parent.children %}|{{ child.slug }}{% endfor %}{% endfor %}|{% endcapture %}
+{% comment %} list_categories() — renders _data/categories.yml as a three level tree {% endcomment %}
+{% capture known_slugs %}{% for parent in site.data.categories %}|{{ parent.slug }}{% for child in parent.children %}|{{ child.slug }}{% for grandchild in child.children %}|{{ grandchild.slug }}{% endfor %}{% endfor %}{% endfor %}|{% endcapture %}
 {% capture list_categories %}
   <ul class="category-list">
     {% for parent in site.data.categories %}
@@ -13,9 +13,24 @@
           {% for child in parent.children %}
             {% assign child_posts = site.categories[child.slug] %}
             {% if child_posts.size > 0 %}
+              {% comment %} 3뎁스: 책 아래의 챕터처럼 손자 항목이 있으면 한 단계 더 그린다 {% endcomment %}
+              {% capture grandchild_items %}
+                {% for grandchild in child.children %}
+                  {% assign grandchild_posts = site.categories[grandchild.slug] %}
+                  {% if grandchild_posts.size > 0 %}
+                    <li class="category-list-item">
+                      <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: grandchild.slug }}">{{ grandchild.label }}</a>
+                      <span class="category-list-count">{{ grandchild_posts.size }}</span>
+                    </li>
+                  {% endif %}
+                {% endfor %}
+              {% endcapture %}
               <li class="category-list-item">
                 <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: child.slug }}">{{ child.label }}</a>
                 <span class="category-list-count">{{ child_posts.size }}</span>
+                {% unless grandchild_items == blank %}
+                  <ul class="category-list category-list-child">{{ grandchild_items }}</ul>
+                {% endunless %}
               </li>
             {% endif %}
           {% endfor %}
