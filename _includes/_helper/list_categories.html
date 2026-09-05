@@ -9,10 +9,12 @@
         아래 fallback 루프가 슬러그를 날것으로 다시 출력하지 않는다.
       {% endcomment %}
       {% if parent_posts.size > 0 and parent.hidden != true %}
+        {% assign child_count = 0 %}
         {% capture child_items %}
           {% for child in parent.children %}
             {% assign child_posts = site.categories[child.slug] %}
             {% if child_posts.size > 0 %}
+              {% assign child_count = child_count | plus: 1 %}
               <li class="category-list-item">
                 <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: child.slug }}">{{ child.label }}</a>
                 <span class="category-list-count">{{ child_posts.size }}</span>
@@ -21,15 +23,14 @@
           {% endfor %}
         {% endcapture %}
         {% comment %}
-          capture 는 반복문 주변의 공백까지 담으므로, 자식이 하나도 없어도
-          결과가 blank 로 판정되지 않는다. strip 으로 공백을 털어낸다.
-        {% endcomment %}
-        {% assign child_items = child_items | strip %}
-        {% comment %}
           자식이 있는 항목만 details 로 감싸 접고 펼칠 수 있게 한다.
           자식이 없으면 접을 것이 없으므로 평범한 li 로 둔다.
+
+          child_items 문자열로 판정하지 않는 이유: capture 는 반복문 주변의
+          공백까지 담는 데다, 이 환경의 Liquid 에서는 빈 문자열조차 blank 와
+          같다고 판정되지 않았다. 그래서 실제로 출력한 자식 수를 세어 쓴다.
         {% endcomment %}
-        {% if child_items == blank %}
+        {% if child_count == 0 %}
           <li class="category-list-item">
             <span class="category-caret-spacer"></span>
             <a class="category-list-link" href="{{ '/category/#/' | relative_url | append: parent.slug }}">{{ parent.label }}</a>
