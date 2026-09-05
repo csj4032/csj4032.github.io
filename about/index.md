@@ -72,5 +72,3 @@ JVM(Java·Kotlin·Scala)과 Python을 오가며 이 파이프라인을 떠받치
 
 #### Github : [https://github.com/csj4032](https://github.com/csj4032)
 
-#### Portfolio : [포트폴리오 보기](/portfolio/) · [PDF 내려받기](/assets/portfolio/portfolio.pdf)
-
