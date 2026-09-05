@@ -21,6 +21,11 @@
           {% endfor %}
         {% endcapture %}
         {% comment %}
+          capture 는 반복문 주변의 공백까지 담으므로, 자식이 하나도 없어도
+          결과가 blank 로 판정되지 않는다. strip 으로 공백을 털어낸다.
+        {% endcomment %}
+        {% assign child_items = child_items | strip %}
+        {% comment %}
           자식이 있는 항목만 details 로 감싸 접고 펼칠 수 있게 한다.
           자식이 없으면 접을 것이 없으므로 평범한 li 로 둔다.
         {% endcomment %}
