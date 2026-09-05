@@ -29,7 +29,7 @@ bundle exec jekyll server
 #### 포트폴리오 PDF
 
 `portfolio/index.html` 이 원본이고, PDF 는 로컬 Chrome 을 헤드리스로 띄워 렌더한다.
-내용을 고친 뒤 아래를 실행하면 `assets/portfolio/csj4032-portfolio.pdf` 가 갱신된다.
+내용을 고친 뒤 아래를 실행하면 `assets/portfolio/portfolio.pdf` 가 갱신된다.
 
 ```sh
 node scripts/build-portfolio-pdf.mjs

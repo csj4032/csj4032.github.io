@@ -16,7 +16,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const SRC = path.join(root, 'portfolio', 'index.html');
-const OUT = path.join(root, 'assets', 'portfolio', 'csj4032-portfolio.pdf');
+const OUT = path.join(root, 'assets', 'portfolio', 'portfolio.pdf');
 
 const CHROME_CANDIDATES = [
   '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',
