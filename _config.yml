@@ -24,8 +24,9 @@ paginate: 10
 #archive:
   #paginate: 10
   #paginate_path: "/page:num/"
-#category:
-  #paginate: 10
+# 서적 카테고리는 한 책의 장이 전부 한 화면에 보여야 목차 구실을 한다
+category:
+  paginate: 30
   #paginate_path: "/page:num/"
 #tag:
   #paginate: 10
