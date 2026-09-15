@@ -33,6 +33,8 @@
       label: 에어플로우
     - slug: pandas
       label: 판다스
+    - slug: elasticsearch
+      label: 엘라스틱서치
 
 # hidden: true — 목록에서만 감춘다. 글과 URL은 그대로 살아 있다.
 - slug: certificate
