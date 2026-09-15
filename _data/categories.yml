@@ -36,6 +36,18 @@
     - slug: elasticsearch
       label: 엘라스틱서치
 
+- slug: ai
+  label: AI
+  children:
+    - slug: llm
+      label: LLM
+    - slug: rag
+      label: RAG
+    - slug: ontology
+      label: 온톨로지
+    - slug: chatbot
+      label: 챗봇
+
 # hidden: true — 목록에서만 감춘다. 글과 URL은 그대로 살아 있다.
 - slug: certificate
   label: 자격증
