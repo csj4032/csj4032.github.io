@@ -63,6 +63,9 @@
 - slug: book
   label: 서적
   children:
+    - slug: ai-agent-langchain-langgraph
+      label: 혼자서도 척척 해내는 AI 에이전트 만들기 with 랭체인 & 랭그래프
+      children: []
     - slug: agentic-design-patterns
       label: Agentic Design Patterns
       children: []
