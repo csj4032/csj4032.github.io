@@ -69,6 +69,9 @@
     - slug: agentic-design-patterns
       label: Agentic Design Patterns
       children: []
+    - slug: generative-ai-with-langchain
+      label: LangChain과 LangGraph로 만드는 LLM 애플리케이션 2/e
+      children: []
     - slug: object-design
       label: 소프트웨어 개발의 성공 열쇠 오브젝트 디자인
       children: []
