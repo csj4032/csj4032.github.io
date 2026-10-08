@@ -79,6 +79,13 @@
       label: Effective Java 2판
       children: []
 
+# 게임 스튜디오 Enjoy Game 의 게임 소개. 게임별 페이지는 enjoygame.app 에 있고 블로그에는 소개 글만 둔다.
+- slug: game
+  label: 게임
+  children:
+    - slug: enjoy-game
+      label: Enjoy Game
+
 - slug: etc
   label: 기타
   children: []
